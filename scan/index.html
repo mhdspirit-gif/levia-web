@@ -749,8 +749,10 @@ function submitEmail(){
   var clientData={
     name:state.name, email:em.value,
     gender:state.gender||'', age:state.age||'',
+    age_range:state.age||'',
     skin_type:state.q1||'', concern:state.q2||'',
     lifestyle:state.q3||'', score:r.score||'',
+    skin_score:r.score||'',
     routine_type:r.label||'',
     photo_consent:state.photoConsent?'yes':'no',
     photo_provided:state.photo?'yes':'no',
