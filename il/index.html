@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<script>(function(){if(window.location.pathname!=="/"&&window.location.pathname!=="/index.html")return;try{var tz=Intl.DateTimeFormat().resolvedOptions().timeZone||"";if(tz.indexOf("Jerusalem")!==-1||tz.indexOf("Israel")!==-1)return;window.location.href="/uk";}catch(e){}})();</script>
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','4389646397987463');fbq('track','PageView');</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=4389646397987463&ev=PageView&noscript=1"/></noscript>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+<title>Lévia — העור שלך, מובן לעומק</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Playfair+Display:wght@700;900&family=Heebo:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100%;min-height:100dvh;background:#0e0c0a;font-family:'Heebo',sans-serif;overflow-x:hidden;padding:0!important;display:block!important;}
+.luxe-frame{max-width:941px;margin:0 auto;position:relative;}
+@media(min-width:942px){.luxe-frame{box-shadow:30px 0 40px -10px rgba(184,137,92,0.25),-30px 0 40px -10px rgba(184,137,92,0.25);}}
+.page{position:relative;width:100%;max-width:941px;margin:0 auto;}
+.page>img{width:100%;display:block;}
+.contact-bar{max-width:941px;margin:0 auto;background:linear-gradient(135deg,#141210,#1a1715,#141210);text-align:center;padding:30px 20px;border-top:1px solid rgba(184,137,92,0.2);direction:ltr;}
+.contact-bar a{font-family:'Cormorant Garamond',serif;font-size:22px;color:#c89a73;text-decoration:none;letter-spacing:1px;}
+.contact-bar .sparkle{color:#c89a73;margin:0 8px;}
+
+/* =====================
+   FORMULAIRES SUR IMAGE
+   ===================== */
+
+/* FORM 1 — Hero : sous le bouton noir + cadenas, côté gauche
+   mockup 941x1672 → bouton noir y≈655-700, cadenas y≈730-760
+   On place le form à 43.7%–48.5% de la hauteur, x=3%–49% */
+.form1-wrap{
+  position:absolute;
+  top:32.5%;
+  left:8%;
+  width:33%;
+}
+
+/* FORM 2 — Section noire bas, côté droit
+   Zone email dans mockup : y≈1430-1555, x≈505-910
+   En % : top=85.5%, right=1%, width=45% */
+.form2-wrap{
+  position:absolute;
+  top:88.3%;
+  right:8.7%;
+  width:35%;
+}
+
+/* INPUT commun */
+.f-input{
+  display:block;
+  width:100%;
+  padding:2.2% 4%;
+  border-radius:999px;
+  border:1.5px solid rgba(180,130,80,0.4);
+  background:rgba(245,235,220,0.85);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  color:#2a1a0a;
+  font-family:'Heebo',sans-serif;
+  font-size:clamp(10px,1.3vw,14px);
+  outline:none;
+  text-align:center;
+  margin-bottom:2%;
+  transition:border-color .2s;
+  -webkit-appearance:none;
+  appearance:none;
+}
+.f-input::placeholder{color:rgba(80,50,20,0.45);}
+.f-input:focus{border-color:rgba(180,120,40,0.8);background:rgba(250,242,230,0.95);}
+
+/* Bouton doré commun */
+.f-btn{
+  position:relative;overflow:hidden;
+  display:block;width:100%;
+  padding:2.5% 4%;
+  border:none;border-radius:999px;cursor:pointer;
+  font-family:'Heebo',sans-serif;
+  font-size:clamp(10px,1.3vw,14px);
+  font-weight:700;color:#1A120C;
+  background:linear-gradient(160deg,#5c3a10,#c8882a,#f5c96a,#fff3b0,#e8aa3a,#ffd97a,#c07820,#7a4a10);
+  box-shadow:0 0 14px rgba(212,160,60,0.5),0 4px 14px rgba(180,120,40,0.35),inset 0 1px 1px rgba(255,255,255,0.5);
+  transition:.2s ease;
+  white-space:nowrap;
+}
+.f-btn::before{content:"";position:absolute;top:0;left:-150%;width:60%;height:100%;background:linear-gradient(105deg,transparent 20%,rgba(255,255,220,.8) 48%,rgba(255,255,255,.9) 52%,rgba(255,255,220,.8) 55%,transparent 80%);transform:skewX(-22deg);animation:shineBtn 2.8s ease-in-out infinite;}
+@keyframes shineBtn{0%{left:-150%;}100%{left:160%;}}
+
+/* Form 2 — style adapté fond noir */
+.form2-wrap .f-input{
+  border-radius:8px;
+  background:rgba(245,235,220,0.85);
+  border-color:rgba(180,130,80,0.4);
+  text-align:right;
+  color:#2a1a0a;
+  font-size:clamp(10px,2.2vw,19px);
+  -webkit-appearance:none;
+  appearance:none;
+}
+.form2-wrap .f-input::placeholder{color:rgba(80,50,20,0.45);}
+.form2-wrap .f-input:focus{background:rgba(250,242,230,0.95);border-color:rgba(180,120,40,0.8);}
+.form2-wrap .f-input::placeholder{color:rgba(232,213,176,0.4);}
+.form2-wrap .f-btn{border-radius:8px;font-size:clamp(10px,2.2vw,19px);}
+
+/* Succès inline */
+.f-success{
+  display:none;
+  background:rgba(212,175,127,0.15);
+  border:1px solid rgba(212,175,127,0.4);
+  border-radius:12px;
+  padding:8px 12px;
+  color:#f5d4a8;
+  font-size:clamp(10px,1.2vw,13px);
+  font-weight:600;
+  text-align:center;
+}
+.f-success.show{display:block;}
+.f-form.hide{display:none;}
+
+/* CONFETTI */
+.confetti-container{position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:10000;overflow:hidden;}
+.confetti{position:absolute;top:-10px;opacity:0;animation:confettiFall linear forwards;}
+@keyframes confettiFall{0%{opacity:1;transform:translateY(0) rotate(0deg);}100%{opacity:0;transform:translateY(100vh) rotate(720deg);}}
+
+/* =====================
+   POPUP COMPACT SLIDE-UP
+   ===================== */
+.popup-overlay{
+  position:fixed;inset:0;
+  display:none;
+  align-items:flex-end;
+  justify-content:center;
+  background:rgba(0,0,0,0.35);
+  backdrop-filter:blur(3px);
+  z-index:9999;
+}
+.popup-overlay.show{display:flex;}
+
+.popup-box{
+  position:relative;
+  width:100%;max-width:480px;
+  direction:rtl;text-align:center;
+  padding:16px 20px calc(24px + env(safe-area-inset-bottom,0px));
+  border-radius:24px 24px 0 0;
+  background:
+    radial-gradient(circle at 80% 0%,rgba(212,175,127,0.2),transparent 40%),
+    linear-gradient(170deg,rgba(38,28,18,0.98),rgba(14,12,10,0.99));
+  border:1px solid rgba(255,255,255,0.1);
+  border-bottom:none;
+  box-shadow:0 -6px 32px rgba(212,175,127,0.14),0 -1px 0 rgba(212,175,127,0.2);
+  transform:translateY(100%);
+  transition:transform 0.36s cubic-bezier(0.32,0.72,0,1);
+}
+.popup-overlay.show .popup-box{transform:translateY(0);}
+
+.popup-drag{width:36px;height:4px;background:rgba(255,255,255,0.16);border-radius:2px;margin:0 auto 14px;}
+
+.popup-close{
+  position:absolute;top:12px;left:14px;
+  background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);
+  color:rgba(255,255,255,0.45);font-size:12px;cursor:pointer;
+  width:24px;height:24px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+}
+
+/* Logo petit */
+.popup-logo{font-family:'Cormorant Garamond',serif;font-size:22px;letter-spacing:7px;color:#D4AF7F;direction:ltr;margin-bottom:2px;}
+.popup-sub{font-size:8px;letter-spacing:4px;color:rgba(255,255,255,0.28);direction:ltr;margin-bottom:12px;}
+
+.popup-title{font-size:20px;line-height:1.2;font-weight:700;color:#fff;margin-bottom:6px;}
+.popup-title span{background:linear-gradient(135deg,#d4af7f,#fff0c8,#b98245);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.popup-text{font-size:12px;line-height:1.6;color:rgba(255,255,255,0.55);margin-bottom:12px;}
+
+/* Offre horizontale compacte */
+.offer{
+  display:flex;align-items:center;justify-content:space-around;
+  padding:14px 16px;border-radius:16px;margin-bottom:10px;
+  background:
+    radial-gradient(circle at 30% 10%,rgba(255,230,190,0.18),transparent 40%),
+    linear-gradient(145deg,rgba(255,255,255,0.1),rgba(255,255,255,0.02));
+  border:1px solid rgba(255,215,160,0.28);
+  box-shadow:inset 0 1px 1px rgba(255,255,255,0.15),0 8px 24px rgba(212,175,127,0.12);
+}
+.offer-item{display:flex;flex-direction:column;align-items:center;gap:2px;}
+.offer-label-s{
+  color:rgba(255,255,255,0.5);font-size:10px;
+  letter-spacing:0.5px;text-transform:uppercase;margin-bottom:2px;
+}
+.metal-num{
+  font-family:'Playfair Display',serif;
+  font-size:48px;line-height:1.1;font-weight:900;
+  display:inline-block;padding-bottom:4px;
+  background:linear-gradient(160deg,#5c3a10 0%,#c8882a 12%,#f5c96a 28%,#fff3b0 42%,#e8aa3a 55%,#ffd97a 68%,#c07820 80%,#7a4a10 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 3px 10px rgba(212,160,60,0.55)) drop-shadow(0 0 20px rgba(255,200,80,0.2));
+  position:relative;
+}
+.metal-num::after{content:attr(data-text);position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(105deg,transparent 25%,rgba(255,255,220,0.95) 48%,rgba(255,255,255,1) 52%,rgba(255,255,220,0.95) 55%,transparent 75%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shineG 3s ease-in-out infinite;pointer-events:none;}
+@keyframes shineG{0%{background-position:250% center;}100%{background-position:-250% center;}}
+.offer-div{width:1px;height:52px;background:linear-gradient(to bottom,transparent,rgba(255,215,160,0.3),transparent);}
+
+/* Counter compact */
+.counter{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 16px;border-radius:999px;margin-bottom:10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);color:white;font-size:12px;font-weight:500;}
+.counter .cnumber{font-size:18px;font-weight:700;background:linear-gradient(135deg,#ff9b8a,#ff7b6b,#ffb29d,#ff8f7d);-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:fomoBlink .6s ease-in-out infinite;}
+@keyframes fomoBlink{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.45;transform:scale(.96);}}
+
+/* Input popup */
+.popup-input{width:100%;padding:13px 18px;border-radius:999px;border:1px solid rgba(255,255,255,0.14);background:rgba(255,255,255,0.09);color:white;font-size:14px;font-family:'Heebo',sans-serif;outline:none;text-align:center;margin-bottom:9px;}
+.popup-input::placeholder{color:rgba(255,255,255,0.32);}
+
+/* Bouton popup */
+.popup-btn{position:relative;overflow:hidden;width:100%;padding:15px 20px;border:none;border-radius:999px;cursor:pointer;font-size:14px;font-weight:700;color:#1A120C;font-family:'Heebo',sans-serif;background:linear-gradient(160deg,#5c3a10,#c8882a,#f5c96a,#fff3b0,#e8aa3a,#ffd97a,#c07820,#7a4a10);box-shadow:0 0 22px rgba(212,160,60,0.5),0 8px 28px rgba(180,120,40,0.35),inset 0 1px 1px rgba(255,255,255,0.55);transition:.2s ease;}
+.popup-btn::before{content:"";position:absolute;top:0;left:-150%;width:60%;height:100%;background:linear-gradient(105deg,transparent 20%,rgba(255,255,220,.85) 48%,rgba(255,255,255,.95) 52%,rgba(255,255,220,.85) 55%,transparent 80%);transform:skewX(-22deg);animation:shineBtn 2.8s ease-in-out infinite;}
+.popup-btn:hover{filter:brightness(1.08);}
+
+.popup-note{margin-top:8px;color:rgba(255,255,255,0.32);font-size:10px;}
+.popup-footer{margin-top:12px;direction:ltr;color:rgba(255,255,255,0.16);font-size:9px;letter-spacing:3px;}
+
+.popup-success{display:none;padding:12px 0;}
+.popup-success.show{display:block;}
+.popup-form.hide{display:none;}
+.success-icon{font-size:32px;margin-bottom:10px;}
+.success-title{font-size:22px;font-weight:700;color:#fff;margin-bottom:8px;line-height:1.3;}
+.success-title .gold{background:linear-gradient(135deg,#d4af7f,#fff0c8,#b98245);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.success-message{color:rgba(255,255,255,0.6);font-size:13px;line-height:1.7;}
+
+form[style*="display:none"]{position:absolute;}
+</style>
+</head>
+<body>
+
+<div class="luxe-frame">
+  <div class="page">
+    <img src="mockup.jpg" alt="Lévia">
+
+    <!-- FORM 1 — sous bouton noir hero, côté gauche -->
+    <div class="form1-wrap">
+      <div class="f-form" id="form1">
+        <input class="f-input" type="email" id="email1" placeholder="הכניסי את האימייל שלך" autocomplete="email">
+        <button class="f-btn" id="btn1">&#10022; הצטרפי לגישה מוקדמת</button>
+      </div>
+      <div class="f-success" id="suc1">&#10022; את ברשימה! נעדכן אותך &#129332;</div>
+    </div>
+
+    <!-- FORM 2 — section noire bas, côté droit -->
+    <div class="form2-wrap">
+      <div class="f-form" id="form2">
+        <input class="f-input" type="email" id="email2" placeholder="הכניסי את האימייל שלך" autocomplete="email" style="-webkit-text-fill-color:#2a1a0a;color:#2a1a0a;">
+        <button class="f-btn" id="btn2">&#10022; אני רוצה להצטרף</button>
+      </div>
+      <div class="f-success" id="suc2">&#10022; את ברשימה! נעדכן אותך &#129332;</div>
+    </div>
+
+    <!-- Netlify form caché -->
+    <form id="wf" name="waitlist" method="POST" data-netlify="true" style="display:none">
+      <input type="hidden" name="form-name" value="waitlist">
+      <input type="email" name="email">
+    </form>
+  </div>
+
+  <div class="contact-bar">
+    <span class="sparkle">&#10022;</span>
+    <a href="mailto:hello@leviaskincare.com">hello@leviaskincare.com</a>
+    <span class="sparkle">&#10022;</span>
+  </div>
+</div>
+
+<!-- POPUP COMPACT — 7 secondes -->
+<div class="popup-overlay" id="popup">
+  <div class="popup-box">
+    <div class="popup-drag"></div>
+    <button class="popup-close" id="popup-close">&#x2715;</button>
+    <div class="popup-logo">LÉVIA</div>
+    <div class="popup-sub">INTELLIGENT SKINCARE</div>
+
+    <div class="popup-form" id="popup-form">
+      <div class="popup-title">העור שלך.<br><span>סוף סוף מובן.</span></div>
+      <div class="popup-text">גישה מוקדמת פרטית לאפליקציית skincare<br>שמבינה את העור שלך באמת.</div>
+
+      <div class="offer">
+        <div class="offer-item">
+          <div class="offer-label-s">החברות הראשונות</div>
+          <div class="metal-num" data-text="100">100</div>
+        </div>
+        <div class="offer-div"></div>
+        <div class="offer-item">
+          <div class="offer-label-s">הנחה לכל החיים</div>
+          <div class="metal-num" data-text="30%">30%</div>
+        </div>
+      </div>
+
+      <div class="counter">
+        <span>נשארו רק</span>
+        <span class="cnumber" id="fomo-count">45</span>
+        <span>מקומות</span>
+      </div>
+
+      <input class="popup-input" type="email" id="popup-em" placeholder="&#10022; הכניסי את האימייל שלך" autocomplete="email">
+      <button class="popup-btn" id="popup-sb">&#10022; בקשי גישה מוקדמת</button>
+      <div class="popup-note">ללא ספאם &#183; ביטול בכל רגע</div>
+    </div>
+
+    <div class="popup-success" id="popup-success">
+      <div class="success-icon">&#10022;</div>
+      <div class="success-title">!ברוכה הבאה<br><span class="gold">את ברשימה &#129332;</span></div>
+      <div class="success-message">נעדכן אותך ברגע שלוויה מוכנה בשבילך.</div>
+    </div>
+    <div class="popup-footer">PRIVATE EARLY ACCESS</div>
+  </div>
+</div>
+
+<div class="confetti-container" id="confetti-box"></div>
+
+<script>
+// FOMO counter
+(function(){
+  var today=Math.floor(Date.now()/86400000),key='levia_counter_state';
+  var s=JSON.parse(localStorage.getItem(key)||'null');
+  if(!s){s={ceiling:45,current:45,lastDay:today};}
+  var d=today-s.lastDay;
+  if(d>0){s.current-=d*2;s.lastDay=today;if(s.current<=5){s.ceiling=Math.max(s.ceiling-1,10);s.current=s.ceiling;}}
+  localStorage.setItem(key,JSON.stringify(s));
+  var el=document.getElementById('fomo-count');
+  if(el)el.textContent=s.current;
+})();
+
+function launchConfetti(){
+  var box=document.getElementById('confetti-box');
+  var colors=['#c89a73','#e8b87a','#d4a85c','#f5d4a8','#fff'];
+  for(var i=0;i<80;i++){
+    var c=document.createElement('div');c.className='confetti';
+    var sz=Math.random()*10+4;
+    c.style.cssText='left:'+Math.random()*100+'%;width:'+sz+'px;height:'+sz+'px;background:'+colors[Math.floor(Math.random()*colors.length)]+';animation-duration:'+(Math.random()*2+2)+'s;animation-delay:'+(Math.random()*1.5)+'s;border-radius:'+(Math.random()>.5?'50%':'2px')+';';
+    box.appendChild(c);
+  }
+  setTimeout(function(){box.innerHTML='';},5000);
+}
+
+function sendEmail(email,cb,errcb){
+  var fd=new FormData();fd.append('form-name','waitlist');fd.append('email',email);
+  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(fd).toString()})
+  .then(function(){
+    if(typeof fbq!=='undefined')fbq('track','Lead',{content_name:'waitlist_il'});
+    var s=JSON.parse(localStorage.getItem('levia_counter_state')||'null');
+    if(s){s.current=Math.max(s.current-1,1);localStorage.setItem('levia_counter_state',JSON.stringify(s));}
+    var el=document.getElementById('fomo-count');if(el&&s)el.textContent=s.current;
+    launchConfetti();cb();
+  }).catch(errcb);
+}
+
+// Form 1
+document.getElementById('btn1').addEventListener('click',function(e){
+  e.preventDefault();e.stopPropagation();
+  var em=document.getElementById('email1');
+  if(!em.value||!em.value.includes('@')){em.focus();em.style.borderColor='rgba(255,80,80,.7)';return;}
+  this.style.pointerEvents='none';this.textContent='...';
+  var self=this;
+  sendEmail(em.value,function(){
+    document.getElementById('form1').classList.add('hide');
+    document.getElementById('suc1').classList.add('show');
+  },function(){self.style.pointerEvents='auto';self.innerHTML='&#10022; \u05d4\u05e6\u05d8\u05e8\u05e4\u05d9 \u05dc\u05d2\u05d9\u05e9\u05d4 \u05de\u05d5\u05e7\u05d3\u05de\u05ea';});
+});
+
+// Form 2
+document.getElementById('btn2').addEventListener('click',function(e){
+  e.preventDefault();e.stopPropagation();
+  var em=document.getElementById('email2');
+  if(!em.value||!em.value.includes('@')){em.focus();em.style.borderColor='rgba(255,80,80,.7)';return;}
+  this.style.pointerEvents='none';this.textContent='...';
+  var self=this;
+  sendEmail(em.value,function(){
+    document.getElementById('form2').classList.add('hide');
+    document.getElementById('suc2').classList.add('show');
+  },function(){self.style.pointerEvents='auto';self.innerHTML='&#10022; \u05d0\u05e0\u05d9 \u05e8\u05d5\u05e6\u05d4 \u05dc\u05d4\u05e6\u05d8\u05e8\u05e3';});
+});
+
+// Popup — 7 secondes
+var popupDone=false;
+function openPopup(){
+  if(!popupDone){
+    document.getElementById('popup').classList.add('show');
+  }
+}
+function closePopup(){document.getElementById('popup').classList.remove('show');}
+setTimeout(openPopup,7000);
+document.getElementById('popup-close').addEventListener('click',function(e){e.stopPropagation();closePopup();});
+document.getElementById('popup').addEventListener('click',function(e){if(e.target===this)closePopup();});
+
+document.getElementById('popup-sb').addEventListener('click',function(e){
+  e.preventDefault();e.stopPropagation();
+  var em=document.getElementById('popup-em');
+  if(!em.value||!em.value.includes('@')){em.focus();em.style.borderColor='rgba(255,80,80,.8)';return;}
+  this.style.pointerEvents='none';this.textContent='...';
+  var self=this;
+  sendEmail(em.value,function(){
+    popupDone=true;
+    document.getElementById('popup-form').classList.add('hide');
+    document.getElementById('popup-success').classList.add('show');
+  },function(){
+    self.style.pointerEvents='auto';
+    self.innerHTML='&#10022; \u05d1\u05e7\u05e9\u05d9 \u05d2\u05d9\u05e9\u05d4 \u05de\u05d5\u05e7\u05d3\u05de\u05ea';
+  });
+});
+</script>
+</body>
+</html>

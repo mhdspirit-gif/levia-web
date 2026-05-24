@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="refresh" content="0;url=/uk/">
+<script>
+  var lang = navigator.language || '';
+  if(lang.startsWith('he')) window.location='/il/';
+  else if(lang.startsWith('sv')||lang.startsWith('no')||lang.startsWith('da')||lang.startsWith('fi')) window.location='/nordic/';
+  else window.location='/uk/';
+</script>
+</head>
+<body></body>
+</html>

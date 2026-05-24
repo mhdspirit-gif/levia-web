@@ -1,0 +1,20 @@
+# netlify.toml — à mettre à la racine de ton projet GitHub
+
+[build]
+  functions = "netlify/functions"
+  publish   = "."
+
+# Sécurité admin
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Frame-Options        = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Cache-Control          = "no-store, no-cache"
+
+# Headers sécurité globaux
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy        = "strict-origin-when-cross-origin"
