@@ -635,73 +635,184 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
 </div>
 
 <!-- S7 RESULT -->
-<div class="screen" id="s7" style="background:var(--cream);padding:0;overflow-y:auto;">
-  <div class="result-hero">
-    <div class="result-logo">LÉVIA</div>
-    <svg style="position:absolute;width:0;height:0">
-      <defs>
-        <linearGradient id="sg" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#8B6A20"/>
-          <stop offset="50%" stop-color="#E8C98A"/>
-          <stop offset="100%" stop-color="#C9A96E"/>
-        </linearGradient>
-      </defs>
-    </svg>
-    <div class="score-ring-wrap">
-      <svg class="score-svg" viewBox="0 0 120 120">
-        <circle class="score-bg" cx="60" cy="60" r="50"/>
-        <circle class="score-arc" id="score-arc" cx="60" cy="60" r="50"/>
-      </svg>
-      <div class="score-num">
-        <div class="score-n" id="score-n">—</div>
-        <div class="score-label">SCORE</div>
-      </div>
-    </div>
-    <div class="result-name" id="result-name">Your skin profile</div>
-    <div class="result-type" id="result-type">Analysing...</div>
-    <div class="result-insight" id="result-insight">&nbsp;</div>
-  </div>
-  <div class="result-body">
-    <div class="share-card">
-      <div class="share-card-title">Your Lévia Analysis</div>
-      <div class="share-card-sub">Save & share your personalised result</div>
-      <div class="share-stats" id="share-stats">
-        <div class="stat"><div class="stat-n" id="ss-score">—</div><div class="stat-l">SKIN SCORE</div></div>
-        <div class="stat"><div class="stat-n" id="ss-type">—</div><div class="stat-l">SKIN TYPE</div></div>
-        <div class="stat"><div class="stat-n" id="ss-steps">—</div><div class="stat-l">STEPS</div></div>
-      </div>
-      <div style="display:flex;gap:7px;">
-        <button onclick="shareToSocial('ig')" style="flex:1;display:flex;align-items:center;justify-content:center;gap:5px;padding:11px 6px;border-radius:10px;background:linear-gradient(135deg,#833AB4,#FD1D1D,#F77737);border:none;cursor:pointer;font-size:12px;font-weight:600;color:#fff;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-          Instagram
-        </button>
-        <button onclick="shareToSocial('tt')" style="flex:1;display:flex;align-items:center;justify-content:center;gap:5px;padding:11px 6px;border-radius:10px;background:#111;border:none;cursor:pointer;font-size:12px;font-weight:600;color:#fff;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.67a8.18 8.18 0 004.77 1.52V6.74a4.85 4.85 0 01-1-.05z"/></svg>
-          TikTok
-        </button>
-        <button onclick="shareToSocial('copy')" style="flex:1;display:flex;align-items:center;justify-content:center;gap:5px;padding:11px 6px;border-radius:10px;background:var(--cream2);border:1px solid var(--border);cursor:pointer;font-size:12px;color:var(--text2);">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
-          Copy
-        </button>
-      </div>
-    </div>
-    <div id="routine-output"></div>
-    
-    <div class="ig-cta-wrap">
-      <div style="font-size:13px;color:var(--text2);text-align:center;line-height:1.7;margin-bottom:14px;">Follow the Lévia journey — tips, routines and skincare expertise from Salomé.</div>
-      <button class="ig-btn" onclick="window.open('https://www.instagram.com/levia.skincare.uk/','_blank')">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-        Follow @levia.skincare.uk
-      </button>
+<div class="screen" id="s7" style="background:#FAF7F2;padding:0;overflow-y:auto;">
+
+  <!-- HEADER CRÈME PREMIUM -->
+  <div style="background:linear-gradient(160deg,#FAF7F2 0%,#EEE4D6 100%);padding:22px 18px 18px;position:relative;">
+
+    <!-- Logo -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">
+      <div style="font-family:Georgia,serif;font-size:13px;letter-spacing:5px;background:linear-gradient(135deg,#8B6A20,#C9A96E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">LÉVIA</div>
+      <div style="font-size:9px;letter-spacing:2px;color:var(--text3);text-transform:uppercase;">Skin Analysis</div>
     </div>
 
-    <div class="salome-sign">
+    <!-- Ligne de séparation dorée -->
+    <div style="height:1px;background:linear-gradient(90deg,transparent,rgba(201,169,110,0.4),transparent);margin-bottom:18px;"></div>
+
+    <!-- Photo + Score côte à côte -->
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:18px;">
+
+      <!-- Photo si disponible, sinon initiales -->
+      <div id="result-photo-wrap" style="position:relative;flex-shrink:0;">
+        <div id="result-photo-initials" style="width:78px;height:78px;border-radius:50%;border:2px solid rgba(201,169,110,0.4);background:linear-gradient(135deg,#1A1208,#2A1F0E);display:flex;align-items:center;justify-content:center;">
+          <span id="result-initials-text" style="font-family:Georgia,serif;font-size:26px;color:rgba(201,169,110,0.7);">?</span>
+        </div>
+        <img id="result-photo-img" src="" alt="" style="display:none;width:78px;height:78px;border-radius:50%;border:2px solid rgba(201,169,110,0.5);object-fit:cover;object-position:center top;">
+        <!-- Badge score sur la photo -->
+        <div id="result-photo-badge" style="position:absolute;bottom:-4px;right:-4px;background:linear-gradient(135deg,#8B6A20,#C9A96E);border-radius:999px;padding:2px 7px;font-size:10px;font-weight:700;color:#1A1208;font-family:Georgia,serif;border:2px solid #FAF7F2;"></div>
+      </div>
+
+      <!-- Nom + routine + insight -->
+      <div style="flex:1;min-width:0;">
+        <div id="result-name" style="font-family:Georgia,serif;font-size:19px;color:var(--text);line-height:1.2;margin-bottom:3px;"></div>
+        <div id="result-type" style="font-size:10px;letter-spacing:1.5px;color:var(--gold-d);text-transform:uppercase;margin-bottom:6px;"></div>
+        <div id="result-insight" style="font-size:11px;color:var(--text2);line-height:1.6;"></div>
+      </div>
+    </div>
+
+    <!-- Score ring + métriques -->
+    <div style="background:var(--white);border-radius:18px;padding:18px;border:1px solid var(--border);">
+
+      <!-- Score principal -->
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;">
+        <div style="position:relative;width:80px;height:80px;flex-shrink:0;">
+          <svg viewBox="0 0 80 80" style="width:80px;height:80px;transform:rotate(-90deg);">
+            <defs>
+              <linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#8B6A20"/>
+                <stop offset="50%" stop-color="#F0D48A"/>
+                <stop offset="100%" stop-color="#C9A96E"/>
+              </linearGradient>
+            </defs>
+            <circle cx="40" cy="40" r="32" fill="none" stroke="rgba(201,169,110,0.1)" stroke-width="6"/>
+            <circle id="score-arc" cx="40" cy="40" r="32" fill="none" stroke="url(#scoreGrad)" stroke-width="6"
+              stroke-linecap="round" stroke-dasharray="201" stroke-dashoffset="201"
+              style="transition:stroke-dashoffset 1.8s cubic-bezier(0.4,0,0.2,1);"/>
+          </svg>
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+            <div id="score-n" style="font-family:Georgia,serif;font-size:26px;font-weight:700;background:linear-gradient(135deg,#8B6A20,#C9A96E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;">—</div>
+            <div style="font-size:7px;letter-spacing:1.5px;color:var(--text3);margin-top:1px;">SCORE</div>
+          </div>
+        </div>
+        <div style="flex:1;">
+          <div style="font-size:11px;color:var(--text3);margin-bottom:4px;">Ton score cutané global</div>
+          <div id="score-desc" style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px;"></div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <div id="badge-skin" style="padding:3px 9px;border-radius:999px;font-size:9px;font-weight:600;background:rgba(201,169,110,0.1);border:1px solid rgba(201,169,110,0.3);color:var(--gold-d);letter-spacing:0.5px;"></div>
+            <div id="badge-concern" style="padding:3px 9px;border-radius:999px;font-size:9px;font-weight:600;background:rgba(45,122,79,0.08);border:1px solid rgba(45,122,79,0.2);color:#2D7A4F;letter-spacing:0.5px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Séparateur -->
+      <div style="height:1px;background:var(--border);margin-bottom:14px;"></div>
+
+      <!-- 4 métriques avec barres -->
+      <div id="metrics-wrap" style="display:flex;flex-direction:column;gap:10px;">
+
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+            <span style="font-size:11px;color:var(--text2);font-weight:500;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><path d="M12 2C12 2 5 9.5 5 14a7 7 0 0014 0c0-4.5-7-12-7-12z"/></svg> Hydration</span>
+            <span id="m-hyd-val" style="font-size:11px;font-weight:700;color:var(--text);font-family:Georgia,serif;"></span>
+          </div>
+          <div style="height:6px;background:rgba(201,169,110,0.1);border-radius:999px;overflow:hidden;">
+            <div id="m-hyd-bar" style="height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,#4A90D9,#7BBDE8);transition:width 1.2s cubic-bezier(0.4,0,0.2,1) 0.3s;"></div>
+          </div>
+        </div>
+
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+            <span style="font-size:11px;color:var(--text2);font-weight:500;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Sensitivity</span>
+            <span id="m-sen-val" style="font-size:11px;font-weight:700;color:var(--text);font-family:Georgia,serif;"></span>
+          </div>
+          <div style="height:6px;background:rgba(201,169,110,0.1);border-radius:999px;overflow:hidden;">
+            <div id="m-sen-bar" style="height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,#E8748A,#F4A0B0);transition:width 1.2s cubic-bezier(0.4,0,0.2,1) 0.5s;"></div>
+          </div>
+        </div>
+
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+            <span style="font-size:11px;color:var(--text2);font-weight:500;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg> Glow potential</span>
+            <span id="m-glow-val" style="font-size:11px;font-weight:700;color:var(--text);font-family:Georgia,serif;"></span>
+          </div>
+          <div style="height:6px;background:rgba(201,169,110,0.1);border-radius:999px;overflow:hidden;">
+            <div id="m-glow-bar" style="height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,#C9A96E,#F0D48A);transition:width 1.2s cubic-bezier(0.4,0,0.2,1) 0.7s;"></div>
+          </div>
+        </div>
+
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+            <span style="font-size:11px;color:var(--text2);font-weight:500;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg> Barrier balance</span>
+            <span id="m-bar-val" style="font-size:11px;font-weight:700;color:var(--text);font-family:Georgia,serif;"></span>
+          </div>
+          <div style="height:6px;background:rgba(201,169,110,0.1);border-radius:999px;overflow:hidden;">
+            <div id="m-bar-bar" style="height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,#2D7A4F,#4CAF80);transition:width 1.2s cubic-bezier(0.4,0,0.2,1) 0.9s;"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 3 stats résumé -->
+    <div style="display:flex;gap:8px;margin-top:12px;">
+      <div style="flex:1;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:10px 8px;text-align:center;">
+        <div id="ss-score" style="font-family:Georgia,serif;font-size:20px;font-weight:700;background:linear-gradient(135deg,#8B6A20,#C9A96E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">—</div>
+        <div style="font-size:8px;letter-spacing:1px;color:var(--text3);margin-top:2px;text-transform:uppercase;">Score</div>
+      </div>
+      <div style="flex:1;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:10px 8px;text-align:center;">
+        <div id="ss-type" style="font-family:Georgia,serif;font-size:12px;font-weight:700;color:var(--text);margin-top:4px;">—</div>
+        <div style="font-size:8px;letter-spacing:1px;color:var(--text3);margin-top:2px;text-transform:uppercase;">Type peau</div>
+      </div>
+      <div style="flex:1;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:10px 8px;text-align:center;">
+        <div id="ss-steps" style="font-family:Georgia,serif;font-size:20px;font-weight:700;background:linear-gradient(135deg,#8B6A20,#C9A96E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">—</div>
+        <div style="font-size:8px;letter-spacing:1px;color:var(--text3);margin-top:2px;text-transform:uppercase;">Étapes</div>
+      </div>
+    </div>
+
+    <!-- Boutons partage -->
+    <div style="display:flex;gap:8px;margin-top:12px;">
+      <button onclick="shareToSocial('ig')" style="flex:1;padding:11px 6px;border-radius:11px;background:linear-gradient(135deg,#833AB4,#FD1D1D,#F77737);border:none;cursor:pointer;font-size:11px;font-weight:700;color:#fff;display:flex;align-items:center;justify-content:center;gap:5px;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        Instagram
+      </button>
+      <button onclick="shareToSocial('tt')" style="flex:1;padding:11px 6px;border-radius:11px;background:#0D0900;border:none;cursor:pointer;font-size:11px;font-weight:700;color:rgba(201,169,110,0.9);display:flex;align-items:center;justify-content:center;gap:5px;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="rgba(201,169,110,0.9)"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.67a8.18 8.18 0 004.77 1.52V6.74a4.85 4.85 0 01-1-.05z"/></svg>
+        TikTok
+      </button>
+      <button onclick="shareToSocial('copy')" style="padding:11px 14px;border-radius:11px;background:var(--white);border:1px solid var(--border);cursor:pointer;font-size:11px;color:var(--text2);display:flex;align-items:center;gap:5px;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+        Copy
+      </button>
+    </div>
+  </div>
+
+  <!-- ROUTINE BODY -->
+  <div style="padding:20px 16px 40px;background:#FAF7F2;">
+
+    <div id="routine-output"></div>
+
+    <!-- Disclaimer -->
+    <div style="font-size:10px;color:var(--text3);margin-top:14px;padding:10px 12px;background:var(--white);border-radius:10px;border:1px solid var(--border);line-height:1.7;">
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="vertical-align:middle;margin-right:3px;"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
+      Independent recommendations. Lévia has no affiliation with brands mentioned and receives no commission.
+    </div>
+
+    <!-- Signature expert -->
+    <div class="salome-sign" style="margin-top:18px;">
       <img id="salome-img3" class="s-thumb" alt="Salomé">
       <div>
-        <div class="s-text">Your routine crafted by</div>
+        <div class="s-text">Routine crafted by</div>
         <div class="s-name">Salomé</div>
         <div class="s-text" style="font-size:10px;color:var(--text3);">20 years expertise · Lévia Skincare</div>
       </div>
+    </div>
+
+    <!-- Instagram CTA -->
+    <div class="ig-cta-wrap" style="margin-top:20px;">
+      <button class="ig-btn" onclick="window.open('https://www.instagram.com/levia.skincare.uk/','_blank')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        Follow @levia.skincare.uk
+      </button>
     </div>
   </div>
 </div>
@@ -1221,6 +1332,16 @@ var INSIGHTS={
   mature_aging:'After 35, prevention becomes your best treatment. Vitamin C and SPF are your most powerful tools.'
 };
 
+
+// Métriques par routine (Hydration / Sensitivity / Glow / Barrier)
+var METRICS = {
+  oily_acne:       {hydration:62, sensitivity:55, glow:68, barrier:58},
+  oily_glow:       {hydration:65, sensitivity:50, glow:82, barrier:60},
+  dry_dryness:     {hydration:42, sensitivity:68, glow:55, barrier:45},
+  dry_aging:       {hydration:48, sensitivity:60, glow:62, barrier:52},
+  sensitive_dryness:{hydration:50, sensitivity:85, glow:52, barrier:42},
+  mature_aging:    {hydration:55, sensitivity:58, glow:72, barrier:58},
+};
 var ROUTINES={
   oily_acne:{label:'Clear & Balanced',score:81,type:'Oily · Blemish-prone',
     morning:[
@@ -1299,22 +1420,65 @@ function getRoutine(){
 function buildResult(){
   var r=getRoutine();
   var totalSteps=r.morning.length+r.evening.length;
-  // Score arc — circumference = 2π×50 ≈ 314
-  var circ=314,offset=circ-(r.score/100*circ);
+  var routineKey=Object.keys(ROUTINES).find(function(k){return ROUTINES[k]===r;})||'oily_acne';
+  var m=METRICS[routineKey]||{hydration:60,sensitivity:60,glow:65,barrier:60};
+
+  // Score arc — circumference = 2π×32 ≈ 201
+  var circ=201,offset=circ-(r.score/100*circ);
   setTimeout(function(){
-    S('score-arc').style.strokeDasharray=circ;
-    S('score-arc').style.strokeDashoffset=offset;
+    var arc=S('score-arc');
+    if(arc){arc.style.strokeDasharray=circ;arc.style.strokeDashoffset=offset;}
   },300);
+
+  // Score
   S('score-n').textContent=r.score;
-  var fn=state.name?state.name.split(' ')[0]:'';S('result-name').textContent=fn?fn+"'s Lévia routine ❖":r.label;
-  var ageLabel=state.age?(' · '+state.age):'';
-  var genderLabel=state.gender?(state.gender==='female'?' · Woman':' · Man'):'';
-  S('result-type').textContent=r.type+genderLabel+ageLabel;
-  S('result-insight').textContent=INSIGHTS[Object.keys(ROUTINES).find(function(k){return ROUTINES[k]===r;})||'oily_acne']||'';
-  // Share card stats
+  if(S('result-photo-badge')) S('result-photo-badge').textContent=r.score;
+
+  // Nom
+  var fn=state.name?state.name.split(' ')[0]:'';
+  S('result-name').textContent=fn?fn+"'s Lévia routine ✦":r.label;
+
+  // Type + score description
+  S('result-type').textContent=r.type;
+  if(S('score-desc')) S('score-desc').textContent=r.label;
+
+  // Badges
+  if(S('badge-skin')) S('badge-skin').textContent=(state.q1||'').toUpperCase()||r.type.split(' ')[0].toUpperCase();
+  if(S('badge-concern')) S('badge-concern').textContent=(state.q2||'').toUpperCase();
+
+  // Insight
+  S('result-insight').textContent=INSIGHTS[routineKey]||'';
+
+  // Stats
   S('ss-score').textContent=r.score;
-  S('ss-type').textContent=state.age||'—';
+  S('ss-type').textContent=r.type.split(' · ')[0]||'—';
   S('ss-steps').textContent=totalSteps;
+
+  // Photo client si disponible
+  setTimeout(function(){
+    var photoImg=S('result-photo-img');
+    var photoInit=S('result-photo-initials');
+    if(state.photo && photoImg){
+      photoImg.src=state.photo;
+      photoImg.style.display='block';
+      if(photoInit) photoInit.style.display='none';
+    } else if(photoInit){
+      var initText=S('result-initials-text');
+      if(initText) initText.textContent=state.name?(state.name.charAt(0).toUpperCase()):'✦';
+    }
+  },100);
+
+  // Métriques animées
+  setTimeout(function(){
+    if(S('m-hyd-val')) S('m-hyd-val').textContent=m.hydration+'%';
+    if(S('m-sen-val')) S('m-sen-val').textContent=m.sensitivity+'%';
+    if(S('m-glow-val')) S('m-glow-val').textContent=m.glow+'%';
+    if(S('m-bar-val')) S('m-bar-val').textContent=m.barrier+'%';
+    if(S('m-hyd-bar')) S('m-hyd-bar').style.width=m.hydration+'%';
+    if(S('m-sen-bar')) S('m-sen-bar').style.width=m.sensitivity+'%';
+    if(S('m-glow-bar')) S('m-glow-bar').style.width=m.glow+'%';
+    if(S('m-bar-bar')) S('m-bar-bar').style.width=m.barrier+'%';
+  },400);
   // Routine
   function makeStep(s,i){
     var link=LINKS[s.name]||null;
@@ -1343,9 +1507,9 @@ function buildResult(){
     +'</div>';
   }
 
-  var html='<div class="section-label" style="margin-bottom:10px;">\u2600\uFE0F Morning Routine</div>';
+  var html='<div class="section-label" style="margin-bottom:10px;display:flex;align-items:center;gap:7px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>Morning Routine</div>';
   r.morning.forEach(function(s,i){ html+=makeStep(s,i); });
-  html+='<div class="section-label" style="margin-top:18px;margin-bottom:10px;">\uD83C\uDF19 Evening Routine</div>';
+  html+='<div class="section-label" style="margin-top:18px;margin-bottom:10px;display:flex;align-items:center;gap:7px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>Evening Routine</div>';
   r.evening.forEach(function(s,i){ html+=makeStep(s,i); });
   html+='<div style="font-size:11px;color:var(--text3);margin-top:14px;padding:10px 12px;background:var(--cream2);border-radius:10px;border:1px solid var(--border);line-height:1.6;">'
     +'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="vertical-align:middle;margin-right:4px;"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>'
