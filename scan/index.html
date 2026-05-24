@@ -691,13 +691,6 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
   <input type="text" name="date">
 </form>
 
-<!-- Formulaire secondaire pour stocker photo_url après upload Cloudinary -->
-<form name="levia-scan-photo" data-netlify="true" style="display:none">
-  <input type="email" name="email">
-  <input type="text" name="photo_url">
-  <input type="text" name="date">
-</form>
-
 <script>
 var S=document.getElementById.bind(document);
 // ── Détection pays/langue ──
@@ -920,18 +913,8 @@ function submitEmail(){
     date:new Date().toISOString(),
   };
 
-  // 1. Soumettre à Netlify Forms IMMÉDIATEMENT (sans attendre Cloudinary)
-  var fd=new FormData();
-  fd.append('form-name','levia-scan');
-  Object.keys(clientData).forEach(function(k){fd.append(k,clientData[k]||'');});
-  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},
-    body:new URLSearchParams(fd).toString()}).catch(function(){});
-
-  // 2. Naviguer vers le scan tout de suite
-  nav('s6',1);
-
-  // 3. Envoyer photo à Cloudinary + email (en arrière-plan)
-  fetch('/.netlify/functions/submit-client',{
+  // 1. Upload photo Cloudinary + email (en arrière-plan, AVANT Netlify Forms)
+  var photoPromise = fetch('/.netlify/functions/submit-client',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
     body:JSON.stringify({
@@ -940,19 +923,30 @@ function submitEmail(){
     })
   }).then(function(resp){return resp.json();})
   .then(function(d){
-    console.log('Lévia submit:',d.message||'ok','photoUrl:',d.photoUrl||'none');
-    // Si photo_url reçue, mettre à jour Netlify Forms
-    if(d.photoUrl){
-      var fd2=new FormData();
-      fd2.append('form-name','levia-scan-photo');
-      fd2.append('email',clientData.email);
-      fd2.append('photo_url',d.photoUrl);
-      fd2.append('date',clientData.date);
-      fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},
-        body:new URLSearchParams(fd2).toString()}).catch(function(){});
-    }
+    console.log('Function OK - photoUrl:',d.photoUrl||'none');
+    if(d.photoUrl) clientData.photo_url=d.photoUrl;
+    return d;
   })
-  .catch(function(e){console.log('Submit note:',e.message);});
+  .catch(function(e){
+    console.log('Function error:',e.message);
+    return {};
+  });
+
+  // 2. Attendre max 8 secondes que Cloudinary réponde
+  // puis soumettre UNE SEULE FOIS à Netlify Forms avec photo_url
+  var timeout = new Promise(function(resolve){setTimeout(resolve,8000,{});});
+  Promise.race([photoPromise,timeout]).then(function(){
+    var fd=new FormData();
+    fd.append('form-name','levia-scan');
+    Object.keys(clientData).forEach(function(k){
+      if(clientData[k]!==null&&clientData[k]!==undefined) fd.append(k,clientData[k]||'');
+    });
+    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body:new URLSearchParams(fd).toString()}).catch(function(){});
+  });
+
+  // 3. Naviguer vers le scan immédiatement (pas besoin d'attendre)
+  nav('s6',1);
 }
 
 // CONFETTI
