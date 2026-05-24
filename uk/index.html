@@ -73,20 +73,21 @@
       /* Texte visible avec style doré */
       font-family: 'Playfair Display', 'Georgia', serif;
       font-weight: 500;
-      color: #1d140d;
+      color: #e8c36a;
+      text-shadow: 0 0 10px rgba(232,195,106,0.6), 0 0 20px rgba(201,147,58,0.3), 0 1px 2px rgba(0,0,0,0.5);
       white-space: nowrap;
       
       /* Fond doré glassmorphism */
       background:
         linear-gradient(145deg,
-          rgba(255,240,212,0.95) 0%,
-          rgba(255,196,102,0.98) 35%,
-          rgba(194,121,28,1) 100%);
+          rgba(40,30,20,0.95) 0%,
+          rgba(20,15,10,0.98) 50%,
+          rgba(10,8,5,1) 100%);
 
       box-shadow:
-        0 20px 40px rgba(188,122,38,0.42),
-        inset 0 1px 0 rgba(255,255,255,0.9),
-        inset 0 -10px 20px rgba(133,74,9,0.18);
+        0 20px 40px rgba(0,0,0,0.45),
+        inset 0 1px 0 rgba(255,255,255,0.15),
+        inset 0 -10px 20px rgba(0,0,0,0.3);
 
       overflow: hidden;
       transition: transform 0.45s ease, box-shadow 0.45s ease;
@@ -94,7 +95,7 @@
 
     .cta-button.visible {
       opacity: 1;
-      animation: pulse 2s ease-in-out infinite;
+      animation: pulse 1.2s ease-in-out infinite;
     }
 
     /* Effet shine qui balaye */
@@ -104,9 +105,9 @@
       inset: 0;
       background: linear-gradient(
         120deg,
-        rgba(255,255,255,0) 0%,
-        rgba(255,255,255,0.6) 40%,
-        rgba(255,255,255,0) 80%
+        rgba(201,147,58,0) 0%,
+        rgba(255,220,130,0.5) 40%,
+        rgba(201,147,58,0) 80%
       );
       transform: translateX(-120%);
       animation: shine 4s infinite;
@@ -114,6 +115,12 @@
     }
 
     /* Clignotement glow doré */
+    @keyframes goldShimmer {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     @keyframes pulse {
       0%, 100% {
         transform: translateX(-50%) scale(1);
@@ -131,8 +138,8 @@
     .cta-button:hover {
       transform: translateX(-50%) scale(1.03);
       box-shadow:
-        0 28px 55px rgba(188,122,38,0.6),
-        0 0 50px rgba(255,206,122,0.6);
+        0 28px 55px rgba(0,0,0,0.6),
+        0 0 50px rgba(255,220,130,0.5);
     }
 
     .cta-button:active {
@@ -143,7 +150,8 @@
     .cta-button .sparkle {
       position: relative;
       z-index: 2;
-      color: #1d140d;
+      color: #e8c36a;
+      text-shadow: 0 0 10px rgba(232,195,106,0.6), 0 0 20px rgba(201,147,58,0.3), 0 1px 2px rgba(0,0,0,0.5);
       font-size: 0.85em;
     }
   </style>
@@ -183,7 +191,7 @@
       // Largeur du bouton = 56% de la largeur de l'image
       var btnWidth = imgW * 0.564;
       // Hauteur du bouton = 4.5% de la hauteur de l'image
-      var btnHeight = imgH * 0.045;
+      var btnHeight = imgH * 0.047;
       // Police proportionnelle
       var fontSize = Math.max(14, imgW * 0.038);
 
