@@ -5,7 +5,7 @@ const https = require('https');
 const ROUTINES = {
   oily_acne: {
     label:'Clear & Balanced', score:81, type:'Oily · Blemish-prone',
-    metrics:{hydration:62,sensitivity:55,glow:68,barrier:58},
+    metrics:{hydration:74,sensitivity:78,glow:75,barrier:66},
     morning:[
       {name:'BHA Gel Cleanser',detail:'CeraVe SA Cleanser · Lukewarm water',why:'Salicylic acid dissolves excess sebum in pores.'},
       {name:'Niacinamide 10% + Zinc',detail:'The Ordinary · 3-4 drops · 60 sec',why:'Regulates sebum, tightens pores, fades marks.'},
@@ -18,7 +18,7 @@ const ROUTINES = {
   },
   oily_glow: {
     label:'Bright & Even', score:78, type:'Oily · Pigmentation',
-    metrics:{hydration:65,sensitivity:50,glow:82,barrier:60},
+    metrics:{hydration:76,sensitivity:80,glow:85,barrier:70},
     morning:[
       {name:'Gentle Gel Cleanser',detail:'Cool water rinse'},
       {name:'Vitamin C 15%',detail:'Mad Hippie · 4 drops dry skin',why:'Blocks melanin + protects from UV.'},
@@ -31,7 +31,7 @@ const ROUTINES = {
   },
   dry_dryness: {
     label:'Nourished & Fortified', score:74, type:'Dry · Dehydrated',
-    metrics:{hydration:42,sensitivity:68,glow:55,barrier:45},
+    metrics:{hydration:58,sensitivity:72,glow:68,barrier:62},
     morning:[
       {name:'Cream Cleanser',detail:'CeraVe Hydrating · Lukewarm only',why:'Preserves the lipid barrier.'},
       {name:'Hyaluronic Acid',detail:'The Ordinary HA 2%+B5 · Damp skin',why:'Apply on damp — not dry — skin.'},
@@ -44,7 +44,7 @@ const ROUTINES = {
   },
   dry_aging: {
     label:'Plumped & Lifted', score:82, type:'Dry · Anti-ageing',
-    metrics:{hydration:48,sensitivity:60,glow:62,barrier:52},
+    metrics:{hydration:66,sensitivity:78,glow:76,barrier:68},
     morning:[
       {name:'Cream Cleanser',detail:'Cetaphil Gentle · Lukewarm only'},
       {name:'Vitamin C 15%',detail:'SkinCeuticals CE Ferulic',why:'Collagen + UV protection — #1 anti-age step.'},
@@ -57,7 +57,7 @@ const ROUTINES = {
   },
   sensitive_dryness: {
     label:'Calm & Restored', score:72, type:'Sensitive · Reactive',
-    metrics:{hydration:50,sensitivity:85,glow:52,barrier:42},
+    metrics:{hydration:65,sensitivity:88,glow:64,barrier:58},
     morning:[
       {name:'Thermal Water Spray',detail:'Avène or La Roche-Posay · No cleanser AM',why:'Cleansing twice strips fragile microbiome.'},
       {name:'Centella + Ectoin Serum',detail:'COSRX Centella · Pat gently',why:'Creates molecular hydration shield.'},
@@ -70,7 +70,7 @@ const ROUTINES = {
   },
   mature_aging: {
     label:'Lifted & Radiant', score:85, type:'Mature · Anti-ageing',
-    metrics:{hydration:55,sensitivity:58,glow:72,barrier:58},
+    metrics:{hydration:72,sensitivity:74,glow:82,barrier:72},
     morning:[
       {name:'Gentle Cream Cleanser',detail:'Cetaphil Gentle · No hot water'},
       {name:'Vitamin C 15-20%',detail:'SkinCeuticals CE Ferulic',why:'Collagen production + antioxidant shield.'},
