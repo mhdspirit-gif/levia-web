@@ -493,11 +493,15 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
 
     <!-- Consentement compact -->
     <div id="photo-consent-wrap" style="background:rgba(201,169,110,0.06);border:2px solid rgba(201,169,110,0.35);border-radius:14px;padding:12px 14px;flex-shrink:0;">
-      <label style="display:flex;align-items:center;gap:10px;cursor:pointer;">
+      <div style="font-size:9px;letter-spacing:1.5px;font-weight:700;color:var(--gold-d);text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:5px;">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="2" stroke-linecap="round"><path d="M12 2l8 4v6c0 5-4 9-8 10C8 21 4 17 4 12V6l8-4z"/></svg>
+        GDPR · Data consent required
+      </div>
+      <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;">
         <input type="checkbox" id="photo-consent" onchange="togglePhotoConsent(this)"
-          style="width:20px;height:20px;accent-color:var(--gold-d);flex-shrink:0;cursor:pointer;">
-        <span style="font-size:10.5px;color:var(--text2);line-height:1.55;">
-          <b style="color:var(--text);">J'autorise Lévia</b> à utiliser ma photo uniquement sur cet appareil pour l'analyse IA. Elle n'est jamais partagée. J'ai 18 ans ou plus.
+          style="width:20px;height:20px;accent-color:var(--gold-d);flex-shrink:0;cursor:pointer;margin-top:2px;">
+        <span style="font-size:10px;color:var(--text2);line-height:1.75;">
+          I authorise Lévia to use my photo <b style="color:var(--text);">solely to perform this AI skin analysis</b> and, with my consent, to contribute anonymously to improving Lévia's diagnostic model. My photo is <b style="color:var(--text);">never sold, shared, or used for advertising purposes.</b> It is stored securely and I can request deletion at any time at <a href="mailto:hello@leviaskincare.com" style="color:var(--gold-d);text-decoration:none;">hello@leviaskincare.com</a>. I confirm I am the person in the photo and I am <b style="color:var(--text);">18 years or older.</b>
         </span>
       </label>
     </div>
@@ -696,7 +700,8 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
         </div>
         <div style="flex:1;">
           <div style="font-size:11px;color:var(--text3);margin-bottom:4px;">Ton score cutané global</div>
-          <div id="score-desc" style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px;"></div>
+          <div id="score-desc" style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px;"></div>
+          <div style="font-size:9px;color:var(--text3);line-height:1.6;font-style:italic;margin-bottom:6px;">Reflects overall skin health based on your profile, lifestyle &amp; environment — not a simple average of individual metrics.</div>
           <div style="display:flex;gap:6px;flex-wrap:wrap;">
             <div id="badge-skin" style="padding:3px 9px;border-radius:999px;font-size:9px;font-weight:600;background:rgba(201,169,110,0.1);border:1px solid rgba(201,169,110,0.3);color:var(--gold-d);letter-spacing:0.5px;"></div>
             <div id="badge-concern" style="padding:3px 9px;border-radius:999px;font-size:9px;font-weight:600;background:rgba(45,122,79,0.08);border:1px solid rgba(45,122,79,0.2);color:#2D7A4F;letter-spacing:0.5px;"></div>
@@ -1064,6 +1069,24 @@ function submitEmail(){
   nav('s6',1);
 
   // Upload photo + email via Function, PUIS soumettre à Netlify Forms
+  function submitToNetlifyForms(data){
+    var fd = new FormData();
+    fd.append('form-name','levia-scan');
+    Object.keys(data).forEach(function(k){
+      var v = data[k];
+      if(v !== null && v !== undefined && v !== '') fd.append(k, String(v));
+    });
+    return fetch('/', {
+      method:'POST',
+      headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body: new URLSearchParams(fd).toString()
+    }).then(function(){
+      console.log('Netlify Forms OK');
+    }).catch(function(e){
+      console.log('Netlify Forms error:',e.message);
+    });
+  }
+
   fetch('/.netlify/functions/submit-client',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
@@ -1072,38 +1095,22 @@ function submitEmail(){
       photo: (state.photo && state.photoConsent) ? state.photo : null
     })
   })
-  .then(function(resp){return resp.json();})
-  .then(function(d){
-    console.log('Function OK - photoUrl:',d.photoUrl||'none');
-    // Ajouter photo_url avant de soumettre à Netlify Forms
-    if(d.photoUrl) clientData.photo_url = d.photoUrl;
-    // Soumettre à Netlify Forms avec TOUTES les données incluant photo_url
-    var fd = new FormData();
-    fd.append('form-name','levia-scan');
-    Object.keys(clientData).forEach(function(k){
-      var v = clientData[k];
-      if(v !== null && v !== undefined && v !== '') fd.append(k, String(v));
+  .then(function(resp){
+    // Vérifier que la réponse est bien du JSON
+    var ct = resp.headers.get('content-type')||'';
+    if(!ct.includes('application/json')){
+      console.log('Function returned non-JSON (status '+resp.status+') — submitting without photo_url');
+      return submitToNetlifyForms(clientData);
+    }
+    return resp.json().then(function(d){
+      console.log('Function OK - photoUrl:',d.photoUrl||'none');
+      if(d.photoUrl) clientData.photo_url = d.photoUrl;
+      return submitToNetlifyForms(clientData);
     });
-    console.log('Submitting to Netlify Forms with photo_url:', clientData.photo_url||'none');
-    return fetch('/', {
-      method:'POST',
-      headers:{'Content-Type':'application/x-www-form-urlencoded'},
-      body: new URLSearchParams(fd).toString()
-    });
-  })
-  .then(function(){
-    console.log('Netlify Forms submission OK');
   })
   .catch(function(e){
-    console.log('Submit error:',e.message);
-    // Fallback — soumettre sans photo_url
-    var fd = new FormData();
-    fd.append('form-name','levia-scan');
-    Object.keys(clientData).forEach(function(k){
-      var v = clientData[k];
-      if(v !== null && v !== undefined && v !== '') fd.append(k, String(v));
-    });
-    fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body: new URLSearchParams(fd).toString()}).catch(function(){});
+    console.log('Function error:',e.message,'— submitting anyway');
+    submitToNetlifyForms(clientData);
   });
 }
 
