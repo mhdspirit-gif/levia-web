@@ -50,18 +50,25 @@ async function uploadToCloudinary(base64Photo, clientName) {
   const apiSecret = process.env.CLOUDINARY_API_SECRET;
   if (!cloudName || !apiKey || !apiSecret || !base64Photo) return null;
 
-  // Cloudinary unsigned upload via preset
+  // Extraire le base64 pur (supprimer le préfixe data:image/...;base64,)
+  let photoData = base64Photo;
+  if (base64Photo.includes(';base64,')) {
+    photoData = base64Photo.split(';base64,')[1];
+  }
+  // Ajouter le préfixe Cloudinary pour upload base64
+  const fileData = 'data:image/jpeg;base64,' + photoData;
+
   const timestamp = Math.round(Date.now() / 1000);
   const folder    = 'levia-clients';
   const publicId  = 'client-' + Date.now() + '-' + (clientName || 'anonymous').replace(/\s+/g, '-').toLowerCase();
 
-  // Signature
+  // Signature SHA1
   const crypto = require('crypto');
   const sigString = `folder=${folder}&public_id=${publicId}&timestamp=${timestamp}${apiSecret}`;
   const signature = crypto.createHash('sha1').update(sigString).digest('hex');
 
   const formParts = [
-    `file=${encodeURIComponent(base64Photo)}`,
+    `file=${encodeURIComponent(fileData)}`,
     `api_key=${apiKey}`,
     `timestamp=${timestamp}`,
     `folder=${encodeURIComponent(folder)}`,
@@ -70,8 +77,15 @@ async function uploadToCloudinary(base64Photo, clientName) {
   ].join('&');
 
   try {
-    const r = await httpsPostForm(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, formParts, {});
+    const r = await httpsPostForm(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, formParts, {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    });
     const json = JSON.parse(r.body);
+    if (json.error) {
+      console.error('Cloudinary error:', json.error.message);
+      return null;
+    }
+    console.log('Cloudinary upload OK:', json.secure_url);
     return json.secure_url || null;
   } catch(e) {
     console.error('Cloudinary error:', e.message);
