@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>LÉVIA by Salomé — Understand your skin. Finally.</title>
-  <meta name="description" content="A personalised skincare experience powered by LÉVIA AI. Discover your skin score and your first personalised routine, free." />
+  <meta name="description" content="A personalised skincare experience powered by LÉVIA AI. Get your free personalised skincare routine." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -36,13 +36,13 @@
       height: 100vh;
       height: 100dvh;
       overflow: hidden;
-      display: flex;
-      justify-content: center;
     }
 
     .landing-bg {
-      height: 100%;
+      position: absolute;
+      inset: 0;
       width: 100%;
+      height: 100%;
       object-fit: contain;
       object-position: top center;
       display: block;
@@ -51,15 +51,12 @@
       pointer-events: none;
     }
 
-    /* BOUTON OR GLASSMORPHISM */
+    /* BOUTON CLIQUABLE — transparent, positionné par JS pile sur le bouton du visuel */
     .cta-button {
       position: absolute;
       left: 50%;
-      top: 72%;
       transform: translateX(-50%);
-      
-      padding: 14px 48px;
-      min-width: 240px;
+      opacity: 0;
 
       display: flex;
       align-items: center;
@@ -68,15 +65,18 @@
 
       border: none;
       border-radius: 999px;
-
-      font-family: 'Playfair Display', 'Georgia', serif;
-      font-size: 22px;
-      font-weight: 500;
-      color: #1d140d;
+      background: transparent;
       cursor: pointer;
       text-decoration: none;
-      white-space: nowrap;
+      z-index: 10;
 
+      /* Texte visible avec style doré */
+      font-family: 'Playfair Display', 'Georgia', serif;
+      font-weight: 500;
+      color: #1d140d;
+      white-space: nowrap;
+      
+      /* Fond doré glassmorphism */
       background:
         linear-gradient(145deg,
           rgba(255,240,212,0.95) 0%,
@@ -89,10 +89,15 @@
         inset 0 -10px 20px rgba(133,74,9,0.18);
 
       overflow: hidden;
-      transition: all 0.45s ease;
-      z-index: 10;
+      transition: transform 0.45s ease, box-shadow 0.45s ease;
     }
 
+    .cta-button.visible {
+      opacity: 1;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    /* Effet shine qui balaye */
     .cta-button::before {
       content: "";
       position: absolute;
@@ -108,20 +113,30 @@
       pointer-events: none;
     }
 
+    /* Clignotement glow doré */
+    @keyframes pulse {
+      0%, 100% {
+        transform: translateX(-50%) scale(1);
+      }
+      50% {
+        transform: translateX(-50%) scale(1.05);
+      }
+    }
+
     @keyframes shine {
       0%   { transform: translateX(-120%); }
       100% { transform: translateX(140%); }
     }
 
     .cta-button:hover {
-      transform: translateX(-50%) scale(1.02);
+      transform: translateX(-50%) scale(1.03);
       box-shadow:
-        0 28px 55px rgba(188,122,38,0.55),
-        0 0 50px rgba(255,206,122,0.55);
+        0 28px 55px rgba(188,122,38,0.6),
+        0 0 50px rgba(255,206,122,0.6);
     }
 
     .cta-button:active {
-      transform: translateX(-50%) scale(0.98);
+      transform: translateX(-50%) scale(0.97);
     }
 
     .cta-button .text { position: relative; z-index: 2; }
@@ -136,15 +151,57 @@
 <body>
 
   <div class="landing-wrapper">
-    <img class="landing-bg" src="landing.png" alt="LÉVIA by Salomé — Understand your skin. Finally." />
+    <img class="landing-bg" id="bg" src="landing.png" alt="LÉVIA by Salomé — Understand your skin. Finally." />
 
-    <a href="/scan" class="cta-button" onclick="trackClick('start_routine')">
+    <a href="/scan" class="cta-button" id="cta" onclick="trackClick('start_routine')">
       <span class="text">Start my free routine</span>
       <span class="sparkle">✦</span>
     </a>
   </div>
 
   <script>
+    function positionButton() {
+      var btn = document.getElementById('cta');
+      var wrapW = window.innerWidth;
+      var wrapH = window.innerHeight;
+
+      // Ratio de l'image originale
+      var imgRatio = 941 / 1672;
+      var wrapRatio = wrapW / wrapH;
+      var imgW, imgH;
+
+      if (wrapRatio > imgRatio) {
+        imgH = wrapH;
+        imgW = wrapH * imgRatio;
+      } else {
+        imgW = wrapW;
+        imgH = wrapW / imgRatio;
+      }
+
+      // Le bouton "Start my free routine" est à 87% de la hauteur de l'image
+      var btnTop = imgH * 0.874;
+      // Largeur du bouton = 56% de la largeur de l'image
+      var btnWidth = imgW * 0.564;
+      // Hauteur du bouton = 4.5% de la hauteur de l'image
+      var btnHeight = imgH * 0.045;
+      // Police proportionnelle
+      var fontSize = Math.max(14, imgW * 0.038);
+
+      btn.style.top = btnTop + 'px';
+      btn.style.width = Math.max(200, btnWidth) + 'px';
+      btn.style.height = btnHeight + 'px';
+      btn.style.fontSize = fontSize + 'px';
+      btn.classList.add('visible');
+    }
+
+    document.getElementById('bg').onload = positionButton;
+    window.addEventListener('resize', positionButton);
+    window.addEventListener('orientationchange', function() {
+      setTimeout(positionButton, 100);
+    });
+    // Fallback si l'image est déjà en cache
+    if (document.getElementById('bg').complete) positionButton();
+
     function trackClick(buttonName) {
       if (typeof fbq !== 'undefined') {
         fbq('track', 'Lead', { content_name: buttonName });
