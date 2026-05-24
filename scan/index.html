@@ -479,110 +479,82 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
     <div class="prog-wrap"><div class="prog-bar"><div class="prog-fill" style="width:95%"></div></div><div class="step-label">ALMOST DONE</div></div>
     <div style="width:32px"></div>
   </div>
-  <div class="screen-inner">
+  <div class="screen-inner" style="overflow-y:auto;padding-bottom:20px;">
+
     <div class="q-icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="6" width="20" height="16" rx="2"/><circle cx="12" cy="14" r="4"/><path d="M9 6l1.5-3h3L15 6"/></svg></div>
-    <div class="q-title" style="font-size:24px;margin-bottom:4px;">Add your photo<br>for <em>precise analysis</em></div>
-    <div class="q-sub" style="margin-bottom:16px;">Lévia’s AI maps your exact skin zones.<br>Your photo never leaves your device.</div>
+    <div class="q-title" style="font-size:22px;margin-bottom:4px;">Ajoute ta photo<br>pour une <em>analyse précise</em></div>
+    <div class="q-sub" style="margin-bottom:14px;">L'IA de Lévia cartographie tes zones cutanées exactes.</div>
 
-    <!-- Instructions photo pour IA — qualité maximale -->
-    <div style="width:100%;margin-bottom:16px;">
-
-      <!-- Titre qualité -->
-      <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold-d);text-align:center;margin-bottom:10px;font-weight:600;">Pour un diagnostic précis</div>
-
-      <!-- 4 règles essentielles -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;">
-
-        <!-- Lumière naturelle -->
-        <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:10px 12px;display:flex;align-items:center;gap:10px;">
-          <div style="width:32px;height:32px;background:rgba(201,169,110,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-          </div>
-          <div>
-            <div style="font-size:11px;font-weight:600;color:var(--text);margin-bottom:2px;">Lumière naturelle</div>
-            <div style="font-size:10px;color:var(--text3);line-height:1.4;">Près d'une fenêtre<br>pas en plein soleil</div>
-          </div>
-        </div>
-
-        <!-- Sans maquillage -->
-        <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:10px 12px;display:flex;align-items:center;gap:10px;">
-          <div style="width:32px;height:32px;background:rgba(201,169,110,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
-          </div>
-          <div>
-            <div style="font-size:11px;font-weight:600;color:var(--text);margin-bottom:2px;">Sans maquillage</div>
-            <div style="font-size:10px;color:var(--text3);line-height:1.4;">Ni filtre ni retouche<br>peau naturelle</div>
-          </div>
-        </div>
-
-        <!-- Visage entier -->
-        <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:10px 12px;display:flex;align-items:center;gap:10px;">
-          <div style="width:32px;height:32px;background:rgba(201,169,110,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0112 0v2"/></svg>
-          </div>
-          <div>
-            <div style="font-size:11px;font-weight:600;color:var(--text);margin-bottom:2px;">Visage entier</div>
-            <div style="font-size:10px;color:var(--text3);line-height:1.4;">Face caméra<br>yeux ouverts</div>
-          </div>
-        </div>
-
-        <!-- Fond neutre -->
-        <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:10px 12px;display:flex;align-items:center;gap:10px;">
-          <div style="width:32px;height:32px;background:rgba(201,169,110,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>
-          </div>
-          <div>
-            <div style="font-size:11px;font-weight:600;color:var(--text);margin-bottom:2px;">Fond neutre</div>
-            <div style="font-size:10px;color:var(--text3);line-height:1.4;">Mur blanc ou beige<br>pas de contre-jour</div>
-          </div>
-        </div>
-
+    <!-- ① CONSENTEMENT EN PREMIER — bien visible -->
+    <div id="photo-consent-wrap" style="background:linear-gradient(135deg,rgba(201,169,110,0.08),rgba(201,169,110,0.04));border:2px solid rgba(201,169,110,0.4);border-radius:16px;padding:16px;margin-bottom:16px;width:100%;">
+      <div style="font-size:11px;font-weight:700;color:var(--gold-d);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="2" stroke-linecap="round"><path d="M12 2l8 4v6c0 5-4 9-8 10C8 21 4 17 4 12V6l8-4z"/></svg>
+        Étape 1 — Autorisation requise
       </div>
-
-      <!-- Pourquoi c'est important -->
-      <div style="background:rgba(201,169,110,0.06);border:1px solid rgba(201,169,110,0.2);border-radius:10px;padding:10px 12px;font-size:10px;color:var(--text2);line-height:1.7;text-align:center;">
-        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="2" stroke-linecap="round" style="vertical-align:middle;margin-right:4px;"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
-        Une bonne photo permet à l'IA d'analyser <b>texture, pores, hydratation et pigmentation</b> avec précision — et contribue à améliorer le diagnostic pour toutes les utilisatrices.
-      </div>
-    </div>
-
-    <!-- Preview -->
-    <img id="photo-preview" class="photo-preview" alt="">
-    <div class="photo-zone" id="photo-zone" onclick="checkPhotoConsent('file-selfie')" style="cursor:pointer;">
-      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><rect x="2" y="6" width="20" height="16" rx="2"/><circle cx="12" cy="14" r="4"/><path d="M9 6l1.5-3h3L15 6"/></svg>
-      <div class="pz-text" style="margin-top:8px;"><b style="color:var(--gold-d);font-size:13px;">Take a selfie</b><br><span style="font-size:10px;">Front face · Eyes open</span></div>
-    </div>
-
-    <!-- Inputs séparés -->
-    <input type="file" id="file-selfie" accept="image/*" capture="user" onchange="handlePhoto(this)" style="display:none">
-    <input type="file" id="file-gallery" accept="image/*" onchange="handlePhoto(this)" style="display:none">
-
-    <!-- Bouton galerie -->
-    <button class="btn-outline" onclick="checkPhotoConsent('file-gallery')" style="margin-top:10px;display:flex;align-items:center;justify-content:center;gap:8px;">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-      Choose from gallery
-    </button>
-
-    <!-- Consentement photo -->
-    <div id="photo-consent-wrap" style="background:var(--white);border:1.5px solid rgba(201,169,110,0.35);border-radius:14px;padding:14px 16px;margin:14px 0 4px;">
       <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;">
         <input type="checkbox" id="photo-consent" onchange="togglePhotoConsent(this)"
-          style="margin-top:3px;width:16px;height:16px;accent-color:var(--gold-d);flex-shrink:0;cursor:pointer;">
-        <span style="font-size:11px;color:var(--text2);line-height:1.65;">
-          I consent to Lévia using my photo solely to perform the AI skin analysis on this device.
-          <b style="color:var(--text);">My photo is never uploaded, stored, or shared.</b>
-          It is processed locally and deleted when I close this page.
-          I confirm I am the person in the photo and I am 18 years or older.
+          style="margin-top:3px;width:18px;height:18px;accent-color:var(--gold-d);flex-shrink:0;cursor:pointer;">
+        <span style="font-size:11px;color:var(--text2);line-height:1.7;">
+          J'autorise Lévia à utiliser ma photo <b style="color:var(--text);">uniquement sur cet appareil</b> pour réaliser l'analyse IA.
+          Ma photo n'est jamais partagée ni stockée sans mon accord.
+          Je confirme avoir 18 ans ou plus.
         </span>
       </label>
     </div>
-    <div style="display:flex;align-items:center;justify-content:center;gap:5px;font-size:10px;color:var(--text3);margin:8px 0 14px;">
-      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l8 4v6c0 5-4 9-8 10C8 21 4 17 4 12V6l8-4z"/></svg>
-      Processed on-device only · GDPR compliant · No biometric data retained
+
+    <!-- ② ZONE PHOTO — désactivée tant que pas coché -->
+    <div id="photo-section" style="width:100%;opacity:0.35;pointer-events:none;transition:opacity 0.3s;">
+
+      <!-- Instructions compactes -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px;">
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:8px 10px;display:flex;align-items:center;gap:8px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2"/></svg>
+          <div style="font-size:10px;color:var(--text2);font-weight:500;">Lumière naturelle<br><span style="color:var(--text3);font-weight:400;">près d'une fenêtre</span></div>
+        </div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:8px 10px;display:flex;align-items:center;gap:8px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+          <div style="font-size:10px;color:var(--text2);font-weight:500;">Sans maquillage<br><span style="color:var(--text3);font-weight:400;">ni filtre ni retouche</span></div>
+        </div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:8px 10px;display:flex;align-items:center;gap:8px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0112 0v2"/></svg>
+          <div style="font-size:10px;color:var(--text2);font-weight:500;">Visage entier<br><span style="color:var(--text3);font-weight:400;">face caméra</span></div>
+        </div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:8px 10px;display:flex;align-items:center;gap:8px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>
+          <div style="font-size:10px;color:var(--text2);font-weight:500;">Fond neutre<br><span style="color:var(--text3);font-weight:400;">mur blanc/beige</span></div>
+        </div>
+      </div>
+
+      <!-- Preview photo -->
+      <img id="photo-preview" class="photo-preview" alt="">
+
+      <!-- Zone selfie -->
+      <div class="photo-zone" id="photo-zone" onclick="checkPhotoConsent('file-selfie')" style="cursor:pointer;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><rect x="2" y="6" width="20" height="16" rx="2"/><circle cx="12" cy="14" r="4"/><path d="M9 6l1.5-3h3L15 6"/></svg>
+        <div class="pz-text" style="margin-top:8px;"><b style="color:var(--gold-d);font-size:13px;">Prendre un selfie</b><br><span style="font-size:10px;">Étape 2 — Visage face caméra</span></div>
+      </div>
+
+      <!-- Inputs fichier -->
+      <input type="file" id="file-selfie" accept="image/*" capture="user" onchange="handlePhoto(this)" style="display:none">
+      <input type="file" id="file-gallery" accept="image/*" onchange="handlePhoto(this)" style="display:none">
+
+      <!-- Bouton galerie -->
+      <button class="btn-outline" onclick="checkPhotoConsent('file-gallery')" style="margin-top:10px;display:flex;align-items:center;justify-content:center;gap:8px;width:100%;max-width:360px;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        Choisir depuis la galerie
+      </button>
+
     </div>
 
-    <button class="btn-gold" id="btn-analyse" onclick="nav('s5',1)" style="opacity:0.35;pointer-events:none;">Analyse my skin ❖</button>
-    <div class="btn-skip" onclick="skipPhoto()">Skip — analyse from answers only</div>
+    <!-- Sécurité -->
+    <div style="display:flex;align-items:center;justify-content:center;gap:5px;font-size:10px;color:var(--text3);margin:10px 0 14px;">
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l8 4v6c0 5-4 9-8 10C8 21 4 17 4 12V6l8-4z"/></svg>
+      Traitement local uniquement · Conforme RGPD
+    </div>
+
+    <button class="btn-gold" id="btn-analyse" onclick="nav('s5',1)" style="opacity:0.35;pointer-events:none;">Analyser ma peau ❖</button>
+    <div class="btn-skip" onclick="skipPhoto()">Passer — analyser depuis mes réponses uniquement</div>
+
   </div>
 </div>
 
@@ -894,9 +866,26 @@ function handlePhoto(input){
   if(!input.files||!input.files[0])return;
   var r=new FileReader();
   r.onload=function(e){
-    state.photo=e.target.result;
-    var prev=S('photo-preview'),zone=S('photo-zone');
-    prev.src=e.target.result;prev.style.display='block';zone.style.display='none';
+    // Redimensionner à max 800px et compresser à 70% pour Cloudinary
+    var img=new Image();
+    img.onload=function(){
+      var MAX=800;
+      var w=img.width,h=img.height;
+      if(w>MAX||h>MAX){
+        if(w>h){h=Math.round(h*MAX/w);w=MAX;}
+        else{w=Math.round(w*MAX/h);h=MAX;}
+      }
+      var cv=document.createElement('canvas');
+      cv.width=w;cv.height=h;
+      cv.getContext('2d').drawImage(img,0,0,w,h);
+      var resized=cv.toDataURL('image/jpeg',0.70);
+      state.photo=resized;
+      var prev=S('photo-preview'),zone=S('photo-zone');
+      if(prev){prev.src=resized;prev.style.display='block';}
+      if(zone){zone.style.display='none';}
+      console.log('Photo redimensionnée:',Math.round(resized.length/1024)+'KB');
+    };
+    img.src=e.target.result;
   };
   r.readAsDataURL(input.files[0]);
 }
@@ -1310,10 +1299,21 @@ function checkPhotoConsent(inputId){
 }
 function togglePhotoConsent(cb){
   state.photoConsent = cb.checked;
+  // Débloquer le bouton analyser
   var btn=S('btn-analyse');
   if(btn){btn.style.opacity=cb.checked?'1':'0.35';btn.style.pointerEvents=cb.checked?'auto':'none';}
-  var zone=S('photo-zone');
-  if(zone){zone.style.opacity=cb.checked?'1':'0.65';}
+  // Débloquer toute la section photo avec animation
+  var section=S('photo-section');
+  if(section){
+    section.style.opacity=cb.checked?'1':'0.35';
+    section.style.pointerEvents=cb.checked?'auto':'none';
+  }
+  // Feedback visuel sur le checkbox
+  var wrap=S('photo-consent-wrap');
+  if(wrap){
+    wrap.style.borderColor=cb.checked?'rgba(45,122,79,0.5)':'rgba(201,169,110,0.4)';
+    wrap.style.background=cb.checked?'rgba(45,122,79,0.06)':'linear-gradient(135deg,rgba(201,169,110,0.08),rgba(201,169,110,0.04))';
+  }
 }
 
 // ===== IMAGES PRODUITS (proxy wsrv.nl anti-CORS) =====
