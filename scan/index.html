@@ -590,34 +590,39 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
       <img id="scan-photo" class="scan-photo" alt="">
       <div class="scan-vignette"></div>
       <div class="scan-mesh" id="scan-mesh"></div>
-      <!-- SVG overlay premium — zones de scan sans points -->
+      <!-- SVG overlay premium — effet scanner médical sans labels -->
       <svg class="scan-overlay" id="scan-overlay" viewBox="0 0 240 296" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;">
-        <!-- Coins de cadrage premium -->
-        <path id="corner-tl" d="M20 50 L20 20 L50 20" fill="none" stroke="rgba(201,169,110,0.9)" stroke-width="2.5" stroke-linecap="round" opacity="0"/>
-        <path id="corner-tr" d="M190 20 L220 20 L220 50" fill="none" stroke="rgba(201,169,110,0.9)" stroke-width="2.5" stroke-linecap="round" opacity="0"/>
-        <path id="corner-bl" d="M20 246 L20 276 L50 276" fill="none" stroke="rgba(201,169,110,0.9)" stroke-width="2.5" stroke-linecap="round" opacity="0"/>
-        <path id="corner-br" d="M190 276 L220 276 L220 246" fill="none" stroke="rgba(201,169,110,0.9)" stroke-width="2.5" stroke-linecap="round" opacity="0"/>
-        <!-- Zone front -->
-        <rect id="zone-front" x="80" y="28" width="80" height="28" rx="4" fill="rgba(201,169,110,0.08)" stroke="rgba(201,169,110,0.5)" stroke-width="0.8" stroke-dasharray="4 3" class="scan-zone"/>
-        <text id="label-front" x="120" y="47" text-anchor="middle" font-size="7" fill="rgba(201,169,110,0.7)" font-family="monospace" class="scan-zone" style="letter-spacing:1px;">FRONT</text>
-        <!-- Zone yeux -->
-        <rect id="zone-eyes" x="55" y="90" width="55" height="22" rx="4" fill="rgba(201,169,110,0.08)" stroke="rgba(201,169,110,0.5)" stroke-width="0.8" stroke-dasharray="4 3" class="scan-zone"/>
-        <rect id="zone-eyes2" x="130" y="90" width="55" height="22" rx="4" fill="rgba(201,169,110,0.08)" stroke="rgba(201,169,110,0.5)" stroke-width="0.8" stroke-dasharray="4 3" class="scan-zone"/>
-        <text x="82" y="105" text-anchor="middle" font-size="6" fill="rgba(201,169,110,0.6)" font-family="monospace" class="scan-zone">OEIL G</text>
-        <text x="157" y="105" text-anchor="middle" font-size="6" fill="rgba(201,169,110,0.6)" font-family="monospace" class="scan-zone">OEIL D</text>
-        <!-- Zone joues -->
-        <rect id="zone-joue-g" x="40" y="130" width="60" height="50" rx="4" fill="rgba(201,169,110,0.06)" stroke="rgba(201,169,110,0.4)" stroke-width="0.8" stroke-dasharray="4 3" class="scan-zone"/>
-        <rect id="zone-joue-d" x="140" y="130" width="60" height="50" rx="4" fill="rgba(201,169,110,0.06)" stroke="rgba(201,169,110,0.4)" stroke-width="0.8" stroke-dasharray="4 3" class="scan-zone"/>
-        <text x="70" y="160" text-anchor="middle" font-size="6" fill="rgba(201,169,110,0.55)" font-family="monospace" class="scan-zone">JOUE G</text>
-        <text x="170" y="160" text-anchor="middle" font-size="6" fill="rgba(201,169,110,0.55)" font-family="monospace" class="scan-zone">JOUE D</text>
-        <!-- Zone nez/T -->
-        <rect id="zone-nez" x="100" y="110" width="40" height="70" rx="4" fill="rgba(201,169,110,0.05)" stroke="rgba(201,169,110,0.35)" stroke-width="0.8" stroke-dasharray="4 3" class="scan-zone"/>
-        <text x="120" y="150" text-anchor="middle" font-size="6" fill="rgba(201,169,110,0.5)" font-family="monospace" class="scan-zone">ZONE T</text>
-        <!-- Zone bouche/menton -->
-        <rect id="zone-bouche" x="85" y="195" width="70" height="45" rx="4" fill="rgba(201,169,110,0.06)" stroke="rgba(201,169,110,0.4)" stroke-width="0.8" stroke-dasharray="4 3" class="scan-zone"/>
-        <text x="120" y="221" text-anchor="middle" font-size="6" fill="rgba(201,169,110,0.55)" font-family="monospace" class="scan-zone">MENTON</text>
-        <!-- Ligne de scan active -->
-        <line id="svg-scan-line" x1="15" y1="50" x2="225" y2="50" stroke="rgba(201,169,110,0.6)" stroke-width="1" stroke-dasharray="3 2"/>
+        <!-- 4 coins de cadrage dorés -->
+        <path id="corner-tl" d="M24 56 L24 24 L56 24" fill="none" stroke="rgba(201,169,110,0.95)" stroke-width="3" stroke-linecap="round" opacity="0"/>
+        <path id="corner-tr" d="M184 24 L216 24 L216 56" fill="none" stroke="rgba(201,169,110,0.95)" stroke-width="3" stroke-linecap="round" opacity="0"/>
+        <path id="corner-bl" d="M24 240 L24 272 L56 272" fill="none" stroke="rgba(201,169,110,0.95)" stroke-width="3" stroke-linecap="round" opacity="0"/>
+        <path id="corner-br" d="M184 272 L216 272 L216 240" fill="none" stroke="rgba(201,169,110,0.95)" stroke-width="3" stroke-linecap="round" opacity="0"/>
+        <!-- Ligne horizontale de scan qui descend -->
+        <line id="svg-scan-line" x1="0" y1="30" x2="240" y2="30" stroke="rgba(201,169,110,0.7)" stroke-width="1.5"/>
+        <!-- Halo lumineux sous la ligne de scan -->
+        <rect id="svg-scan-glow" x="0" y="30" width="240" height="18" fill="url(#scanGlow)" opacity="0.6"/>
+        <defs>
+          <linearGradient id="scanGlow" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="rgba(201,169,110,0.25)"/>
+            <stop offset="100%" stop-color="rgba(201,169,110,0)"/>
+          </linearGradient>
+        </defs>
+        <!-- Marqueurs latéraux (petits tirets sur les bords) -->
+        <g id="side-marks" opacity="0">
+          <line x1="0" y1="80" x2="10" y2="80" stroke="rgba(201,169,110,0.5)" stroke-width="1"/>
+          <line x1="230" y1="80" x2="240" y2="80" stroke="rgba(201,169,110,0.5)" stroke-width="1"/>
+          <line x1="0" y1="148" x2="10" y2="148" stroke="rgba(201,169,110,0.5)" stroke-width="1"/>
+          <line x1="230" y1="148" x2="240" y2="148" stroke="rgba(201,169,110,0.5)" stroke-width="1"/>
+          <line x1="0" y1="216" x2="10" y2="216" stroke="rgba(201,169,110,0.5)" stroke-width="1"/>
+          <line x1="230" y1="216" x2="240" y2="216" stroke="rgba(201,169,110,0.5)" stroke-width="1"/>
+          <!-- Valeurs numériques sur les côtés -->
+          <text x="14" y="83" font-size="5.5" fill="rgba(201,169,110,0.45)" font-family="monospace">33%</text>
+          <text x="14" y="151" font-size="5.5" fill="rgba(201,169,110,0.45)" font-family="monospace">58%</text>
+          <text x="14" y="219" font-size="5.5" fill="rgba(201,169,110,0.45)" font-family="monospace">84%</text>
+        </g>
+        <!-- Points de données animés (petit cercle pulsant dans les coins) -->
+        <circle id="dot-tl" cx="24" cy="24" r="2.5" fill="rgba(201,169,110,0)" stroke="rgba(201,169,110,0)" stroke-width="1"/>
+        <circle id="dot-tr" cx="216" cy="24" r="2.5" fill="rgba(201,169,110,0)" stroke="rgba(201,169,110,0)" stroke-width="1"/>
       </svg>
       <canvas class="face-mesh-canvas" id="face-canvas"></canvas>
       <div class="scan-trail" id="scan-trail"></div>
@@ -945,40 +950,51 @@ function submitEmail(){
     date:new Date().toISOString(),
   };
 
-  // 1. Upload photo Cloudinary + email (en arrière-plan, AVANT Netlify Forms)
-  var photoPromise = fetch('/.netlify/functions/submit-client',{
+  // Naviguer tout de suite vers l'animation
+  nav('s6',1);
+
+  // Upload photo + email via Function, PUIS soumettre à Netlify Forms
+  fetch('/.netlify/functions/submit-client',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
     body:JSON.stringify({
       client: clientData,
       photo: (state.photo && state.photoConsent) ? state.photo : null
     })
-  }).then(function(resp){return resp.json();})
+  })
+  .then(function(resp){return resp.json();})
   .then(function(d){
     console.log('Function OK - photoUrl:',d.photoUrl||'none');
-    if(d.photoUrl) clientData.photo_url=d.photoUrl;
-    return d;
-  })
-  .catch(function(e){
-    console.log('Function error:',e.message);
-    return {};
-  });
-
-  // 2. Attendre max 8 secondes que Cloudinary réponde
-  // puis soumettre UNE SEULE FOIS à Netlify Forms avec photo_url
-  var timeout = new Promise(function(resolve){setTimeout(resolve,8000,{});});
-  Promise.race([photoPromise,timeout]).then(function(){
-    var fd=new FormData();
+    // Ajouter photo_url avant de soumettre à Netlify Forms
+    if(d.photoUrl) clientData.photo_url = d.photoUrl;
+    // Soumettre à Netlify Forms avec TOUTES les données incluant photo_url
+    var fd = new FormData();
     fd.append('form-name','levia-scan');
     Object.keys(clientData).forEach(function(k){
-      if(clientData[k]!==null&&clientData[k]!==undefined) fd.append(k,clientData[k]||'');
+      var v = clientData[k];
+      if(v !== null && v !== undefined && v !== '') fd.append(k, String(v));
     });
-    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},
-      body:new URLSearchParams(fd).toString()}).catch(function(){});
+    console.log('Submitting to Netlify Forms with photo_url:', clientData.photo_url||'none');
+    return fetch('/', {
+      method:'POST',
+      headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body: new URLSearchParams(fd).toString()
+    });
+  })
+  .then(function(){
+    console.log('Netlify Forms submission OK');
+  })
+  .catch(function(e){
+    console.log('Submit error:',e.message);
+    // Fallback — soumettre sans photo_url
+    var fd = new FormData();
+    fd.append('form-name','levia-scan');
+    Object.keys(clientData).forEach(function(k){
+      var v = clientData[k];
+      if(v !== null && v !== undefined && v !== '') fd.append(k, String(v));
+    });
+    fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body: new URLSearchParams(fd).toString()}).catch(function(){});
   });
-
-  // 3. Naviguer vers le scan immédiatement (pas besoin d'attendre)
-  nav('s6',1);
 }
 
 // CONFETTI
@@ -1121,62 +1137,49 @@ function startScan(){
   // Mesh appears
   setTimeout(function(){mesh.classList.add('on');},500);
 
-  // Animation zones premium — révélation progressive des zones cutanées
+  // Animation scanner premium — sans labels, effet médical propre
   function animateScanZones(){
     var overlay=S('scan-overlay');
     if(overlay) overlay.classList.add('on');
-    // Révéler les coins d'abord
+
+    // 1. Coins de cadrage apparaissent en séquence
     setTimeout(function(){
       ['corner-tl','corner-tr','corner-bl','corner-br'].forEach(function(id,i){
         setTimeout(function(){
-          var el=S(id);if(el)el.style.opacity='1';
-        },i*150);
-      });
-    },300);
-    // Révéler les zones progressivement de haut en bas
-    var zones=[
-      {delay:800, ids:['zone-front']},
-      {delay:1400, ids:['zone-eyes','zone-eyes2']},
-      {delay:2000, ids:['zone-nez']},
-      {delay:2600, ids:['zone-joue-g','zone-joue-d']},
-      {delay:3200, ids:['zone-bouche']},
-    ];
-    zones.forEach(function(z){
-      setTimeout(function(){
-        // Trouver tous les éléments de la zone (rect + text)
-        var overlay=S('scan-overlay');
-        if(!overlay)return;
-        overlay.querySelectorAll('.scan-zone').forEach(function(el){
-          if(z.ids.some(function(id){return el.id===id||el.getAttribute('id')===id;})){
-            el.classList.add('on');
-          }
-        });
-        // Révéler aussi les labels (text sans id)
-        z.ids.forEach(function(id){
           var el=S(id);
-          if(el){
-            el.classList.add('on');
-            // Révéler les sibling text elements
-            var parent=el.parentNode;
-            if(parent){
-              var texts=parent.querySelectorAll('text');
-              texts.forEach(function(t){t.classList.add('on');});
-            }
-          }
-        });
-      },z.delay);
-    });
-    // Animer la ligne de scan SVG
+          if(el){el.style.opacity='1';el.style.transition='opacity 0.4s';}
+        },i*120);
+      });
+    },200);
+
+    // 2. Marqueurs latéraux
+    setTimeout(function(){
+      var sm=S('side-marks');if(sm)sm.style.opacity='1';
+    },900);
+
+    // 3. Points coins pulsants
+    setTimeout(function(){
+      ['dot-tl','dot-tr'].forEach(function(id){
+        var el=S(id);
+        if(el){
+          el.style.fill='rgba(201,169,110,0.8)';
+          el.style.stroke='rgba(201,169,110,0.4)';
+        }
+      });
+    },600);
+
+    // 4. Ligne de scan qui descend et remonte
     var svgLine=S('svg-scan-line');
+    var svgGlow=S('svg-scan-glow');
     if(svgLine){
-      var y=20,svgDir=1;
+      var y=20,svgDir=1,spd2=1.8;
       var svgAnim=setInterval(function(){
-        y+=svgDir*2;
-        if(y>270){svgDir=-1;}
-        if(y<20){svgDir=1;}
-        svgLine.setAttribute('y1',y);
-        svgLine.setAttribute('y2',y);
-      },30);
+        y+=svgDir*spd2;
+        if(y>=275){svgDir=-1;spd2=1.4+Math.random()*0.8;}
+        if(y<=20){svgDir=1;spd2=1.4+Math.random()*0.8;}
+        svgLine.setAttribute('y1',y);svgLine.setAttribute('y2',y);
+        if(svgGlow){svgGlow.setAttribute('y',y);svgGlow.setAttribute('height',20);}
+      },16);
       setTimeout(function(){clearInterval(svgAnim);},5500);
     }
     state.scanPts=[];
