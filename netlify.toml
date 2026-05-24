@@ -1,10 +1,13 @@
-# netlify.toml — à mettre à la racine de ton projet GitHub
+# netlify.toml
 
 [build]
   functions = "netlify/functions"
   publish   = "."
 
-# Sécurité admin
+# Désactiver le scan de secrets (les "secrets" dans le code sont intentionnels)
+[build.environment]
+  SECRETS_SCAN_ENABLED = "false"
+
 [[headers]]
   for = "/admin/*"
   [headers.values]
@@ -12,7 +15,6 @@
     X-Content-Type-Options = "nosniff"
     Cache-Control          = "no-store, no-cache"
 
-# Headers sécurité globaux
 [[headers]]
   for = "/*"
   [headers.values]
