@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>LÉVIA by Salomé — Understand your skin. Finally.</title>
   <meta name="description" content="A personalised skincare experience powered by LÉVIA AI. Discover your skin score and your first personalised routine, free." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,13 +25,9 @@
 
     html, body {
       width: 100%;
+      height: 100%;
       overflow: hidden;
-      background: #f6e3d2;
-      font-family: 'Inter', -apple-system, sans-serif;
-      height: 100vh;
-      height: 100dvh;
-      margin: 0;
-      padding: 0;
+      background: #fdefe2;
     }
 
     .landing-wrapper {
@@ -39,16 +35,16 @@
       width: 100%;
       height: 100vh;
       height: 100dvh;
-      margin: 0 auto;
-      line-height: 0;
       overflow: hidden;
+      display: flex;
+      justify-content: center;
     }
 
     .landing-bg {
-      width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: center top;
+      width: 100%;
+      object-fit: contain;
+      object-position: top center;
       display: block;
       user-select: none;
       -webkit-user-drag: none;
@@ -59,22 +55,22 @@
     .cta-button {
       position: absolute;
       left: 50%;
-      top: 79.6%;
+      top: 72%;
       transform: translateX(-50%);
-      width: 57.1%;
-      max-width: 540px;
+      
+      padding: 14px 48px;
+      min-width: 240px;
 
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
+      gap: 10px;
 
       border: none;
       border-radius: 999px;
-      padding: 6.3% 7.2%;
 
       font-family: 'Playfair Display', 'Georgia', serif;
-      font-size: clamp(16px, 2.4vw, 30px);
+      font-size: 22px;
       font-weight: 500;
       color: #1d140d;
       cursor: pointer;
@@ -135,7 +131,6 @@
       color: #1d140d;
       font-size: 0.85em;
     }
-
   </style>
 </head>
 <body>
