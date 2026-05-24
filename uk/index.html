@@ -25,22 +25,30 @@
 
     html, body {
       width: 100%;
-      overflow-x: hidden;
+      overflow: hidden;
       background: #f6e3d2;
       font-family: 'Inter', -apple-system, sans-serif;
+      height: 100vh;
+      height: 100dvh;
+      margin: 0;
+      padding: 0;
     }
 
     .landing-wrapper {
       position: relative;
       width: 100%;
-      max-width: 853px;
+      height: 100vh;
+      height: 100dvh;
       margin: 0 auto;
       line-height: 0;
+      overflow: hidden;
     }
 
     .landing-bg {
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
       display: block;
       user-select: none;
       -webkit-user-drag: none;
@@ -128,12 +136,6 @@
       font-size: 0.85em;
     }
 
-    @media (max-width: 600px) {
-      .cta-button {
-        font-size: clamp(13px, 3.5vw, 18px);
-        padding: 2.2% 3%;
-      }
-    }
   </style>
 </head>
 <body>
