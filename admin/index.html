@@ -3,211 +3,243 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Lévia · Admin Dashboard</title>
+<title>Lévia · Dashboard Admin</title>
 <style>
-  *{box-sizing:border-box;margin:0;padding:0;}
-  :root{
-    --dark:#0D0900;--gold:#C9A96E;--gold-d:#8B6A20;--gold-l:#F0D48A;
-    --cream:#FAF7F2;--white:#fff;--border:#E8DDD0;--text:#2A1F0E;--text2:#6B5744;--text3:#9B8574;
-    --green:#2D7A4F;--red:#C0392B;
-  }
-  body{font-family:'DM Sans',system-ui,sans-serif;background:#F5F0E8;color:var(--text);min-height:100vh;}
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --dark:#0D0900;--gold:#C9A96E;--gd:#8B6A20;--gl:#F0D48A;
+  --cream:#FAF7F2;--white:#fff;--border:#E8DDD0;
+  --t:#2A1F0E;--t2:#6B5744;--t3:#9B8574;
+  --green:#2D7A4F;--red:#C0392B;
+}
+body{font-family:'DM Sans',system-ui,sans-serif;background:#F5F0E8;color:var(--t);min-height:100vh;}
 
-  /* LOGIN */
-  #login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px;}
-  .login-card{background:var(--dark);border:1px solid rgba(201,169,110,0.2);border-radius:24px;padding:48px 36px;width:100%;max-width:380px;text-align:center;}
-  .login-logo{font-family:Georgia,serif;font-size:40px;letter-spacing:6px;background:linear-gradient(135deg,#8B6A20,#F0D48A,#C9A96E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:4px;}
-  .login-sub{font-size:10px;letter-spacing:3px;color:rgba(201,169,110,0.35);margin-bottom:36px;}
-  .login-input{width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(201,169,110,0.2);border-radius:10px;padding:13px 16px;color:#fff;font-size:15px;outline:none;margin-bottom:14px;text-align:center;letter-spacing:4px;}
-  .login-input:focus{border-color:rgba(201,169,110,0.5);}
-  .login-btn{width:100%;padding:14px;border-radius:10px;border:none;background:linear-gradient(135deg,#8B6A20,#C9A96E);color:#1A1208;font-size:13px;font-weight:700;cursor:pointer;letter-spacing:2px;}
-  .login-err{color:#e74c3c;font-size:12px;margin-top:12px;display:none;}
+/* LOGIN */
+#login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px;}
+.lc{background:var(--dark);border:1px solid rgba(201,169,110,0.2);border-radius:24px;padding:44px 32px;width:100%;max-width:360px;text-align:center;}
+.logo{font-family:Georgia,serif;font-size:38px;letter-spacing:6px;background:linear-gradient(135deg,#8B6A20,#F0D48A,#C9A96E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:4px;}
+.sub{font-size:10px;letter-spacing:3px;color:rgba(201,169,110,0.35);margin-bottom:32px;}
+.pw{width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(201,169,110,0.2);border-radius:10px;padding:13px 16px;color:#fff;font-size:15px;outline:none;margin-bottom:14px;text-align:center;letter-spacing:3px;}
+.pw:focus{border-color:rgba(201,169,110,0.5);}
+.lb{width:100%;padding:14px;border-radius:10px;border:none;background:linear-gradient(135deg,#8B6A20,#C9A96E);color:#1A1208;font-size:13px;font-weight:700;cursor:pointer;letter-spacing:2px;}
+.le{color:#e74c3c;font-size:12px;margin-top:10px;display:none;}
 
-  /* DASHBOARD */
-  #dashboard{display:none;}
-  .topbar{background:var(--dark);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(201,169,110,0.12);position:sticky;top:0;z-index:100;}
-  .topbar-logo{font-family:Georgia,serif;font-size:19px;letter-spacing:4px;background:linear-gradient(135deg,#8B6A20,#F0D48A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-  .badge{padding:4px 10px;border-radius:999px;font-size:10px;letter-spacing:1px;font-weight:600;}
-  .badge-ok{background:rgba(45,122,79,0.2);border:1px solid rgba(45,122,79,0.4);color:#4ade80;}
-  .badge-wait{background:rgba(201,169,110,0.1);border:1px solid rgba(201,169,110,0.2);color:var(--gold);}
-  .btn-sm{background:transparent;border:1px solid rgba(201,169,110,0.2);color:rgba(201,169,110,0.6);padding:6px 14px;border-radius:8px;font-size:11px;cursor:pointer;}
+/* DASH */
+#dashboard{display:none;}
+.topbar{background:var(--dark);padding:13px 22px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(201,169,110,0.12);}
+.tbl{font-family:Georgia,serif;font-size:18px;letter-spacing:4px;background:linear-gradient(135deg,#8B6A20,#F0D48A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.badge{padding:3px 10px;border-radius:999px;font-size:10px;letter-spacing:1px;font-weight:600;}
+.b-wait{background:rgba(201,169,110,0.1);border:1px solid rgba(201,169,110,0.2);color:var(--gold);}
+.b-live{background:rgba(45,122,79,0.2);border:1px solid rgba(45,122,79,0.4);color:#4ade80;}
+.btn-out{background:transparent;border:1px solid rgba(201,169,110,0.2);color:rgba(201,169,110,0.5);padding:5px 12px;border-radius:7px;font-size:11px;cursor:pointer;}
 
-  .main{padding:22px;max-width:1300px;margin:0 auto;}
+.main{padding:20px;max-width:1300px;margin:0 auto;}
 
-  /* KPIs */
-  .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:24px;}
-  .kpi{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:16px 18px;}
-  .kpi-label{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);margin-bottom:6px;}
-  .kpi-value{font-size:30px;font-weight:700;font-family:Georgia,serif;line-height:1;}
-  .kpi-gold .kpi-value{background:linear-gradient(135deg,#8B6A20,#C9A96E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-  .kpi-sub{font-size:10px;color:var(--text3);margin-top:3px;}
+/* KPI */
+.kg{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:11px;margin-bottom:22px;}
+.k{background:var(--white);border:1px solid var(--border);border-radius:13px;padding:15px 17px;}
+.kl{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--t3);margin-bottom:5px;}
+.kv{font-size:28px;font-weight:700;font-family:Georgia,serif;line-height:1;}
+.ks{font-size:10px;color:var(--t3);margin-top:3px;}
+.kg-gold .kv{background:linear-gradient(135deg,#8B6A20,#C9A96E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 
-  /* STATUS */
-  .status{display:none;padding:10px 14px;border-radius:10px;font-size:12px;margin-bottom:14px;align-items:center;gap:8px;}
-  .status.ok{display:flex;background:rgba(45,122,79,0.08);border:1px solid rgba(45,122,79,0.2);color:var(--green);}
-  .status.err{display:flex;background:rgba(192,57,43,0.08);border:1px solid rgba(192,57,43,0.2);color:var(--red);}
-  .status.loading{display:flex;background:rgba(201,169,110,0.08);border:1px solid rgba(201,169,110,0.2);color:var(--gold-d);}
+/* STATUS */
+.st{display:none;padding:10px 14px;border-radius:9px;font-size:12px;margin-bottom:14px;align-items:center;gap:8px;}
+.st.ok{display:flex;background:rgba(45,122,79,0.08);border:1px solid rgba(45,122,79,0.2);color:var(--green);}
+.st.err{display:flex;background:rgba(192,57,43,0.08);border:1px solid rgba(192,57,43,0.2);color:var(--red);}
+.st.info{display:flex;background:rgba(201,169,110,0.08);border:1px solid rgba(201,169,110,0.2);color:var(--gd);}
 
-  /* TOOLBAR */
-  .toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center;}
-  .search-wrap{flex:1;min-width:180px;position:relative;}
-  .search-wrap svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--text3);pointer-events:none;}
-  .search-input{width:100%;padding:9px 10px 9px 32px;border:1px solid var(--border);border-radius:9px;font-size:12px;outline:none;background:var(--white);}
-  .filter-select{padding:9px 12px;border:1px solid var(--border);border-radius:9px;font-size:11px;background:var(--white);cursor:pointer;outline:none;}
-  .btn-dark{padding:9px 16px;background:var(--dark);color:var(--gold-l);border:none;border-radius:9px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px;}
-  .btn-light{padding:9px 12px;background:var(--white);border:1px solid var(--border);border-radius:9px;font-size:12px;cursor:pointer;}
+/* CONNEXION PANEL */
+.panel{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:18px;}
+.panel-title{font-size:12px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:8px;color:var(--t);}
+.inp{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:12px;outline:none;font-family:monospace;color:var(--t);background:var(--white);}
+.inp:focus{border-color:var(--gold);}
+.inp-label{font-size:10px;color:var(--t3);margin-bottom:4px;letter-spacing:0.5px;font-weight:500;}
+.btn-primary{padding:10px 20px;background:var(--dark);color:var(--gl);border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;}
+.btn-primary:hover{background:#1a1208;}
+.btn-secondary{padding:10px 14px;background:var(--cream);border:1px solid var(--border);border-radius:8px;font-size:12px;cursor:pointer;color:var(--t2);}
+.guide{margin-top:12px;padding:11px;background:#FBF8F4;border-radius:8px;font-size:11px;color:var(--t3);line-height:1.9;}
+.guide a{color:var(--gd);}
+code{background:#eee;padding:1px 5px;border-radius:3px;font-family:monospace;font-size:10px;}
 
-  /* TABLE */
-  .table-wrap{background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;}
-  table{width:100%;border-collapse:collapse;}
-  thead{background:#FAF7F2;}
-  th{padding:11px 14px;text-align:left;font-size:9px;letter-spacing:1.2px;text-transform:uppercase;color:var(--text3);font-weight:600;border-bottom:1px solid var(--border);white-space:nowrap;}
-  td{padding:11px 14px;font-size:12px;border-bottom:1px solid var(--border);vertical-align:middle;}
-  tr:last-child td{border-bottom:none;}
-  tr:hover td{background:#FBF8F4;cursor:pointer;}
-  .tag{display:inline-block;padding:2px 7px;border-radius:5px;font-size:10px;background:var(--cream);color:var(--text2);border:1px solid var(--border);}
-  .score-h{background:rgba(45,122,79,0.1);color:var(--green);font-weight:700;padding:2px 8px;border-radius:999px;font-size:11px;font-family:Georgia,serif;}
-  .score-m{background:rgba(201,169,110,0.15);color:var(--gold-d);font-weight:700;padding:2px 8px;border-radius:999px;font-size:11px;font-family:Georgia,serif;}
-  .score-l{background:rgba(192,57,43,0.1);color:var(--red);font-weight:700;padding:2px 8px;border-radius:999px;font-size:11px;font-family:Georgia,serif;}
-  .empty{text-align:center;padding:50px;color:var(--text3);}
+/* TOOLBAR */
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center;}
+.si{flex:1;min-width:160px;position:relative;}
+.si svg{position:absolute;left:9px;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--t3);}
+.si input{width:100%;padding:8px 8px 8px 30px;border:1px solid var(--border);border-radius:8px;font-size:12px;outline:none;background:var(--white);}
+.si input:focus{border-color:var(--gold);}
+select{padding:8px 12px;border:1px solid var(--border);border-radius:8px;font-size:11px;background:var(--white);cursor:pointer;outline:none;}
+.btn-dark{padding:8px 14px;background:var(--dark);color:var(--gl);border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px;}
+.btn-light{padding:8px 10px;background:var(--white);border:1px solid var(--border);border-radius:8px;font-size:12px;cursor:pointer;}
 
-  /* MODAL */
-  #modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:999;align-items:center;justify-content:center;padding:16px;}
-  #modal.open{display:flex;}
-  .modal-box{background:var(--white);border-radius:18px;padding:26px;width:100%;max-width:460px;max-height:90vh;overflow-y:auto;}
-  .modal-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;}
-  .modal-title{font-family:Georgia,serif;font-size:18px;}
-  .modal-x{background:none;border:none;cursor:pointer;font-size:18px;color:var(--text3);}
-  .dr{display:flex;gap:8px;margin-bottom:8px;font-size:12px;}
-  .dk{color:var(--text3);min-width:120px;font-size:10px;letter-spacing:0.4px;padding-top:2px;}
-  .dv{color:var(--text);font-weight:500;flex:1;}
-  .dsep{height:1px;background:var(--border);margin:12px 0;}
+/* TABLE */
+.tw{background:var(--white);border:1px solid var(--border);border-radius:13px;overflow:hidden;}
+table{width:100%;border-collapse:collapse;}
+thead{background:#FAF7F2;}
+th{padding:10px 13px;text-align:left;font-size:9px;letter-spacing:1.2px;text-transform:uppercase;color:var(--t3);font-weight:600;border-bottom:1px solid var(--border);white-space:nowrap;}
+td{padding:10px 13px;font-size:12px;border-bottom:1px solid var(--border);vertical-align:middle;}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:#FBF8F4;cursor:pointer;}
+.tag{display:inline-block;padding:2px 7px;border-radius:5px;font-size:10px;background:var(--cream);color:var(--t2);border:1px solid var(--border);}
+.sh{background:rgba(45,122,79,0.1);color:var(--green);font-weight:700;padding:2px 8px;border-radius:999px;font-size:11px;font-family:Georgia,serif;}
+.sm{background:rgba(201,169,110,0.15);color:var(--gd);font-weight:700;padding:2px 8px;border-radius:999px;font-size:11px;font-family:Georgia,serif;}
+.sl{background:rgba(192,57,43,0.1);color:var(--red);font-weight:700;padding:2px 8px;border-radius:999px;font-size:11px;font-family:Georgia,serif;}
+.emp{text-align:center;padding:44px;color:var(--t3);}
 
-  @media(max-width:640px){
-    .main{padding:12px;}
-    th:nth-child(n+5),td:nth-child(n+5){display:none;}
-  }
+/* MODAL */
+#modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.48);z-index:999;align-items:center;justify-content:center;padding:16px;}
+#modal.open{display:flex;}
+.mb{background:var(--white);border-radius:18px;padding:26px;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;}
+.mh{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;}
+.mt{font-family:Georgia,serif;font-size:18px;}
+.mx{background:none;border:none;cursor:pointer;font-size:18px;color:var(--t3);}
+.dr{display:flex;gap:8px;margin-bottom:8px;}
+.dk{color:var(--t3);min-width:130px;font-size:10px;padding-top:2px;}
+.dv{color:var(--t);font-weight:500;flex:1;font-size:13px;}
+.dsep{height:1px;background:var(--border);margin:12px 0;}
+
+@media(max-width:640px){.main{padding:10px;}th:nth-child(n+5),td:nth-child(n+5){display:none;}}
 </style>
 </head>
 <body>
 
-<!-- LOGIN -->
+<!-- ═══ LOGIN ═══ -->
 <div id="login-screen">
-  <div class="login-card">
-    <div class="login-logo">LÉVIA</div>
-    <div class="login-sub">ADMIN · DASHBOARD</div>
-    <input class="login-input" type="password" id="pwd" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
-    <button class="login-btn" onclick="doLogin()">CONNEXION</button>
-    <div class="login-err" id="login-err">Mot de passe incorrect</div>
+  <div class="lc">
+    <div class="logo">LÉVIA</div>
+    <div class="sub">ADMIN · DASHBOARD</div>
+    <input class="pw" type="password" id="pwd" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="lb" onclick="doLogin()">CONNEXION</button>
+    <div class="le" id="le">Mot de passe incorrect</div>
   </div>
 </div>
 
-<!-- DASHBOARD -->
+<!-- ═══ DASHBOARD ═══ -->
 <div id="dashboard">
   <div class="topbar">
-    <div class="topbar-logo">LÉVIA</div>
+    <div class="tbl">LÉVIA</div>
     <div style="display:flex;align-items:center;gap:10px;">
-      <span class="badge badge-wait" id="live-badge">EN ATTENTE</span>
-      <button class="btn-sm" onclick="logout()">Déconnexion</button>
+      <span class="badge b-wait" id="badge">● EN ATTENTE</span>
+      <button class="btn-out" onclick="logout()">Déconnexion</button>
     </div>
   </div>
 
   <div class="main">
 
     <!-- KPIs -->
-    <div class="kpi-grid">
-      <div class="kpi kpi-gold"><div class="kpi-label">Total signups</div><div class="kpi-value" id="kpi-total">—</div><div class="kpi-sub">Toutes périodes</div></div>
-      <div class="kpi"><div class="kpi-label">Score moyen</div><div class="kpi-value" id="kpi-score">—</div><div class="kpi-sub">Sur 100</div></div>
-      <div class="kpi"><div class="kpi-label">Avec photo</div><div class="kpi-value" id="kpi-photo">—</div><div class="kpi-sub">Consentement donné</div></div>
-      <div class="kpi"><div class="kpi-label">Concern #1</div><div class="kpi-value" id="kpi-concern" style="font-size:16px;margin-top:4px;">—</div><div class="kpi-sub">Plus fréquent</div></div>
-      <div class="kpi"><div class="kpi-label">Aujourd'hui</div><div class="kpi-value" id="kpi-today">—</div><div class="kpi-sub">Nouveaux signups</div></div>
+    <div class="kg">
+      <div class="k kg-gold"><div class="kl">Total clients</div><div class="kv" id="k1">—</div><div class="ks">Toutes périodes</div></div>
+      <div class="k"><div class="kl">Score moyen</div><div class="kv" id="k2">—</div><div class="ks">Sur 100</div></div>
+      <div class="k"><div class="kl">Avec photo</div><div class="kv" id="k3">—</div><div class="ks">Consentement</div></div>
+      <div class="k"><div class="kl">Concern #1</div><div class="kv" id="k4" style="font-size:16px;margin-top:4px;">—</div><div class="ks">Plus fréquent</div></div>
+      <div class="k"><div class="kl">Pays #1</div><div class="kv" id="k5" style="font-size:16px;margin-top:4px;">—</div><div class="ks">Plus actif</div></div>
+      <div class="k"><div class="kl">Aujourd'hui</div><div class="kv" id="k6">—</div><div class="ks">Nouveaux</div></div>
     </div>
 
     <!-- STATUS -->
-    <div class="status" id="status"></div>
+    <div class="st" id="st"></div>
 
-    <!-- BOUTON CHARGER -->
-    <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:18px;">
-      <div style="font-size:12px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:8px;">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="2" stroke-linecap="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 11-7.778 7.778 5.5 5.5 0 017.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
-        Données Netlify Forms
+    <!-- CONNEXION NETLIFY -->
+    <div class="panel">
+      <div class="panel-title">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gd)" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        Connexion Netlify Forms
       </div>
 
-      <div style="display:flex;gap:10px;flex-wrap:wrap;">
-        <button onclick="loadReal()" id="load-btn"
-          style="padding:11px 22px;background:var(--dark);color:var(--gold-l);border:none;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;letter-spacing:0.5px;">
-          ⟳ Charger les vraies données
-        </button>
-        <button onclick="loadDemo()"
-          style="padding:11px 16px;background:var(--cream);border:1px solid var(--border);border-radius:9px;font-size:12px;cursor:pointer;color:var(--text2);">
-          Données démo
-        </button>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;">
+        <div style="flex:2;min-width:200px;">
+          <div class="inp-label">TOKEN NETLIFY PERSONNEL</div>
+          <input type="password" id="inp-token" class="inp" placeholder="nfp_xxxxxxxxxxxxxxxxxxxxxxxx">
+        </div>
+        <div style="flex:2;min-width:180px;">
+          <div class="inp-label">SITE ID</div>
+          <input type="text" id="inp-site" class="inp" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx">
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button class="btn-primary" id="load-btn" onclick="loadReal()">⟳ Charger les données</button>
+          <button class="btn-secondary" onclick="loadDemo()">Démo</button>
+        </div>
       </div>
 
-      <div style="margin-top:14px;padding:12px;background:#FBF8F4;border-radius:10px;font-size:11px;color:var(--text3);line-height:1.9;">
-        <b style="color:var(--text2);">⚙️ Configuration requise (une seule fois) :</b><br>
-        Dans Netlify → ton site → <b>Site configuration → Environment variables</b>, ajoute :<br>
-        &nbsp;&nbsp;• <code style="background:#eee;padding:1px 5px;border-radius:4px;">NETLIFY_TOKEN</code> = ton token personnel<br>
-        &nbsp;&nbsp;• <code style="background:#eee;padding:1px 5px;border-radius:4px;">NETLIFY_SITE_ID</code> = l'ID de ton site<br>
-        &nbsp;&nbsp;• <code style="background:#eee;padding:1px 5px;border-radius:4px;">DASHBOARD_PASS</code> = Levia2025!<br>
-        Puis déploie le fichier <code style="background:#eee;padding:1px 5px;border-radius:4px;">netlify/functions/get-submissions.js</code>
+      <div class="guide">
+        <b style="color:var(--t2);">Où trouver ces infos :</b><br>
+        <b>Token :</b> <a href="https://app.netlify.com/user/applications" target="_blank">app.netlify.com → avatar → User settings → Applications → New access token</a><br>
+        <b>Site ID :</b> ton site Netlify → <b>Site configuration → General → Site ID</b><br>
+        <span style="color:var(--green);">✓ Ces infos sont sauvegardées automatiquement dans ton navigateur</span>
       </div>
     </div>
 
     <!-- TOOLBAR -->
     <div class="toolbar">
-      <div class="search-wrap">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
-        <input class="search-input" id="search" placeholder="Email, prénom…" oninput="renderTable()">
+      <div class="si">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input id="qs" placeholder="Email, prénom, pays…" oninput="renderTable()">
       </div>
-      <select class="filter-select" id="f-skin" onchange="renderTable()">
+      <select id="fsk" onchange="renderTable()">
         <option value="">Tous types</option>
-        <option value="oily">Oily</option><option value="dry">Dry</option>
-        <option value="sensitive">Sensitive</option><option value="mature">Mature</option>
+        <option value="oily">Oily</option>
+        <option value="dry">Dry</option>
+        <option value="sensitive">Sensitive</option>
+        <option value="mature">Mature</option>
       </select>
-      <select class="filter-select" id="f-concern" onchange="renderTable()">
+      <select id="fcn" onchange="renderTable()">
         <option value="">Tous concerns</option>
-        <option value="acne">Acne</option><option value="glow">Glow</option>
-        <option value="dryness">Dryness</option><option value="aging">Aging</option>
+        <option value="acne">Acne</option>
+        <option value="glow">Glow</option>
+        <option value="dryness">Dryness</option>
+        <option value="aging">Aging</option>
       </select>
-      <select class="filter-select" id="f-photo" onchange="renderTable()">
+      <select id="fct" onchange="renderTable()">
+        <option value="">Tous pays</option>
+        <option value="UK">UK</option>
+        <option value="AU">AU</option>
+        <option value="NZ">NZ</option>
+        <option value="IL">IL</option>
+        <option value="NORDIC">Nordic</option>
+      </select>
+      <select id="fph" onchange="renderTable()">
         <option value="">Toutes</option>
-        <option value="yes">Avec photo</option><option value="no">Sans photo</option>
+        <option value="yes">Avec photo</option>
+        <option value="no">Sans photo</option>
       </select>
-      <button class="btn-light" onclick="refreshData()" title="Rafraîchir">
+      <button class="btn-light" onclick="refresh()" title="Rafraîchir">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
       </button>
       <button class="btn-dark" onclick="exportCSV()">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Export CSV
+        CSV
+      </button>
+      <button class="btn-dark" onclick="exportDataset()" style="background:linear-gradient(135deg,#1a4a8a,#2d7dd2);">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        Dataset IA
       </button>
     </div>
 
     <!-- TABLE -->
-    <div class="table-wrap">
+    <div class="tw">
       <table>
         <thead>
           <tr>
             <th>#</th><th>Date</th><th>Prénom</th><th>Email</th>
-            <th>Genre</th><th>Âge</th><th>Peau</th><th>Concern</th>
-            <th>Score</th><th>Photo</th><th>Voir</th>
+            <th>Pays</th><th>Peau</th><th>Concern</th>
+            <th>Score</th><th>Photo</th><th>👁</th>
           </tr>
         </thead>
         <tbody id="tbody">
-          <tr><td colspan="11" class="empty">Clique sur "Charger" pour voir les données</td></tr>
+          <tr><td colspan="10" class="emp">Entre ton token Netlify ci-dessus et clique "Charger les données"</td></tr>
         </tbody>
       </table>
     </div>
-    <div id="count" style="font-size:11px;color:var(--text3);margin-top:8px;text-align:right;"></div>
+    <div id="cnt" style="font-size:11px;color:var(--t3);margin-top:8px;text-align:right;"></div>
   </div>
 </div>
 
-<!-- MODAL -->
+<!-- ═══ MODAL DÉTAIL ═══ -->
 <div id="modal">
-  <div class="modal-box">
-    <div class="modal-hd">
-      <div class="modal-title" id="modal-title"></div>
-      <button class="modal-x" onclick="closeModal()">✕</button>
+  <div class="mb">
+    <div class="mh">
+      <div class="mt" id="modal-title"></div>
+      <button class="mx" onclick="closeModal()">✕</button>
     </div>
     <div id="modal-body"></div>
   </div>
@@ -215,123 +247,163 @@
 
 <script>
 // ══════════════════════════
-// MOT DE PASSE DU DASHBOARD
 var PASS = 'Levia2025!';
 // ══════════════════════════
 
 var allData = [];
-var lastMode = 'demo';
+var mode = 'demo';
 
 // ── LOGIN ──
 function doLogin(){
   if(document.getElementById('pwd').value === PASS){
     localStorage.setItem('lv_auth','1');
-    show();
+    showDash();
   } else {
-    var e=document.getElementById('login-err');
+    var e=document.getElementById('le');
     e.style.display='block';
     setTimeout(function(){e.style.display='none';},3000);
   }
 }
-function show(){
+
+function showDash(){
   document.getElementById('login-screen').style.display='none';
   document.getElementById('dashboard').style.display='block';
-  // Restore saved token + site ID
-  var t=localStorage.getItem('lv_t'),s=localStorage.getItem('lv_s');
-  if(t) document.getElementById('tok').value=t;
-  if(s) document.getElementById('sid').value=s;
-  // Auto-load real data if credentials saved, else demo
-  if(t&&s){ setTimeout(loadReal,300); }
-  else { loadDemo(); }
+  // Restaurer token et site ID sauvegardés
+  var t=localStorage.getItem('lv_t');
+  var s=localStorage.getItem('lv_s');
+  if(t) document.getElementById('inp-token').value=t;
+  if(s) document.getElementById('inp-site').value=s;
+  // Auto-charger si credentials disponibles
+  if(t && s){
+    setTimeout(loadReal, 400);
+  } else {
+    loadDemo();
+  }
 }
-function logout(){localStorage.removeItem('lv_auth');location.reload();}
-if(localStorage.getItem('lv_auth')==='1') show();
+
+function logout(){
+  localStorage.removeItem('lv_auth');
+  location.reload();
+}
+
+// Vérifier si déjà connecté
+if(localStorage.getItem('lv_auth')==='1') showDash();
 
 // ── STATUS ──
-function setStatus(msg, type){
-  var s=document.getElementById('status');
-  s.className='status '+type;
+function setS(msg, type){
+  var s=document.getElementById('st');
+  s.className='st '+type;
   s.innerHTML=msg;
 }
 
-// ── LOAD REAL (via Netlify Function) ──
+// ── CHARGER LES VRAIES DONNÉES ──
 async function loadReal(){
-  var tok=document.getElementById('tok').value.trim();
-  var sid=document.getElementById('sid').value.trim();
-  // Auto-save for next time
-  if(tok) localStorage.setItem('lv_t',tok);
-  if(sid) localStorage.setItem('lv_s',sid);
-  var btn=document.getElementById('load-btn');
-  btn.textContent='Chargement…';btn.disabled=true;
-  setStatus('⏳ Connexion à Netlify…','loading');
-  try{
-    // Appel à notre Netlify Function (même domaine = pas de CORS)
-    var resp=await fetch('/.netlify/functions/get-submissions',{
-      headers:{
-        'x-dashboard-auth': PASS,
-        'Content-Type':'application/json'
-      }
-    });
-    var json=await resp.json();
-    if(!resp.ok) throw new Error(json.error||'Erreur '+resp.status);
-    
-    // Filtrer levia-scan uniquement
-    var subs=Array.isArray(json)?json:[];
-    subs=subs.filter(function(s){return !s.form_name||s.form_name==='levia-scan';});
-    
-    processData(subs);
-    lastMode='real';
-    setStatus('✅ '+subs.length+' soumissions chargées depuis Netlify Forms','ok');
-    document.getElementById('live-badge').textContent='● LIVE';
-    document.getElementById('live-badge').className='badge badge-ok';
-  }catch(e){
-    setStatus('❌ '+e.message+' — La Netlify Function n\'est pas encore déployée. Utilise les données démo pour l\'instant.','err');
-    console.error(e);
+  var token = document.getElementById('inp-token').value.trim();
+  var siteId = document.getElementById('inp-site').value.trim();
+
+  if(!token || !siteId){
+    setS('❌ Entre ton token Netlify ET ton Site ID ci-dessus','err');
+    return;
   }
-  btn.textContent='⟳ Charger les vraies données';btn.disabled=false;
+
+  // Sauvegarder pour la prochaine fois
+  localStorage.setItem('lv_t', token);
+  localStorage.setItem('lv_s', siteId);
+
+  var btn=document.getElementById('load-btn');
+  btn.textContent='Chargement…';
+  btn.disabled=true;
+  setS('⏳ Connexion à Netlify…','info');
+
+  try{
+    var resp = await fetch('/.netlify/functions/get-submissions',{
+      headers:{'x-dashboard-auth': PASS}
+    });
+    var json = await resp.json();
+    if(!resp.ok) throw new Error(json.error || 'Erreur '+resp.status);
+
+    processData(Array.isArray(json) ? json : []);
+    mode='real';
+    setS('✅ '+allData.length+' clients chargés depuis Netlify Forms','ok');
+    var b=document.getElementById('badge');
+    b.textContent='● LIVE';
+    b.className='badge b-live';
+
+  }catch(e){
+    setS('❌ '+e.message+' — Vérifie que la Netlify Function est déployée','err');
+    console.error('Load error:',e);
+    loadDemo();
+  }
+
+  btn.textContent='⟳ Charger les données';
+  btn.disabled=false;
 }
 
 function processData(json){
   allData=json.map(function(s,i){
     var d=s.data||{};
     return {
-      id:s.id||i,
-      date:s.created_at?new Date(s.created_at):null,
-      name:d.name||'', email:d.email||s.email||'',
-      gender:d.gender||'', age:d.age||d.age_range||'',
-      skin_type:d.skin_type||'', concern:d.concern||'',
-      lifestyle:d.lifestyle||'', score:d.score||d.skin_score||'',
-      photo_provided:d.photo_provided||'no',
-      photo_consent:d.photo_consent||'no',
-      photo_url:d.photo_url||'',
-      routine_type:d.routine_type||'',
-      country:d.country||'',
-      lang:d.lang||'',
+      id: s.id||i,
+      date: s.created_at ? new Date(s.created_at) : null,
+      name: d.name||'',
+      email: d.email||s.email||'',
+      gender: d.gender||'',
+      age: d.age||d.age_range||'',
+      skin_type: d.skin_type||'',
+      concern: d.concern||'',
+      lifestyle: d.lifestyle||'',
+      score: d.score||d.skin_score||'',
+      photo_provided: d.photo_provided||'no',
+      photo_consent: d.photo_consent||'no',
+      photo_url: d.photo_url||'',
+      routine_type: d.routine_type||'',
+      country: d.country||'',
+      lang: d.lang||'',
     };
   });
-  updateKPIs();renderTable();
+  updateKPIs();
+  renderTable();
 }
 
-function refreshData(){if(lastMode==='real')loadReal();else loadDemo();}
+function refresh(){
+  if(mode==='real') loadReal();
+  else loadDemo();
+}
 
-// ── DEMO ──
+// ── DÉMO ──
 function loadDemo(){
-  var sk=['oily','dry','sensitive','mature'],cn=['acne','glow','dryness','aging'];
-  var ages=['18-24','25-34','35-44','45-54'],names=['Sophie','Emma','Chloe','Laura','Marie','Alice','Lea','Sara'];
+  var sk=['oily','dry','sensitive','mature'];
+  var cn=['acne','glow','dryness','aging'];
+  var ages=['18-24','25-34','35-44','45-54'];
+  var names=['Sophie','Emma','Chloe','Laura','Marie','Alice','Lea','Sara','Noa','Rachel'];
+  var countries=['UK','AU','NZ','IL','NORDIC'];
   var d=[];
   for(var i=0;i<22;i++){
     var s=sk[i%4],c=cn[i%4];
-    d.push({id:i+1,date:new Date(Date.now()-Math.random()*15*864e5),
-      name:names[i%8],email:'client'+(100+i)+'@example.com',
-      gender:i%5===0?'male':'female',age:ages[i%4],skin_type:s,concern:c,
+    d.push({
+      id:i+1,
+      date:new Date(Date.now()-Math.random()*20*864e5),
+      name:names[i%10],
+      email:'client'+(100+i)+'@example.com',
+      gender:i%6===0?'male':'female',
+      age:ages[i%4],
+      skin_type:s,
+      concern:c,
       lifestyle:['sun','stress','pollution','cold'][i%4],
-      score:Math.floor(Math.random()*25)+68,
-      photo_provided:i%3===0?'no':'yes',photo_consent:i%3===0?'no':'yes',
-      routine_type:s+' — '+c});
+      score:Math.floor(Math.random()*26)+68,
+      photo_provided:i%3===0?'no':'yes',
+      photo_consent:i%3===0?'no':'yes',
+      photo_url:i%3!==0?'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=100&h=100&fit=crop':'',
+      routine_type:s+' — '+c,
+      country:countries[i%5],
+      lang:['en','en','en','he','sv'][i%5],
+    });
   }
-  allData=d;lastMode='demo';
-  updateKPIs();renderTable();
-  setStatus('ℹ️ Données de démonstration affichées — Déploie la Netlify Function pour les vraies données','loading');
+  allData=d;
+  mode='demo';
+  updateKPIs();
+  renderTable();
+  setS('ℹ️ Données de démonstration — Entre ton token pour charger les vraies données','info');
 }
 
 // ── KPIs ──
@@ -342,95 +414,148 @@ function updateKPIs(){
   var ph=allData.filter(function(r){return r.photo_provided==='yes';}).length;
   var td=new Date().toDateString();
   var tn=allData.filter(function(r){return r.date&&r.date.toDateString()===td;}).length;
-  var cv={};allData.forEach(function(r){if(r.concern)cv[r.concern]=(cv[r.concern]||0)+1;});
-  var top=Object.keys(cv).sort(function(a,b){return cv[b]-cv[a];})[0]||'—';
-  document.getElementById('kpi-total').textContent=n;
-  document.getElementById('kpi-score').textContent=avg||'—';
-  document.getElementById('kpi-photo').textContent=n?Math.round(ph/n*100)+'%':'—';
-  document.getElementById('kpi-concern').textContent=top.charAt(0).toUpperCase()+top.slice(1);
-  document.getElementById('kpi-today').textContent=tn;
+  var cv={},co={};
+  allData.forEach(function(r){
+    if(r.concern) cv[r.concern]=(cv[r.concern]||0)+1;
+    if(r.country) co[r.country]=(co[r.country]||0)+1;
+  });
+  var topC=Object.keys(cv).sort(function(a,b){return cv[b]-cv[a];})[0]||'—';
+  var topCo=Object.keys(co).sort(function(a,b){return co[b]-co[a];})[0]||'—';
+  document.getElementById('k1').textContent=n;
+  document.getElementById('k2').textContent=avg||'—';
+  document.getElementById('k3').textContent=n?Math.round(ph/n*100)+'%':'—';
+  document.getElementById('k4').textContent=topC.charAt(0).toUpperCase()+topC.slice(1);
+  document.getElementById('k5').textContent=topCo;
+  document.getElementById('k6').textContent=tn;
 }
 
 // ── TABLE ──
 function renderTable(){
-  var q=(document.getElementById('search').value||'').toLowerCase();
-  var fs=document.getElementById('f-skin').value;
-  var fc=document.getElementById('f-concern').value;
-  var fp=document.getElementById('f-photo').value;
+  var q=(document.getElementById('qs').value||'').toLowerCase();
+  var fs=document.getElementById('fsk').value;
+  var fc=document.getElementById('fcn').value;
+  var fct=document.getElementById('fct').value;
+  var fp=document.getElementById('fph').value;
   var f=allData.filter(function(r){
-    if(q&&!r.email.toLowerCase().includes(q)&&!r.name.toLowerCase().includes(q))return false;
+    if(q&&![r.email,r.name,r.country].join(' ').toLowerCase().includes(q))return false;
     if(fs&&r.skin_type!==fs)return false;
     if(fc&&r.concern!==fc)return false;
+    if(fct&&r.country!==fct)return false;
     if(fp&&r.photo_provided!==fp)return false;
     return true;
   }).sort(function(a,b){return(b.date||0)-(a.date||0);});
+
   var tb=document.getElementById('tbody');
-  if(!f.length){tb.innerHTML='<tr><td colspan="11" class="empty">Aucun résultat</td></tr>';document.getElementById('count').textContent='';return;}
+  if(!f.length){
+    tb.innerHTML='<tr><td colspan="10" class="emp">Aucun résultat</td></tr>';
+    document.getElementById('cnt').textContent='';
+    return;
+  }
   tb.innerHTML=f.map(function(r,i){
     var sc=+r.score;
-    var scBadge=sc?'<span class="'+(sc>=80?'score-h':sc>=65?'score-m':'score-l')+'">'+sc+'</span>':'—';
+    var sb=sc?'<span class="'+(sc>=80?'sh':sc>=65?'sm':'sl')+'">'+sc+'</span>':'—';
     var dt=r.date?r.date.toLocaleDateString('fr-FR',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'}):'—';
-    return '<tr onclick="showDetail(\''+r.id+'\')">'
-      +'<td style="color:var(--text3);font-size:10px;">'+(i+1)+'</td>'
-      +'<td style="font-size:11px;color:var(--text3);">'+dt+'</td>'
-      +'<td style="color:var(--text2);">'+(r.name||'<i style="color:var(--text3)">—</i>')+'</td>'
+    var ph=r.photo_url
+      ?'<img src="'+r.photo_url+'" style="width:32px;height:32px;border-radius:5px;object-fit:cover;border:1px solid var(--border);" onerror="this.style.display=\'none\'">'
+      :(r.photo_provided==='yes'?'<span style="color:var(--green);font-weight:700;">✓</span>':'<span style="color:var(--t3);">—</span>');
+    return '<tr onclick="showDetail(\''+r.id+'\')"><td style="color:var(--t3);font-size:10px;">'+(i+1)+'</td>'
+      +'<td style="font-size:11px;color:var(--t3);">'+dt+'</td>'
+      +'<td style="color:var(--t2);">'+(r.name||'<i style="color:var(--t3)">—</i>')+'</td>'
       +'<td style="font-weight:500;">'+r.email+'</td>'
-      +'<td><span class="tag">'+(r.gender||'—')+'</span></td>'
-      +'<td><span class="tag">'+(r.age||'—')+'</span></td>'
+      +'<td><span class="tag">'+(r.country||'—')+'</span></td>'
       +'<td><span class="tag">'+(r.skin_type||'—')+'</span></td>'
       +'<td><span class="tag">'+(r.concern||'—')+'</span></td>'
-      +'<td>'+scBadge+'</td>'
-      +'<td>'+(r.photo_provided==='yes'?'<span style="color:var(--green);font-weight:700;">✓</span>':'<span style="color:var(--text3);">—</span>')+'</td>'
-      +'<td><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="2" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></td>'
+      +'<td>'+sb+'</td>'
+      +'<td>'+ph+'</td>'
+      +'<td><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--gd)" stroke-width="2" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></td>'
       +'</tr>';
   }).join('');
-  document.getElementById('count').textContent=f.length+' / '+allData.length+' affiché(e)s';
+  document.getElementById('cnt').textContent=f.length+' / '+allData.length+' affiché(e)s';
 }
 
-// ── DETAIL ──
+// ── MODAL DÉTAIL ──
 function showDetail(id){
-  var r=allData.find(function(x){return String(x.id)===String(id);});if(!r)return;
+  var r=allData.find(function(x){return String(x.id)===String(id);});
+  if(!r)return;
   var dt=r.date?r.date.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'}):'—';
-  var sc=+r.score;var scC=sc>=80?'var(--green)':sc>=65?'var(--gold-d)':'var(--red)';
+  var sc=+r.score;
+  var scC=sc>=80?'var(--green)':sc>=65?'var(--gd)':'var(--red)';
   document.getElementById('modal-title').textContent=r.name||r.email;
+
+  var photoHtml=r.photo_url
+    ?'<div style="margin:8px 0 12px;"><img src="'+r.photo_url+'" style="width:110px;height:110px;object-fit:cover;border-radius:10px;border:2px solid var(--gold);display:block;"><div style="font-size:10px;color:var(--t3);margin-top:4px;">✓ Photo stockée Cloudinary</div></div>'
+    :'<span style="color:var(--t3);">'+(r.photo_provided==='yes'?'Oui (non stockée)':'Non')+'</span>';
+
   document.getElementById('modal-body').innerHTML=
-    dr('Date',dt)+dr('Prénom',r.name||'—')
-    +dr('Email','<a href="mailto:'+r.email+'" style="color:var(--gold-d)">'+r.email+'</a>')
+    dr('Date',dt)
+    +dr('Prénom',r.name||'—')
+    +dr('Email','<a href="mailto:'+r.email+'" style="color:var(--gd)">'+r.email+'</a>')
     +'<div class="dsep"></div>'
-    +dr('Genre',r.gender||'—')+dr('Âge',r.age||'—')
-    +dr('Type de peau',r.skin_type||'—')+dr('Concern',r.concern||'—')
+    +dr('Genre',r.gender||'—')
+    +dr('Âge',r.age||'—')
+    +dr('Pays / Langue',(r.country||'—')+' / '+(r.lang||'—'))
+    +dr('Type de peau',r.skin_type||'—')
+    +dr('Concern',r.concern||'—')
     +dr('Lifestyle',r.lifestyle||'—')
     +'<div class="dsep"></div>'
     +dr('Score',sc?'<span style="font-size:28px;font-weight:700;font-family:Georgia,serif;color:'+scC+'">'+sc+'</span>':'—')
     +dr('Routine',r.routine_type||'—')
     +'<div class="dsep"></div>'
-    +(r.photo_url
-      ?'<div style="margin:8px 0 12px;"><img src="'+r.photo_url+'" style="width:100px;height:100px;object-fit:cover;border-radius:10px;border:2px solid var(--gold);display:block;"><div style="font-size:10px;color:var(--t3);margin-top:4px;">✓ Photo stockée sur Cloudinary</div></div>'
-      :'')
-    +dr('Photo prise',r.photo_provided==='yes'?'<span style="color:var(--green);font-weight:600;">✓ Oui</span>':'<span style="color:var(--t3);">Non</span>')
-    +dr('Consentement',r.photo_consent==='yes'?'<span style="color:var(--green);">✓ Accepté</span>':'—')
-    +'<div style="margin-top:16px;">'
-    +'<a href="mailto:'+r.email+'?subject=Votre routine Lévia personnalisée ✨&body=Bonjour '+(r.name||'')+',%0D%0A%0D%0AMerci d\'avoir complété votre analyse de peau Lévia !%0D%0A%0D%0ARetrouvez votre routine personnalisée sur : leviaskincare.com/scan%0D%0A%0D%0ACordialement,%0D%0ASalomé · Lévia" '
-    +'style="display:inline-flex;align-items:center;gap:6px;padding:10px 16px;background:var(--dark);color:var(--gold-l);border-radius:9px;font-size:12px;font-weight:600;text-decoration:none;">'
-    +'📧 Envoyer un email</a>'
+    +dr('Photo',photoHtml)
+    +dr('Consentement',r.photo_consent==='yes'?'<span style="color:var(--green);font-weight:600;">✓ Accepté</span>':'Non')
+    +'<div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;">'
+    +'<a href="mailto:'+r.email+'?subject=Votre routine Lévia ✨&body=Bonjour '+(r.name||'')+',%0D%0A%0D%0AMerci d\'avoir utilisé Lévia !%0D%0A%0D%0ARetrouvez votre routine sur : leviaskincare.com/scan" '
+    +'style="display:inline-flex;align-items:center;gap:6px;padding:10px 16px;background:var(--dark);color:var(--gl);border-radius:9px;font-size:12px;font-weight:600;text-decoration:none;">📧 Envoyer un email</a>'
     +'</div>';
+
   document.getElementById('modal').classList.add('open');
 }
-function dr(k,v){return '<div class="dr"><div class="dk">'+k+'</div><div class="dv">'+v+'</div></div>';}
+
+function dr(k,v){
+  return '<div class="dr"><div class="dk">'+k+'</div><div class="dv">'+v+'</div></div>';
+}
 function closeModal(){document.getElementById('modal').classList.remove('open');}
 document.getElementById('modal').addEventListener('click',function(e){if(e.target===this)closeModal();});
 
-// ── CSV ──
+// ── EXPORT CSV ──
 function exportCSV(){
-  var h=['#','Date','Prénom','Email','Genre','Âge','Peau','Concern','Lifestyle','Score','Routine','Photo','Consentement'];
+  var h=['#','Date','Prénom','Email','Genre','Âge','Pays','Langue','Peau','Concern','Lifestyle','Score','Routine','Photo','Consentement','URL Photo'];
   var rows=allData.map(function(r,i){
     return [i+1,r.date?r.date.toISOString():'',r.name,r.email,r.gender,r.age,
-      r.skin_type,r.concern,r.lifestyle,r.score,r.routine_type,r.photo_provided,r.photo_consent]
+      r.country,r.lang,r.skin_type,r.concern,r.lifestyle,r.score,
+      r.routine_type,r.photo_provided,r.photo_consent,r.photo_url||'']
       .map(function(v){return '"'+String(v||'').replace(/"/g,'""')+'"';}).join(',');
   });
   var a=document.createElement('a');
   a.href=URL.createObjectURL(new Blob([h.join(',')+'\n'+rows.join('\n')],{type:'text/csv;charset=utf-8;'}));
-  a.download='levia-'+new Date().toISOString().slice(0,10)+'.csv';a.click();
+  a.download='levia-clients-'+new Date().toISOString().slice(0,10)+'.csv';
+  a.click();
+}
+
+// ── EXPORT DATASET IA ──
+async function exportDataset(){
+  if(mode!=='real'){
+    setS('⚠️ Charge d\'abord les vraies données pour exporter le dataset','err');
+    return;
+  }
+  setS('⏳ Génération du dataset IA…','info');
+  try{
+    var r=await fetch('/.netlify/functions/export-dataset',{
+      headers:{'x-dashboard-auth':PASS}
+    });
+    var json=await r.json();
+    if(!r.ok) throw new Error(json.error||'Erreur');
+    var dataset=json.dataset;
+    var stats=json.stats;
+    var jsonl=dataset.map(function(e){return JSON.stringify(e);}).join('\n');
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([jsonl],{type:'application/jsonl'}));
+    a.download='levia-dataset-'+new Date().toISOString().slice(0,10)+'.jsonl';
+    a.click();
+    setS('✅ '+stats.total+' profils exportés · '+(stats.with_photo||0)+' avec photo','ok');
+  }catch(e){
+    setS('❌ '+e.message,'err');
+  }
 }
 </script>
 </body>
