@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LÉVIA by Salomé — Understand your skin. Finally.</title>
   <meta name="description" content="A personalised skincare experience powered by LÉVIA AI. Discover your skin score and your first personalised routine, free." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 
   <!-- Meta Pixel -->
   <script>
@@ -20,24 +23,17 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    html {
+    html, body {
       width: 100%;
       overflow-x: hidden;
-    }
-
-    body {
-      width: 100%;
-      overflow-x: hidden;
-      background: #eddac9;
+      background: #f5e3d5;
       font-family: 'Inter', -apple-system, sans-serif;
-      margin: 0;
-      padding: 0;
     }
 
     .landing-wrapper {
       position: relative;
       width: 100%;
-      max-width: 1044px;
+      max-width: 941px;
       margin: 0 auto;
       line-height: 0;
     }
@@ -51,17 +47,11 @@
       pointer-events: none;
     }
 
-    /*
-     * BOUTON OR GLASSMORPHISM — positionné sur "Start my free routine"
-     * Position calculée d'après le mockup ChatGPT (1044x1507) :
-     *   - centré horizontalement
-     *   - à ~90% de la hauteur totale du visuel
-     *   - largeur : ~52% de la largeur du visuel
-     */
+    /* BOUTON OR GLASSMORPHISM — positionné sur "Start my free routine" */
     .cta-button {
       position: absolute;
       left: 50%;
-      top: 90%;
+      top: 87.3%;
       transform: translateX(-50%);
       width: 52%;
       max-width: 540px;
@@ -99,7 +89,6 @@
       z-index: 10;
     }
 
-    /* Effet "shine" qui balaye le bouton */
     .cta-button::before {
       content: "";
       position: absolute;
@@ -139,10 +128,51 @@
       font-size: 0.85em;
     }
 
+    /* FOOTER CONTACT */
+    .contact-footer {
+      background: linear-gradient(180deg, #f5e3d5 0%, #eedac8 100%);
+      text-align: center;
+      padding: 40px 20px 50px;
+    }
+
+    .contact-footer a {
+      font-family: 'Playfair Display', 'Georgia', serif;
+      font-size: clamp(18px, 4.5vw, 28px);
+      color: #9b6a2f;
+      text-decoration: none;
+      letter-spacing: 1px;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .contact-footer a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #c9933a, transparent);
+      opacity: 0.5;
+    }
+
+    .contact-footer a:hover {
+      color: #b8862f;
+    }
+
+    .contact-footer .sparkle-contact {
+      color: #c9933a;
+      font-size: 0.7em;
+      margin-left: 8px;
+    }
+
     @media (max-width: 600px) {
       .cta-button {
         font-size: clamp(13px, 3.5vw, 18px);
         padding: 2.2% 3%;
+      }
+      .contact-footer {
+        padding: 30px 20px 40px;
       }
     }
   </style>
@@ -155,6 +185,12 @@
     <a href="/scan" class="cta-button" onclick="trackClick('start_routine')">
       <span class="text">Start my free routine</span>
       <span class="sparkle">✦</span>
+    </a>
+  </div>
+
+  <div class="contact-footer">
+    <a href="mailto:hello@leviaskincare.com">
+      hello@leviaskincare.com<span class="sparkle-contact">✦</span>
     </a>
   </div>
 
