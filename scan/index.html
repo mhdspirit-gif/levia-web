@@ -126,7 +126,10 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
 .face-mesh-canvas{position:absolute;inset:0;z-index:12;pointer-events:none;}
 
 /* Face dots */
-.face-dot{position:absolute;width:5px;height:5px;border-radius:50%;background:rgba(255,220,60,0.95);box-shadow:0 0 6px rgba(255,220,60,1),0 0 14px rgba(201,169,110,0.7);transform:translate(-50%,-50%);z-index:15;opacity:0;transition:opacity 0.35s;}
+.scan-overlay{position:absolute;inset:0;z-index:15;pointer-events:none;opacity:0;transition:opacity 1s;}
+.scan-overlay.on{opacity:1;}
+.scan-zone{opacity:0;transition:opacity 0.6s;}
+.scan-zone.on{opacity:1;}
 
 .scan-pct{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:700;color:var(--white);text-align:center;letter-spacing:3px;line-height:1;}
 .scan-sub-text{font-size:9px;color:rgba(255,255,255,0.35);text-align:center;letter-spacing:2.5px;margin-bottom:14px;margin-top:4px;}
@@ -587,6 +590,35 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
       <img id="scan-photo" class="scan-photo" alt="">
       <div class="scan-vignette"></div>
       <div class="scan-mesh" id="scan-mesh"></div>
+      <!-- SVG overlay premium — zones de scan sans points -->
+      <svg class="scan-overlay" id="scan-overlay" viewBox="0 0 240 296" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;">
+        <!-- Coins de cadrage premium -->
+        <path id="corner-tl" d="M20 50 L20 20 L50 20" fill="none" stroke="rgba(201,169,110,0.9)" stroke-width="2.5" stroke-linecap="round" opacity="0"/>
+        <path id="corner-tr" d="M190 20 L220 20 L220 50" fill="none" stroke="rgba(201,169,110,0.9)" stroke-width="2.5" stroke-linecap="round" opacity="0"/>
+        <path id="corner-bl" d="M20 246 L20 276 L50 276" fill="none" stroke="rgba(201,169,110,0.9)" stroke-width="2.5" stroke-linecap="round" opacity="0"/>
+        <path id="corner-br" d="M190 276 L220 276 L220 246" fill="none" stroke="rgba(201,169,110,0.9)" stroke-width="2.5" stroke-linecap="round" opacity="0"/>
+        <!-- Zone front -->
+        <rect id="zone-front" x="80" y="28" width="80" height="28" rx="4" fill="rgba(201,169,110,0.08)" stroke="rgba(201,169,110,0.5)" stroke-width="0.8" stroke-dasharray="4 3" class="scan-zone"/>
+        <text id="label-front" x="120" y="47" text-anchor="middle" font-size="7" fill="rgba(201,169,110,0.7)" font-family="monospace" class="scan-zone" style="letter-spacing:1px;">FRONT</text>
+        <!-- Zone yeux -->
+        <rect id="zone-eyes" x="55" y="90" width="55" height="22" rx="4" fill="rgba(201,169,110,0.08)" stroke="rgba(201,169,110,0.5)" stroke-width="0.8" stroke-dasharray="4 3" class="scan-zone"/>
+        <rect id="zone-eyes2" x="130" y="90" width="55" height="22" rx="4" fill="rgba(201,169,110,0.08)" stroke="rgba(201,169,110,0.5)" stroke-width="0.8" stroke-dasharray="4 3" class="scan-zone"/>
+        <text x="82" y="105" text-anchor="middle" font-size="6" fill="rgba(201,169,110,0.6)" font-family="monospace" class="scan-zone">OEIL G</text>
+        <text x="157" y="105" text-anchor="middle" font-size="6" fill="rgba(201,169,110,0.6)" font-family="monospace" class="scan-zone">OEIL D</text>
+        <!-- Zone joues -->
+        <rect id="zone-joue-g" x="40" y="130" width="60" height="50" rx="4" fill="rgba(201,169,110,0.06)" stroke="rgba(201,169,110,0.4)" stroke-width="0.8" stroke-dasharray="4 3" class="scan-zone"/>
+        <rect id="zone-joue-d" x="140" y="130" width="60" height="50" rx="4" fill="rgba(201,169,110,0.06)" stroke="rgba(201,169,110,0.4)" stroke-width="0.8" stroke-dasharray="4 3" class="scan-zone"/>
+        <text x="70" y="160" text-anchor="middle" font-size="6" fill="rgba(201,169,110,0.55)" font-family="monospace" class="scan-zone">JOUE G</text>
+        <text x="170" y="160" text-anchor="middle" font-size="6" fill="rgba(201,169,110,0.55)" font-family="monospace" class="scan-zone">JOUE D</text>
+        <!-- Zone nez/T -->
+        <rect id="zone-nez" x="100" y="110" width="40" height="70" rx="4" fill="rgba(201,169,110,0.05)" stroke="rgba(201,169,110,0.35)" stroke-width="0.8" stroke-dasharray="4 3" class="scan-zone"/>
+        <text x="120" y="150" text-anchor="middle" font-size="6" fill="rgba(201,169,110,0.5)" font-family="monospace" class="scan-zone">ZONE T</text>
+        <!-- Zone bouche/menton -->
+        <rect id="zone-bouche" x="85" y="195" width="70" height="45" rx="4" fill="rgba(201,169,110,0.06)" stroke="rgba(201,169,110,0.4)" stroke-width="0.8" stroke-dasharray="4 3" class="scan-zone"/>
+        <text x="120" y="221" text-anchor="middle" font-size="6" fill="rgba(201,169,110,0.55)" font-family="monospace" class="scan-zone">MENTON</text>
+        <!-- Ligne de scan active -->
+        <line id="svg-scan-line" x1="15" y1="50" x2="225" y2="50" stroke="rgba(201,169,110,0.6)" stroke-width="1" stroke-dasharray="3 2"/>
+      </svg>
       <canvas class="face-mesh-canvas" id="face-canvas"></canvas>
       <div class="scan-trail" id="scan-trail"></div>
       <div class="scan-line" id="scan-line"></div>
@@ -1089,34 +1121,69 @@ function startScan(){
   // Mesh appears
   setTimeout(function(){mesh.classList.add('on');},500);
 
-  // Place face dots after image loads
-  function placeDots(pts){
-    var interval=setInterval(function(){
-      if(pointsAdded>=pts.length){clearInterval(interval);return;}
-      var p=pts[pointsAdded++];
-      var dot=document.createElement('div');
-      dot.className='face-dot';
-      dot.style.left=p.x+'%';dot.style.top=p.y+'%';
-      wrap.appendChild(dot);
-      requestAnimationFrame(function(){dot.style.opacity='1';});
-    },580);
-  }
-
-  function onImgReady(){
-    detectFaceRegion(sp,wrap.offsetWidth,wrap.offsetHeight,function(pts){
-      var finalPts=pts||[
-        {x:50,y:18},{x:34,y:28},{x:66,y:28},
-        {x:30,y:40},{x:70,y:40},{x:38,y:43},{x:62,y:43},
-        {x:50,y:55},{x:36,y:65},{x:64,y:65},
-        {x:44,y:74},{x:56,y:74}
-      ];
-      state.scanPts=finalPts;
-      placeDots(finalPts);
+  // Animation zones premium — révélation progressive des zones cutanées
+  function animateScanZones(){
+    var overlay=S('scan-overlay');
+    if(overlay) overlay.classList.add('on');
+    // Révéler les coins d'abord
+    setTimeout(function(){
+      ['corner-tl','corner-tr','corner-bl','corner-br'].forEach(function(id,i){
+        setTimeout(function(){
+          var el=S(id);if(el)el.style.opacity='1';
+        },i*150);
+      });
+    },300);
+    // Révéler les zones progressivement de haut en bas
+    var zones=[
+      {delay:800, ids:['zone-front']},
+      {delay:1400, ids:['zone-eyes','zone-eyes2']},
+      {delay:2000, ids:['zone-nez']},
+      {delay:2600, ids:['zone-joue-g','zone-joue-d']},
+      {delay:3200, ids:['zone-bouche']},
+    ];
+    zones.forEach(function(z){
+      setTimeout(function(){
+        // Trouver tous les éléments de la zone (rect + text)
+        var overlay=S('scan-overlay');
+        if(!overlay)return;
+        overlay.querySelectorAll('.scan-zone').forEach(function(el){
+          if(z.ids.some(function(id){return el.id===id||el.getAttribute('id')===id;})){
+            el.classList.add('on');
+          }
+        });
+        // Révéler aussi les labels (text sans id)
+        z.ids.forEach(function(id){
+          var el=S(id);
+          if(el){
+            el.classList.add('on');
+            // Révéler les sibling text elements
+            var parent=el.parentNode;
+            if(parent){
+              var texts=parent.querySelectorAll('text');
+              texts.forEach(function(t){t.classList.add('on');});
+            }
+          }
+        });
+      },z.delay);
     });
+    // Animer la ligne de scan SVG
+    var svgLine=S('svg-scan-line');
+    if(svgLine){
+      var y=20,svgDir=1;
+      var svgAnim=setInterval(function(){
+        y+=svgDir*2;
+        if(y>270){svgDir=-1;}
+        if(y<20){svgDir=1;}
+        svgLine.setAttribute('y1',y);
+        svgLine.setAttribute('y2',y);
+      },30);
+      setTimeout(function(){clearInterval(svgAnim);},5500);
+    }
+    state.scanPts=[];
   }
 
-  if(sp.complete&&sp.naturalWidth>0){onImgReady();}
-  else{sp.onload=onImgReady;}
+  // Lancer l'animation zones (pas de détection de points)
+  animateScanZones();
 
   // Progress — 5.5 seconds total
   var progId=setInterval(function(){
