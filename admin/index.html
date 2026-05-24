@@ -108,9 +108,10 @@ tr:hover td{background:#FBF8F4;cursor:pointer;}
   <div class="lc">
     <div class="logo">LÉVIA</div>
     <div class="sub">ADMIN · DASHBOARD</div>
+    <input class="pw" type="email" id="login-email" placeholder="hello@leviaskincare.com" onkeydown="if(event.key==='Enter')doLogin()" style="letter-spacing:0;margin-bottom:10px;">
     <input class="pw" type="password" id="pwd" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
     <button class="lb" onclick="doLogin()">CONNEXION</button>
-    <div class="le" id="le">Mot de passe incorrect</div>
+    <div class="le" id="le">Email ou mot de passe incorrect</div>
   </div>
 </div>
 
@@ -247,7 +248,8 @@ tr:hover td{background:#FBF8F4;cursor:pointer;}
 
 <script>
 // ══════════════════════════
-var PASS = 'Levia2025!';
+var ADMIN_EMAIL = 'mhd.spirit@gmail.com';
+var PASS = 'Edenaz0904';
 // ══════════════════════════
 
 var allData = [];
@@ -255,7 +257,9 @@ var mode = 'demo';
 
 // ── LOGIN ──
 function doLogin(){
-  if(document.getElementById('pwd').value === PASS){
+  var email = document.getElementById('login-email').value.trim().toLowerCase();
+  var pwd = document.getElementById('pwd').value;
+  if(email === ADMIN_EMAIL.toLowerCase() && pwd === PASS){
     localStorage.setItem('lv_auth','1');
     showDash();
   } else {
