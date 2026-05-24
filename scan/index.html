@@ -1335,12 +1335,18 @@ var INSIGHTS={
 
 // Métriques par routine (Hydration / Sensitivity / Glow / Barrier)
 var METRICS = {
-  oily_acne:       {hydration:62, sensitivity:55, glow:68, barrier:58},
-  oily_glow:       {hydration:65, sensitivity:50, glow:82, barrier:60},
-  dry_dryness:     {hydration:42, sensitivity:68, glow:55, barrier:45},
-  dry_aging:       {hydration:48, sensitivity:60, glow:62, barrier:52},
-  sensitive_dryness:{hydration:50, sensitivity:85, glow:52, barrier:42},
-  mature_aging:    {hydration:55, sensitivity:58, glow:72, barrier:58},
+  // Score 81 — peau saine globalement, faiblesse principale = barrier + sebum
+  oily_acne:        {hydration:74, sensitivity:78, glow:75, barrier:66},
+  // Score 78 — éclat moyen, glow est le point fort à développer
+  oily_glow:        {hydration:76, sensitivity:80, glow:85, barrier:70},
+  // Score 74 — hydration clairement le point faible
+  dry_dryness:      {hydration:58, sensitivity:72, glow:68, barrier:62},
+  // Score 82 — bien globalement, hydration et barrier légèrement à renforcer
+  dry_aging:        {hydration:66, sensitivity:78, glow:76, barrier:68},
+  // Score 72 — sensitivity très élevée, c'est le diagnostic principal
+  sensitive_dryness:{hydration:65, sensitivity:88, glow:64, barrier:58},
+  // Score 85 — mature mais bien entretenue, glow est le point fort
+  mature_aging:     {hydration:72, sensitivity:74, glow:82, barrier:72},
 };
 var ROUTINES={
   oily_acne:{label:'Clear & Balanced',score:81,type:'Oily · Blemish-prone',
