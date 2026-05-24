@@ -340,13 +340,20 @@ async function loadReal(){
 }
 
 function processData(json){
-  allData=json.map(function(s,i){
+  // Garder uniquement les soumissions principales (pas les photos séparées)
+  var mainSubs = json.filter(function(s){
+    return s.form_name !== 'levia-scan-photo';
+  });
+
+  allData=mainSubs.map(function(s,i){
     var d=s.data||{};
+    var email=d.email||s.email||'';
+    var photoUrl = d.photo_url || '';
     return {
       id: s.id||i,
       date: s.created_at ? new Date(s.created_at) : null,
       name: d.name||'',
-      email: d.email||s.email||'',
+      email: email,
       gender: d.gender||'',
       age: d.age||d.age_range||'',
       skin_type: d.skin_type||'',
@@ -355,7 +362,7 @@ function processData(json){
       score: d.score||d.skin_score||'',
       photo_provided: d.photo_provided||'no',
       photo_consent: d.photo_consent||'no',
-      photo_url: d.photo_url||'',
+      photo_url: photoUrl,
       routine_type: d.routine_type||'',
       country: d.country||'',
       lang: d.lang||'',
@@ -467,7 +474,10 @@ function renderTable(){
       +'<td><span class="tag">'+(r.concern||'—')+'</span></td>'
       +'<td>'+sb+'</td>'
       +'<td>'+ph+'</td>'
-      +'<td><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--gd)" stroke-width="2" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></td>'
+      +'<td style="white-space:nowrap;">'
+      +'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--gd)" stroke-width="2" stroke-linecap="round" style="cursor:pointer;" onclick="showDetail(''+r.id+'')"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>'
+      +' <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#e74c3c" stroke-width="2" stroke-linecap="round" style="cursor:pointer;margin-left:6px;" onclick="event.stopPropagation();deleteClient(''+r.id+'')"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>'
+      +'</td>'
       +'</tr>';
   }).join('');
   document.getElementById('cnt').textContent=f.length+' / '+allData.length+' affiché(e)s';
@@ -506,6 +516,7 @@ function showDetail(id){
     +'<div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;">'
     +'<a href="mailto:'+r.email+'?subject=Votre routine Lévia ✨&body=Bonjour '+(r.name||'')+',%0D%0A%0D%0AMerci d\'avoir utilisé Lévia !%0D%0A%0D%0ARetrouvez votre routine sur : leviaskincare.com/scan" '
     +'style="display:inline-flex;align-items:center;gap:6px;padding:10px 16px;background:var(--dark);color:var(--gl);border-radius:9px;font-size:12px;font-weight:600;text-decoration:none;">📧 Envoyer un email</a>'
+    +' <button onclick="deleteClient(''+r.id+'')" style="display:inline-flex;align-items:center;gap:6px;padding:10px 16px;background:#fff0f0;border:1px solid #e74c3c;color:#e74c3c;border-radius:9px;font-size:12px;font-weight:600;cursor:pointer;">🗑 Supprimer</button>'
     +'</div>';
 
   document.getElementById('modal').classList.add('open');
@@ -533,6 +544,37 @@ function exportCSV(){
 }
 
 // ── EXPORT DATASET IA ──
+async function deleteClient(id){
+  if(!confirm('Supprimer ce client ? Cette action est irréversible.')) return;
+  var token=localStorage.getItem('lv_t');
+  var siteId=localStorage.getItem('lv_s');
+  if(!token||!siteId){
+    setS('❌ Token manquant — charge les données d'abord','err');
+    return;
+  }
+  setS('⏳ Suppression en cours…','info');
+  try{
+    // Supprimer sur Netlify Forms via API
+    var resp=await fetch('https://api.netlify.com/api/v1/submissions/'+id,{
+      method:'DELETE',
+      headers:{'Authorization':'Bearer '+token}
+    });
+    if(resp.ok||resp.status===204){
+      // Supprimer localement
+      allData=allData.filter(function(r){return String(r.id)!==String(id);});
+      updateKPIs();
+      renderTable();
+      closeModal();
+      setS('✅ Client supprimé avec succès','ok');
+    } else {
+      var err=await resp.text();
+      setS('❌ Erreur Netlify: '+resp.status+' — '+err.slice(0,100),'err');
+    }
+  }catch(e){
+    setS('❌ '+e.message,'err');
+  }
+}
+
 async function exportDataset(){
   if(mode!=='real'){
     setS('⚠️ Charge d\'abord les vraies données pour exporter le dataset','err');
