@@ -924,14 +924,10 @@ function submitEmail(){
     date:new Date().toISOString(),
   };
 
-  // 1. Netlify Forms (texte)
-  var fd=new FormData();
-  fd.append('form-name','levia-scan');
-  Object.keys(clientData).forEach(function(k){fd.append(k,clientData[k]||'');});
-  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},
-    body:new URLSearchParams(fd).toString()}).catch(function(){});
+  // Envoyer à la Function d'abord (upload photo Cloudinary + email)
+  // puis soumettre à Netlify Forms UNE SEULE FOIS avec photo_url incluse
+  nav('s6',1); // Naviguer tout de suite vers le scan
 
-  // 2. Netlify Function → email + photo Cloudinary
   fetch('/.netlify/functions/submit-client',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
@@ -942,21 +938,24 @@ function submitEmail(){
   }).then(function(resp){return resp.json();})
   .then(function(d){
     console.log('Lévia submit:',d.message||'ok');
-    // Si photo stockée sur Cloudinary, on resoumet avec l'URL
-    if(d.photoUrl){
-      var fd2=new FormData();
-      fd2.append('form-name','levia-scan');
-      fd2.append('email',clientData.email);
-      fd2.append('photo_url',d.photoUrl);
-      fetch('/',{method:'POST',
-        headers:{'Content-Type':'application/x-www-form-urlencoded'},
-        body:new URLSearchParams(fd2).toString()
-      }).catch(function(){});
-    }
+    // Ajouter photo_url au clientData si disponible
+    if(d.photoUrl) clientData.photo_url=d.photoUrl;
+    // Soumettre à Netlify Forms UNE SEULE FOIS avec toutes les données
+    var fd=new FormData();
+    fd.append('form-name','levia-scan');
+    Object.keys(clientData).forEach(function(k){fd.append(k,clientData[k]||'');});
+    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body:new URLSearchParams(fd).toString()}).catch(function(){});
   })
-  .catch(function(e){console.log('Submit note:',e.message);});
-
-  nav('s6',1);
+  .catch(function(e){
+    // En cas d'erreur Function, soumettre quand même à Netlify Forms sans photo
+    var fd=new FormData();
+    fd.append('form-name','levia-scan');
+    Object.keys(clientData).forEach(function(k){fd.append(k,clientData[k]||'');});
+    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body:new URLSearchParams(fd).toString()}).catch(function(){});
+    console.log('Submit note:',e.message);
+  });
 }
 
 // CONFETTI
