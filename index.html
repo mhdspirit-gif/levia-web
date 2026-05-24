@@ -340,27 +340,15 @@ async function loadReal(){
 }
 
 function processData(json){
-  // Séparer les soumissions principales et les mises à jour photo
-  var photoUpdates = {};
-  var mainSubs = [];
-  
-  json.forEach(function(s){
-    if(s.form_name === 'levia-scan-photo'){
-      var d=s.data||{};
-      var email=d.email||'';
-      if(email && d.photo_url){
-        photoUpdates[email] = d.photo_url;
-      }
-    } else {
-      mainSubs.push(s);
-    }
+  // Garder uniquement les soumissions principales (pas les photos séparées)
+  var mainSubs = json.filter(function(s){
+    return s.form_name !== 'levia-scan-photo';
   });
 
   allData=mainSubs.map(function(s,i){
     var d=s.data||{};
     var email=d.email||s.email||'';
-    // Récupérer photo_url depuis les mises à jour ou depuis la soumission elle-même
-    var photoUrl = d.photo_url || photoUpdates[email] || '';
+    var photoUrl = d.photo_url || '';
     return {
       id: s.id||i,
       date: s.created_at ? new Date(s.created_at) : null,
