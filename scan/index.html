@@ -692,6 +692,110 @@ var COUNTRY_LANG = (function(){
   return {country: country.toUpperCase(), lang: lang};
 })();
 
+// ── Système de traduction ──
+var IS_HE = (COUNTRY_LANG.country === 'IL' || COUNTRY_LANG.lang.startsWith('he'));
+
+var TRANS_HE = {
+  "by Salomé": "עם ציפי",
+  "Skin Expert · 20 years · Lévia": "מומחית טיפוח עור · 20 שנות ניסיון",
+  "Skin Expert · Lévia": "מומחית טיפוח · Lévia",
+  "You are a": "את/ה",
+  "woman or a man?": "אישה או גבר?",
+  "Skin biology differs — your routine will be adapted.": "הביולוגיה של העור שונה — השגרה תותאם אישית.",
+  "Woman": "אישה",
+  "Man": "גבר",
+  "Oily": "שמן",
+  "Dry": "יבש",
+  "Sensitive": "רגיש",
+  "Combination": "מעורב",
+  "Mature": "בוגר",
+  "Acne & blemishes": "אקנה ופגמים",
+  "Dullness & glow": "עור עמום · זוהר",
+  "Dryness & dehydration": "יובש · התייבשות",
+  "Ageing & wrinkles": "הזדקנות · קמטים",
+  "Sun exposure": "חשיפה לשמש",
+  "Stress": "לחץ",
+  "Pollution": "זיהום אוויר",
+  "Cold & wind": "קור ורוח",
+  "Take a selfie": "צלם/י סלפי",
+  "Front face · Eyes open": "פנים ישירות · עיניים פתוחות",
+  "Choose from gallery": "בחר/י מהגלריה",
+  "Analyse my skin ❖": "נתח את העור שלי ❖",
+  "Skip — analyse from answers only": "דלג/י — נתח לפי תשובות בלבד",
+  "Good light": "תאורה טובה",
+  "face forward": "פנים ישר",
+  "No filter": "ללא פילטר",
+  "no makeup": "ללא איפור",
+  "Selfie or": "סלפי או",
+  "gallery photo": "תמונה מהגלריה",
+  "Photo stays on your device · Never uploaded": "התמונה נשארת במכשיר שלך · לא מועלית",
+  "Your Lévia Analysis": "ניתוח Lévia שלך",
+  "Save & share your personalised result": "שמור/י ושתף/י את התוצאה האישית שלך",
+  "SKIN SCORE": "ציון עור",
+  "SKIN TYPE": "סוג עור",
+  "STEPS": "שלבים",
+  "Morning Routine": "שגרת בוקר",
+  "Evening Routine": "שגרת ערב",
+  "Follow @levia.skincare.uk": "עקבו @levia.skincare.il",
+  "20 years expertise · Lévia Skincare": "20 שנות ניסיון · Lévia Skincare",
+  "Your routine crafted by": "השגרה שלך נוצרה על ידי",
+  "Find on Amazon": "מצא באמזון",
+  "Salomé": "ציפי",
+  "ANALYSIS COMPLETE": "הניתוח הושלם",
+  "SKIN ANALYSIS IN PROGRESS": "ניתוח העור בתהליך",
+  "Enter your first name": "שם פרטי",
+  "Enter your email": "אימייל",
+  "Receive my free routine": "קבל/י את השגרה שלי חינם"
+}
+
+function applyTranslations(){
+  if(!IS_HE) return;
+  // Direction RTL
+  document.documentElement.dir='rtl';
+  document.documentElement.lang='he';
+  // Translate all text nodes
+  function walkAndTranslate(node){
+    if(node.nodeType===3){ // text node
+      var t=node.textContent;
+      Object.keys(TRANS_HE).forEach(function(k){
+        if(t.trim()===k) node.textContent=TRANS_HE[k];
+      });
+    } else if(node.nodeType===1 && node.childNodes){
+      // innerHTML translation for elements with HTML
+      var html=node.innerHTML;
+      var changed=false;
+      Object.keys(TRANS_HE).forEach(function(k){
+        if(html===k||(node.childNodes.length<=3&&html.includes(k))){
+          // only replace if it's a leaf-ish node
+        }
+      });
+      node.childNodes.forEach(function(c){walkAndTranslate(c);});
+    }
+  }
+  // Direct targeted translations
+  Object.keys(TRANS_HE).forEach(function(k){
+    document.querySelectorAll('*').forEach(function(el){
+      if(el.children.length===0 && el.textContent.trim()===k){
+        el.textContent=TRANS_HE[k];
+      }
+      // innerHTML for elements with bold/em
+      if(el.innerHTML.trim()===k){
+        el.innerHTML=TRANS_HE[k];
+      }
+    });
+  });
+  // Expert name
+  var nameEls=document.querySelectorAll('.salome-name,.s-name');
+  nameEls.forEach(function(el){el.textContent='ציפי';});
+  var expEls=document.querySelectorAll('.salome-exp');
+  expEls.forEach(function(el){el.textContent='מומחית טיפוח עור · 20 שנות ניסיון';});
+  // Title
+  document.title='Lévia — ניתוח עור עם ציפי';
+}
+// Apply after DOM ready
+document.addEventListener('DOMContentLoaded', applyTranslations);
+if(document.readyState!=='loading') applyTranslations();
+
 var state={q1:null,q2:null,q3:null,q4:null,q5:null,gender:null,age:null,photo:null,email:''};
 var currentScreen='s1';
 
@@ -789,8 +893,21 @@ function submitEmail(){
       client: clientData,
       photo: (state.photo && state.photoConsent) ? state.photo : null
     })
-  }).then(function(r){return r.json();})
-  .then(function(d){console.log('Lévia submit:',d.message||'ok');})
+  }).then(function(resp){return resp.json();})
+  .then(function(d){
+    console.log('Lévia submit:',d.message||'ok');
+    // Si photo stockée sur Cloudinary, on resoumet avec l'URL
+    if(d.photoUrl){
+      var fd2=new FormData();
+      fd2.append('form-name','levia-scan');
+      fd2.append('email',clientData.email);
+      fd2.append('photo_url',d.photoUrl);
+      fetch('/',{method:'POST',
+        headers:{'Content-Type':'application/x-www-form-urlencoded'},
+        body:new URLSearchParams(fd2).toString()
+      }).catch(function(){});
+    }
+  })
   .catch(function(e){console.log('Submit note:',e.message);});
 
   nav('s6',1);
