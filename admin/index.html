@@ -236,7 +236,13 @@ function doLogin(){
 function show(){
   document.getElementById('login-screen').style.display='none';
   document.getElementById('dashboard').style.display='block';
-  loadDemo();
+  // Restore saved token + site ID
+  var t=localStorage.getItem('lv_t'),s=localStorage.getItem('lv_s');
+  if(t) document.getElementById('tok').value=t;
+  if(s) document.getElementById('sid').value=s;
+  // Auto-load real data if credentials saved, else demo
+  if(t&&s){ setTimeout(loadReal,300); }
+  else { loadDemo(); }
 }
 function logout(){localStorage.removeItem('lv_auth');location.reload();}
 if(localStorage.getItem('lv_auth')==='1') show();
@@ -250,6 +256,11 @@ function setStatus(msg, type){
 
 // ── LOAD REAL (via Netlify Function) ──
 async function loadReal(){
+  var tok=document.getElementById('tok').value.trim();
+  var sid=document.getElementById('sid').value.trim();
+  // Auto-save for next time
+  if(tok) localStorage.setItem('lv_t',tok);
+  if(sid) localStorage.setItem('lv_s',sid);
   var btn=document.getElementById('load-btn');
   btn.textContent='Chargement…';btn.disabled=true;
   setStatus('⏳ Connexion à Netlify…','loading');
@@ -287,12 +298,15 @@ function processData(json){
       id:s.id||i,
       date:s.created_at?new Date(s.created_at):null,
       name:d.name||'', email:d.email||s.email||'',
-      gender:d.gender||'', age:d.age_range||'',
+      gender:d.gender||'', age:d.age||d.age_range||'',
       skin_type:d.skin_type||'', concern:d.concern||'',
-      lifestyle:d.lifestyle||'', score:d.skin_score||'',
+      lifestyle:d.lifestyle||'', score:d.score||d.skin_score||'',
       photo_provided:d.photo_provided||'no',
       photo_consent:d.photo_consent||'no',
+      photo_url:d.photo_url||'',
       routine_type:d.routine_type||'',
+      country:d.country||'',
+      lang:d.lang||'',
     };
   });
   updateKPIs();renderTable();
@@ -390,7 +404,10 @@ function showDetail(id){
     +dr('Score',sc?'<span style="font-size:28px;font-weight:700;font-family:Georgia,serif;color:'+scC+'">'+sc+'</span>':'—')
     +dr('Routine',r.routine_type||'—')
     +'<div class="dsep"></div>'
-    +dr('Photo prise',r.photo_provided==='yes'?'<span style="color:var(--green);font-weight:600;">✓ Oui</span>':'Non')
+    +(r.photo_url
+      ?'<div style="margin:8px 0 12px;"><img src="'+r.photo_url+'" style="width:100px;height:100px;object-fit:cover;border-radius:10px;border:2px solid var(--gold);display:block;"><div style="font-size:10px;color:var(--t3);margin-top:4px;">✓ Photo stockée sur Cloudinary</div></div>'
+      :'')
+    +dr('Photo prise',r.photo_provided==='yes'?'<span style="color:var(--green);font-weight:600;">✓ Oui</span>':'<span style="color:var(--t3);">Non</span>')
     +dr('Consentement',r.photo_consent==='yes'?'<span style="color:var(--green);">✓ Accepté</span>':'—')
     +'<div style="margin-top:16px;">'
     +'<a href="mailto:'+r.email+'?subject=Votre routine Lévia personnalisée ✨&body=Bonjour '+(r.name||'')+',%0D%0A%0D%0AMerci d\'avoir complété votre analyse de peau Lévia !%0D%0A%0D%0ARetrouvez votre routine personnalisée sur : leviaskincare.com/scan%0D%0A%0D%0ACordialement,%0D%0ASalomé · Lévia" '
