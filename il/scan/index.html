@@ -1,0 +1,2070 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head><script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wwt09be2ge");
+</script><!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W2SNN6BTV6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-W2SNN6BTV6');
+</script>
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '971155829225384');
+fbq('track', 'PageView');
+</script>
+<!-- End Meta Pixel -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+<title>Lévia — ניתוח עור עם ציפי</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C9A96E;--gold-l:#E8C98A;--gold-d:#8B6A20;
+  --cream:#FAF7F2;--cream2:#F3EDE4;--sand:#E8DECE;
+  --dark:#1A1208;--text:#2E1F08;--text2:#6B4F2A;--text3:#9E7D4E;
+  --white:#FFFFFF;--border:rgba(201,169,110,0.22);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'Heebo',sans-serif;overflow:hidden;color:var(--text);}
+/* Fix scroll sur petits écrans */
+
+/* ===== SCREENS — slide transition ===== */
+.screen{
+  position:fixed;inset:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+  padding:max(env(safe-area-inset-top),20px) 24px max(env(safe-area-inset-bottom),24px);
+  background:var(--cream);
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  transform:translateX(100%);
+  transition:transform 0.42s cubic-bezier(0.4,0,0.2,1), opacity 0.42s ease;
+  opacity:0;pointer-events:none;
+  will-change:transform;
+}
+/* Petits écrans : centrage vertical uniquement si assez de place */
+@media (min-height: 700px) {
+  .screen { justify-content:center; }
+}
+@media (max-height: 699px) {
+  .screen { justify-content:flex-start; padding-top: max(env(safe-area-inset-top),12px); }
+}
+.screen.active{transform:translateX(0);opacity:1;pointer-events:all;}
+.screen.exit-left{transform:translateX(-60px);opacity:0;pointer-events:none;}
+#s1{transform:translateX(0);} /* welcome starts visible but faded */
+.screen-inner{width:100%;max-width:420px;margin:0 auto;display:flex;flex-direction:column;align-items:center;padding-top:8px;}
+
+/* TOP BAR */
+.top-bar{width:100%;max-width:420px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding-bottom:20px;flex-shrink:0;}
+.top-logo{font-family:'Heebo',sans-serif;font-size:18px;letter-spacing:6px;color:var(--gold-d);}
+.prog-wrap{flex:1;margin:0 14px;}
+.prog-bar{height:2px;background:var(--sand);border-radius:1px;overflow:hidden;}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--gold-d),var(--gold-l));border-radius:1px;transition:width 0.5s ease;}
+.step-label{font-size:10px;color:var(--text3);letter-spacing:1.5px;text-align:right;margin-top:4px;}
+.back-btn{width:32px;height:32px;border-radius:50%;border:1px solid var(--border);background:var(--white);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text3);font-size:14px;flex-shrink:0;}
+
+/* WELCOME */
+#s1{background:linear-gradient(160deg,#FAF7F2 0%,#EEE4D6 100%);}
+.s1-logo{font-family:'Heebo',sans-serif;font-size:42px;letter-spacing:10px;color:var(--gold-d);margin-bottom:4px;}
+.s1-tagline{font-size:11px;letter-spacing:3px;color:var(--text3);text-transform:uppercase;margin-bottom:32px;}
+.salome-circle{position:relative;width:130px;height:130px;margin:0 auto 14px;}
+.salome-circle img{width:100%;height:100%;object-fit:cover;object-position:center 12%;border-radius:50%;border:2px solid rgba(201,169,110,0.45);}
+.ring{position:absolute;border-radius:50%;border:1.5px solid rgba(201,169,110,0.35);animation:ringPulse 3s ease-in-out infinite;}
+.ring1{inset:-6px;}
+.ring2{inset:-14px;border-color:rgba(201,169,110,0.15);animation-delay:1s;}
+@keyframes ringPulse{0%,100%{transform:scale(1);opacity:0.5;}50%{transform:scale(1.03);opacity:1;}}
+.salome-name{font-family:'Heebo',sans-serif;font-size:15px;color:var(--text2);font-style:italic;text-align:center;margin-bottom:2px;}
+.salome-exp{font-size:11px;color:var(--text3);letter-spacing:1px;text-align:center;margin-bottom:28px;}
+.s1-title{font-family:'Heebo',sans-serif;font-size:28px;line-height:1.25;text-align:center;color:var(--text);margin-bottom:8px;}
+.s1-title em{color:var(--gold-d);font-style:italic;}
+.s1-sub{font-size:13px;line-height:1.75;color:var(--text2);text-align:center;margin-bottom:28px;}
+.s1-steps{display:flex;gap:10px;margin-bottom:32px;width:100%;}
+.s1-step{flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;padding:12px 6px;background:rgba(255,255,255,0.7);border:1px solid var(--border);border-radius:14px;}
+.s1-step svg{color:var(--gold-d);}
+.s1-step-label{font-size:10px;color:var(--text2);text-align:center;line-height:1.4;letter-spacing:0.2px;}
+
+/* QUESTIONS */
+.q-icon-wrap{width:52px;height:52px;border-radius:15px;background:var(--white);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:18px;box-shadow:0 2px 12px rgba(201,169,110,0.1);}
+.q-title{font-family:'Heebo',sans-serif;font-size:27px;line-height:1.2;text-align:center;color:var(--text);margin-bottom:6px;}
+.q-title em{color:var(--gold-d);font-style:italic;}
+.q-sub{font-size:13px;color:var(--text2);text-align:center;margin-bottom:22px;line-height:1.6;}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:9px;width:100%;}
+.opt{padding:15px 10px;border-radius:15px;border:1.5px solid var(--border);background:var(--white);cursor:pointer;transition:all 0.2s;text-align:center;position:relative;}
+.opt:active{transform:scale(0.97);}
+.opt.selected{border-color:var(--gold-d);background:linear-gradient(135deg,#FDF6E8,#F5EADA);box-shadow:0 4px 16px rgba(139,106,32,0.15);}
+.opt svg{display:block;margin:0 auto 7px;color:var(--text3);}
+.opt.selected svg{color:var(--gold-d);}
+.opt-label{font-size:12px;font-weight:500;color:var(--text);}
+.opt.selected .opt-label{color:var(--gold-d);}
+.opt-sub{font-size:10px;color:var(--text3);margin-top:2px;line-height:1.3;}
+.check-badge{position:absolute;top:8px;right:8px;width:18px;height:18px;border-radius:50%;background:var(--gold-d);display:none;align-items:center;justify-content:center;}
+.opt.selected .check-badge{display:flex;}
+
+.options.full{grid-template-columns:1fr;}
+.options.full .opt{display:flex;align-items:center;gap:14px;text-align:left;padding:14px 16px;}
+.options.full .opt svg{margin:0;flex-shrink:0;}
+.options.full .check-badge{position:relative;top:auto;right:auto;margin-left:auto;flex-shrink:0;}
+
+/* PHOTO */
+.photo-zone{width:160px;height:160px;border-radius:50%;border:2px dashed rgba(201,169,110,0.4);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 22px;background:var(--white);cursor:pointer;transition:all 0.2s;}
+.photo-zone:active{transform:scale(0.97);}
+.photo-zone svg{color:var(--text3);margin-bottom:8px;}
+.pz-text{font-size:11px;color:var(--text3);text-align:center;line-height:1.5;}
+.photo-preview{width:160px;height:160px;border-radius:50%;object-fit:cover;object-position:center 15%;border:2px solid rgba(201,169,110,0.4);display:none;margin:0 auto 22px;}
+.photo-required-note{font-size:12px;color:var(--gold-d);text-align:center;margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:6px;}
+
+/* EMAIL */
+.email-input{width:100%;padding:15px 20px;border-radius:999px;border:1.5px solid var(--border);background:var(--white);color:var(--text);font-size:15px;font-family:'Heebo',sans-serif;outline:none;text-align:center;transition:border-color 0.2s;-webkit-appearance:none;}
+.email-input::placeholder{color:var(--text3);}
+.email-input:focus{border-color:var(--gold);}
+.privacy-note{font-size:11px;color:var(--text3);text-align:center;margin-top:12px;line-height:1.7;}
+
+/* SCAN */
+#s6{background:var(--dark);justify-content:center;overflow:hidden;}
+.scan-status{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:14px;animation:blink 1.2s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.25;}}
+.scan-wrap{position:relative;width:240px;height:296px;border-radius:22px;overflow:hidden;margin:0 auto 22px;flex-shrink:0;}
+.scan-photo{width:100%;height:100%;object-fit:cover;object-position:center 8%;}
+.scan-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,0.5) 100%);border-radius:22px;pointer-events:none;}
+.scan-mesh{position:absolute;inset:0;opacity:0;transition:opacity 0.8s;background-image:linear-gradient(rgba(201,169,110,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(201,169,110,0.07) 1px,transparent 1px);background-size:18px 18px;}
+.scan-mesh.on{opacity:1;}
+
+/* Scan line glow */
+.scan-line{position:absolute;left:0;right:0;height:3px;z-index:10;
+  background:linear-gradient(90deg,transparent,rgba(201,169,110,0.25) 12%,rgba(255,228,100,0.95) 45%,rgba(255,252,200,1) 50%,rgba(255,228,100,0.95) 55%,rgba(201,169,110,0.25) 88%,transparent);
+  box-shadow:0 0 10px rgba(255,220,60,1),0 0 28px rgba(201,169,110,0.9),0 0 60px rgba(201,169,110,0.35);}
+.scan-trail{position:absolute;left:0;right:0;height:70px;z-index:9;
+  background:linear-gradient(180deg,rgba(201,169,110,0.14),transparent);pointer-events:none;}
+
+/* Corners */
+.sc{position:absolute;width:18px;height:18px;border-color:var(--gold-l);border-style:solid;animation:cornerGlow 2s ease-in-out infinite;}
+.sc-tl{top:10px;left:10px;border-width:2px 0 0 2px;animation-delay:0s;}
+.sc-tr{top:10px;right:10px;border-width:2px 2px 0 0;animation-delay:0.5s;}
+.sc-bl{bottom:10px;left:10px;border-width:0 0 2px 2px;animation-delay:1s;}
+.sc-br{bottom:10px;right:10px;border-width:0 2px 2px 0;animation-delay:1.5s;}
+@keyframes cornerGlow{0%,100%{opacity:0.5;}50%{opacity:1;filter:drop-shadow(0 0 4px rgba(201,169,110,0.8));}}
+
+/* Face analysis overlay — mesh lines on face */
+.face-mesh-canvas{position:absolute;inset:0;z-index:12;pointer-events:none;}
+
+/* Face dots */
+.scan-overlay{position:absolute;inset:0;z-index:15;pointer-events:none;opacity:0;transition:opacity 1s;}
+.scan-overlay.on{opacity:1;}
+.scan-zone{opacity:0;transition:opacity 0.6s;}
+.scan-zone.on{opacity:1;}
+
+.scan-pct{font-family:'Heebo',sans-serif;font-size:52px;font-weight:700;color:var(--white);text-align:center;letter-spacing:3px;line-height:1;}
+.scan-sub-text{font-size:9px;color:rgba(255,255,255,0.35);text-align:center;letter-spacing:2.5px;margin-bottom:14px;margin-top:4px;}
+.atags{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:280px;}
+.atag{padding:3px 9px;border-radius:999px;border:1px solid rgba(201,169,110,0.2);font-size:9px;color:rgba(255,255,255,0.45);opacity:0;animation:tagIn 0.4s ease forwards;}
+@keyframes tagIn{from{opacity:0;transform:scale(0.8);}to{opacity:1;transform:scale(1);}}
+
+/* RESULT */
+#s7{background:var(--cream);padding-top:0;justify-content:flex-start;overflow-y:auto;}
+.result-hero{width:100%;background:linear-gradient(160deg,#1A1208 0%,#2E1F08 100%);padding:36px 24px 28px;display:flex;flex-direction:column;align-items:center;position:relative;overflow:hidden;}
+.result-hero::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(201,169,110,0.2),transparent 70%);pointer-events:none;}
+.result-logo{font-family:'Heebo',sans-serif;font-size:16px;letter-spacing:6px;color:rgba(201,169,110,0.6);margin-bottom:20px;}
+.score-ring-wrap{position:relative;width:120px;height:120px;margin:0 auto 14px;}
+.score-svg{width:120px;height:120px;transform:rotate(-90deg);}
+.score-bg{fill:none;stroke:rgba(255,255,255,0.08);stroke-width:7;}
+.score-arc{fill:none;stroke:url(#sg);stroke-width:7;stroke-linecap:round;stroke-dasharray:326;stroke-dashoffset:326;transition:stroke-dashoffset 1.8s cubic-bezier(0.4,0,0.2,1);}
+.score-num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.score-n{font-family:'Heebo',sans-serif;font-size:36px;font-weight:700;color:var(--gold-l);line-height:1;}
+.score-label{font-size:9px;color:rgba(255,255,255,0.4);letter-spacing:1.5px;margin-top:2px;}
+.result-name{font-family:'Heebo',sans-serif;font-size:28px;color:var(--white);text-align:center;margin-bottom:4px;}
+.result-type{font-size:11px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;}
+.result-insight{font-size:13px;color:rgba(255,255,255,0.6);text-align:center;line-height:1.7;max-width:300px;font-style:italic;font-family:'Heebo',sans-serif;}
+
+.result-body{width:100%;max-width:420px;margin:0 auto;padding:24px 20px 40px;}
+.section-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+.routine-step{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:14px;background:var(--white);border:1px solid var(--border);margin-bottom:8px;}
+.step-n{width:24px;height:24px;border-radius:8px;background:var(--cream2);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:var(--gold-d);flex-shrink:0;border:1px solid var(--border);}
+.step-name{font-size:13px;font-weight:500;color:var(--text);margin-bottom:2px;}
+.step-detail{font-size:11px;color:var(--text3);line-height:1.5;}
+.step-why{font-size:10px;color:var(--gold-d);font-style:italic;margin-top:3px;line-height:1.4;}
+
+.salome-sign{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:16px;background:var(--white);border:1px solid var(--border);margin:16px 0;}
+.s-thumb{width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:center 10%;border:1px solid var(--border);flex-shrink:0;}
+.s-text{font-size:12px;color:var(--text2);line-height:1.5;}
+.s-name{font-family:'Heebo',sans-serif;font-size:16px;color:var(--gold-d);font-style:italic;}
+
+/* Share card */
+.share-card{border-radius:18px;background:linear-gradient(135deg,#1A1208,#2E1F08);border:1px solid rgba(201,169,110,0.25);padding:20px;margin-bottom:14px;text-align:center;}
+.share-card-title{font-family:'Heebo',sans-serif;font-size:18px;color:var(--white);margin-bottom:4px;}
+.share-card-sub{font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:14px;letter-spacing:0.5px;}
+.share-stats{display:flex;justify-content:center;gap:24px;margin-bottom:16px;}
+.stat{display:flex;flex-direction:column;align-items:center;}
+.stat-n{font-family:'Heebo',sans-serif;font-size:28px;color:var(--gold-l);font-weight:700;line-height:1;}
+.stat-l{font-size:9px;color:rgba(255,255,255,0.35);letter-spacing:1.5px;margin-top:2px;}
+
+/* BUTTONS */
+.btn-gold{position:relative;overflow:hidden;width:100%;max-width:360px;padding:16px 24px;border:none;border-radius:999px;cursor:pointer;font-size:15px;font-weight:600;color:#1A0F05;font-family:'Heebo',sans-serif;
+  background:linear-gradient(135deg,#b87820,#e8a830,#f5c860,#e8a830,#b87820);
+  background-size:200% 100%;
+  box-shadow:0 4px 22px rgba(184,120,32,0.4),inset 0 1px rgba(255,255,255,0.35);
+  animation:goldShift 3s ease-in-out infinite, btnPulse 1.8s ease-in-out infinite;}
+.btn-gold[style*="opacity:0.3"]{animation:none!important;transform:none!important;}
+.btn-gold::after{content:"";position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,220,0.7) 50%,transparent);transform:skewX(-22deg);animation:shine 2s ease-in-out infinite;}
+@keyframes goldShift{0%,100%{background-position:0% 50%;box-shadow:0 4px 20px rgba(184,120,32,0.35);}50%{background-position:100% 50%;box-shadow:0 4px 32px rgba(232,168,48,0.6);}}
+@keyframes shine{0%{left:-100%;}100%{left:140%;}}
+@keyframes btnPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
+@keyframes consentGlow{0%,100%{border-color:rgba(201,169,110,0.35);box-shadow:0 0 0px rgba(201,169,110,0);}50%{border-color:rgba(201,169,110,0.9);box-shadow:0 0 12px rgba(201,169,110,0.5);}}
+.btn-gold:active{transform:scale(0.98);}
+.btn-outline{width:100%;max-width:360px;padding:14px 24px;border-radius:999px;border:1.5px solid var(--border);background:var(--white);color:var(--text2);font-size:14px;font-family:'Heebo',sans-serif;cursor:pointer;transition:0.2s;}
+.btn-outline:active{background:var(--cream2);}
+.btn-skip{font-size:12px;color:var(--text3);cursor:pointer;text-decoration:underline;text-underline-offset:3px;margin-top:10px;display:inline-block;}
+
+
+/* GENDER PICK */
+.gender-opts{display:flex;gap:12px;width:100%;margin-bottom:22px;}
+.gender-opt{
+  flex:1;padding:20px 10px;border-radius:18px;
+  border:1.5px solid var(--border);background:var(--white);
+  cursor:pointer;transition:all 0.2s;text-align:center;position:relative;
+}
+.gender-opt:active{transform:scale(0.97);}
+.gender-opt.selected{border-color:var(--gold-d);background:linear-gradient(135deg,#FDF6E8,#F5EADA);box-shadow:0 4px 16px rgba(139,106,32,0.15);}
+.gender-opt svg{display:block;margin:0 auto 8px;color:var(--text3);}
+.gender-opt.selected svg{color:var(--gold-d);}
+.gender-opt .opt-label{font-size:14px;font-weight:500;color:var(--text);}
+.gender-opt.selected .opt-label{color:var(--gold-d);}
+.gender-opt .check-badge{position:absolute;top:8px;right:8px;}
+
+/* AGE GRID */
+.age-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;width:100%;margin-bottom:22px;}
+.age-opt{
+  padding:16px 10px;border-radius:15px;
+  border:1.5px solid var(--border);background:var(--white);
+  cursor:pointer;transition:all 0.2s;text-align:center;position:relative;
+}
+.age-opt:active{transform:scale(0.97);}
+.age-opt.selected{border-color:var(--gold-d);background:linear-gradient(135deg,#FDF6E8,#F5EADA);box-shadow:0 4px 16px rgba(139,106,32,0.15);}
+.age-range{font-family:'Heebo',sans-serif;font-size:22px;font-weight:700;color:var(--text);display:block;margin-bottom:2px;}
+.age-opt.selected .age-range{color:var(--gold-d);}
+.age-desc{font-size:10px;color:var(--text3);}
+.age-opt.selected .age-desc{color:var(--gold-d);}
+.age-opt .check-badge{position:absolute;top:6px;right:6px;}
+
+/* Instagram CTA */
+.ig-cta-wrap{width:100%;max-width:380px;margin:0 auto 16px;}
+.ig-btn{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;padding:16px 20px;border-radius:999px;
+  background:linear-gradient(135deg,#833AB4,#FD1D1D,#F77737);
+  border:none;cursor:pointer;
+  font-size:14px;font-weight:600;color:#fff;
+  font-family:'Heebo',sans-serif;
+  box-shadow:0 4px 20px rgba(253,29,29,0.3);
+  transition:opacity 0.2s;
+}
+.ig-btn:active{opacity:0.85;}
+
+/* CONFETTI */
+.cf-box{position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden;}
+.cf{position:absolute;top:-14px;opacity:0;animation:cfFall linear forwards;}
+@keyframes cfFall{0%{opacity:1;transform:translateY(0) rotate(0deg);}100%{opacity:0;transform:translateY(105vh) rotate(720deg);}}
+.amazon-btn-gold{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:7px 14px;border-radius:999px;border:none;
+  background:linear-gradient(135deg,#b87820,#e8a830,#f5c860,#e8a830,#b87820);
+  background-size:200% 100%;
+  color:#1A0F05;font-size:11px;font-weight:700;
+  text-decoration:none;cursor:pointer;
+  font-family:'Heebo',sans-serif;
+  animation:goldShift 3s ease-in-out infinite,btnPulse 1.8s ease-in-out infinite;
+  box-shadow:0 2px 10px rgba(184,120,32,0.3);
+  margin-top:6px;
+}
+</style>
+</head>
+<body>
+
+<!-- S1 WELCOME -->
+<div class="screen active" id="s1">
+  <div class="screen-inner" style="padding-top:24px;">
+    <div class="s1-logo">LÉVIA</div>
+    <div class="s1-tagline">עם ציפי</div>
+    <div class="salome-circle">
+      <div class="ring ring1"></div><div class="ring ring2"></div>
+      <img id="salome-img" alt="ציפי">
+    </div>
+    <div class="salome-name">ציפי</div>
+    <div class="salome-exp">מומחית טיפוח עור · 20 שנות ניסיון · Lévia</div>
+    <div class="s1-title">העור שלך ראוי<br><em>להיות מובן לאמיתו.</em></div>
+    <div class="s1-sub">ענה/י על 5 שאלות · קבל/י שגרת טיפוח<br>אישית ומקצועית בחינם תוך 3 דקות.</div>
+    <div class="s1-steps">
+      <div class="s1-step">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M9 9h.01M15 9h.01M8 13s1.5 2 4 2 4-2 4-2"/></svg>
+        <div class="s1-step-label">5 שאלות חכמות</div>
+      </div>
+      <div class="s1-step">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h6M3 15h6"/></svg>
+        <div class="s1-step-label">סריקת פנים AI</div>
+      </div>
+      <div class="s1-step">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 2C8.5 5 4 9 4 13a8 8 0 0016 0c0-4-4.5-8-8-11z"/></svg>
+        <div class="s1-step-label">השגרה שלך</div>
+      </div>
+    </div>
+    <button class="btn-gold" onclick="nav('s-gender',1)">✦ התחל/י את הניתוח החינמי שלי</button>
+  </div>
+</div>
+
+
+<!-- S-GENDER — HOMME/FEMME -->
+<div class="screen" id="s-gender">
+  <div class="top-bar">
+    <div class="back-btn" onclick="nav('s1',-1)">←</div>
+    <div class="prog-wrap"><div class="prog-bar"><div class="prog-fill" style="width:20%"></div></div><div class="step-label">1 מתוך 5</div></div>
+    <div style="width:32px"></div>
+  </div>
+  <div class="screen-inner">
+    <div class="q-icon-wrap">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round">
+        <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+      </svg>
+    </div>
+    <div class="q-title">את/ה<br><em>אישה או גבר?</em></div>
+    <div class="q-sub">הביולוגיה של העור שונה — השגרה תותאם אישית.</div>
+    <div class="gender-opts">
+      <div class="gender-opt" onclick="pickGender(this,'female')">
+        <div class="check-badge"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+          <circle cx="12" cy="8" r="5"/><path d="M12 13v8M9 18h6"/>
+        </svg>
+        <div class="opt-label">אישה</div>
+      </div>
+      <div class="gender-opt" onclick="pickGender(this,'male')">
+        <div class="check-badge"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+          <circle cx="10" cy="14" r="5"/><path d="M19 5l-5 5M19 5h-5M19 5v5"/>
+        </svg>
+        <div class="opt-label">גבר</div>
+      </div>
+    </div>
+    <button class="btn-gold" id="btn-gender" style="opacity:0.3;pointer-events:none;" onclick="nav('s-age',1)">המשך/י →</button>
+  </div>
+</div>
+
+<!-- S-AGE — TRANCHE D'ÂGE -->
+<div class="screen" id="s-age">
+  <div class="top-bar">
+    <div class="back-btn" onclick="nav('s-gender',-1)">←</div>
+    <div class="prog-wrap"><div class="prog-bar"><div class="prog-fill" style="width:40%"></div></div><div class="step-label">2 מתוך 5</div></div>
+    <div style="width:32px"></div>
+  </div>
+  <div class="screen-inner">
+    <div class="q-icon-wrap">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round">
+        <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>
+      </svg>
+    </div>
+    <div class="q-title">מה<br><em>טווח הגיל שלך?</em></div>
+    <div class="q-sub">הגיל משנה הכל בביולוגיה של העור.</div>
+    <div class="age-grid">
+      <div class="age-opt" onclick="pickAge(this,'18-24')">
+        <div class="check-badge"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
+        <span class="age-range">18–24</span>
+        <span class="age-desc">מניעה וזוהר</span>
+      </div>
+      <div class="age-opt" onclick="pickAge(this,'25-34')">
+        <div class="check-badge"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
+        <span class="age-range">25–34</span>
+        <span class="age-desc">סימנים ראשונים</span>
+      </div>
+      <div class="age-opt" onclick="pickAge(this,'35-44')">
+        <div class="check-badge"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
+        <span class="age-range">35–44</span>
+        <span class="age-desc">אנטי-אייג׳ינג פעיל</span>
+      </div>
+      <div class="age-opt" onclick="pickAge(this,'45-54')">
+        <div class="check-badge"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
+        <span class="age-range">45–54</span>
+        <span class="age-desc">שינויים הורמונליים</span>
+      </div>
+      <div class="age-opt" onclick="pickAge(this,'55-64')">
+        <div class="check-badge"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
+        <span class="age-range">55–64</span>
+        <span class="age-desc">תזונה והגנה</span>
+      </div>
+      <div class="age-opt" onclick="pickAge(this,'65+')">
+        <div class="check-badge"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
+        <span class="age-range">65+</span>
+        <span class="age-desc">טיפול עדין ועשיר</span>
+      </div>
+    </div>
+    <button class="btn-gold" id="btn-age" style="opacity:0.3;pointer-events:none;" onclick="nav('s2',1)">המשך/י →</button>
+  </div>
+</div>
+
+<!-- S2 Q1 SKIN TYPE -->
+<div class="screen" id="s2">
+  <div class="top-bar">
+    <div class="back-btn" onclick="nav('s1',-1)">←</div>
+    <div class="prog-wrap"><div class="prog-bar"><div class="prog-fill" style="width:60%"></div></div><div class="step-label">3 מתוך 5</div></div>
+    <div style="width:32px"></div>
+  </div>
+  <div class="screen-inner">
+    <div class="q-icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><ellipse cx="12" cy="10" rx="6" ry="8"/><path d="M9 18v3m6-3v3m-4 0h4"/></svg></div>
+    <div class="q-title">מה<br><em>סוג העור שלך?</em></div>
+    <div class="q-sub">בחר/י את מה שהכי מתאים לך</div>
+    <div class="options">
+      <div class="opt" onclick="pick(this,'q1','oily')">
+        <div class="check-badge"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 2C12 2 5 10 5 15a7 7 0 0014 0c0-5-7-13-7-13z"/></svg>
+        <div class="opt-label">שמן / מעורב</div><div class="opt-sub">מבריק, נקבוביות גדולות</div>
+      </div>
+      <div class="opt" onclick="pick(this,'q1','dry')">
+        <div class="check-badge"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 2C6 8 4 13 4 16a8 8 0 0016 0c0-3-2-8-8-14z"/></svg>
+        <div class="opt-label">יבש / נורמלי</div><div class="opt-sub">מתוח, לפעמים מתקלף</div>
+      </div>
+      <div class="opt" onclick="pick(this,'q1','sensitive')">
+        <div class="check-badge"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 2C8 5 4 9 4 12a8 8 0 0016 0c0-3-4-7-8-10z"/><path d="M12 8v3" opacity="0.4"/></svg>
+        <div class="opt-label">רגיש</div><div class="opt-sub">מגיב, אדמומיות</div>
+      </div>
+      <div class="opt" onclick="pick(this,'q1','mature')">
+        <div class="check-badge"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 14s1.5 1.5 3.5 1.5 3.5-1.5 3.5-1.5M9 9h.01M15 9h.01"/></svg>
+        <div class="opt-label">בוגר 35+</div><div class="opt-sub">קמטוטים, חוסר גמישות</div>
+      </div>
+    </div>
+    <div style="height:22px"></div>
+    <button class="btn-gold" id="btn-q1" style="opacity:0.3;pointer-events:none;" onclick="nav('s3',1)">המשך/י →</button>
+  </div>
+</div>
+
+<!-- S3 Q2 CONCERN -->
+<div class="screen" id="s3">
+  <div class="top-bar">
+    <div class="back-btn" onclick="nav('s2',-1)">←</div>
+    <div class="prog-wrap"><div class="prog-bar"><div class="prog-fill" style="width:80%"></div></div><div class="step-label">4 מתוך 5</div></div>
+    <div style="width:32px"></div>
+  </div>
+  <div class="screen-inner">
+    <div class="q-icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg></div>
+    <div class="q-title">מה<br><em>הדאגה העיקרית שלך לגבי העור?</em></div>
+    <div class="q-sub">מה הכי תרצ/י לשפר?</div>
+    <div class="options">
+      <div class="opt" onclick="pick(this,'q2','acne')">
+        <div class="check-badge"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><circle cx="11" cy="11" r="3"/></svg>
+        <div class="opt-label">פגמים</div><div class="opt-sub">אקנה, פצעונים</div>
+      </div>
+      <div class="opt" onclick="pick(this,'q2','dryness')">
+        <div class="check-badge"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 2C12 2 5 10 5 15a7 7 0 0014 0c0-5-7-13-7-13z"/><path d="M9 17a3 3 0 006 0"/></svg>
+        <div class="opt-label">יובש</div><div class="opt-sub">מתוח, מיובש</div>
+      </div>
+      <div class="opt" onclick="pick(this,'q2','aging')">
+        <div class="check-badge"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/></svg>
+        <div class="opt-label">הזדקנות</div><div class="opt-sub">קמטים, חוסר גמישות</div>
+      </div>
+      <div class="opt" onclick="pick(this,'q2','glow')">
+        <div class="check-badge"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <div class="opt-label">עמום / כתמים</div><div class="opt-sub">לא אחיד, פיגמנטציה</div>
+      </div>
+    </div>
+    <div style="height:22px"></div>
+    <button class="btn-gold" id="btn-q2" style="opacity:0.3;pointer-events:none;" onclick="nav('s3b',1)">המשך/י →</button>
+  </div>
+</div>
+
+<!-- S3B Q3 LIFESTYLE -->
+<div class="screen" id="s3b">
+  <div class="top-bar">
+    <div class="back-btn" onclick="nav('s3',-1)">←</div>
+    <div class="prog-wrap"><div class="prog-bar"><div class="prog-fill" style="width:100%"></div></div><div class="step-label">5 מתוך 5</div></div>
+    <div style="width:32px"></div>
+  </div>
+  <div class="screen-inner">
+    <div class="q-icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg></div>
+    <div class="q-title">האתגרים<br><em>היומיומיים של העור שלך?</em></div>
+    <div class="q-sub">מה משפיע על העור שלך הכי הרבה?</div>
+    <div class="options">
+      <div class="opt" onclick="pick(this,'q3','sun')">
+        <div class="check-badge"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2"/></svg>
+        <div class="opt-label">שמש וחום</div><div class="opt-sub">אקלים חם, UV</div>
+      </div>
+      <div class="opt" onclick="pick(this,'q3','stress')">
+        <div class="check-badge"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        <div class="opt-label">לחץ</div><div class="opt-sub">הורמונלי, עייפות</div>
+      </div>
+      <div class="opt" onclick="pick(this,'q3','pollution')">
+        <div class="check-badge"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+        <div class="opt-label">עיר / זיהום</div><div class="opt-sub">סביבה עירונית</div>
+      </div>
+      <div class="opt" onclick="pick(this,'q3','cold')">
+        <div class="check-badge"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 2v20M2 12h20M6 6l12 12M18 6L6 18"/></svg>
+        <div class="opt-label">קור ורוח</div><div class="opt-sub">אקלים קשה</div>
+      </div>
+    </div>
+    <div style="height:22px"></div>
+    <button class="btn-gold" id="btn-q3" style="opacity:0.3;pointer-events:none;" onclick="nav('s4',1)">המשך/י →</button>
+  </div>
+</div>
+
+<!-- S4 PHOTO -->
+<div class="screen" id="s4">
+  <div class="top-bar">
+    <div class="back-btn" onclick="nav('s3b',-1)">←</div>
+    <div class="prog-wrap"><div class="prog-bar"><div class="prog-fill" style="width:95%"></div></div><div class="step-label">כמעט סיימנו</div></div>
+    <div style="width:32px"></div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;height:calc(100% - 52px);padding:12px 18px 16px;gap:10px;overflow-y:auto;-webkit-overflow-scrolling:touch;">
+
+    <!-- Titre -->
+    <div style="text-align:center;flex-shrink:0;">
+      <div style="font-family:'Heebo',sans-serif;font-size:17px;color:var(--text);line-height:1.3;">צעד אחרון —</div>
+      <div style="font-size:12px;color:var(--text2);margin-top:2px;">צלמ/י תמונה <em style="color:var(--gold-d);">לתוצאה מדויקת</em></div>
+    </div>
+
+    <!-- 3 exemples photos compacts -->
+    <div style="flex-shrink:0;">
+      <div style="font-size:8px;letter-spacing:1.2px;font-weight:700;color:var(--gold-d);text-transform:uppercase;text-align:center;margin-bottom:7px;">לתוצאה מדויקת</div>
+      <div style="display:flex;gap:6px;">
+
+        <div style="flex:1;border-radius:10px;overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300&h=300&fit=crop&crop=faces&auto=format"
+            style="width:100%;height:90px;object-fit:cover;object-position:center 20%;display:block;"
+            alt="Good" onerror="this.parentElement.style.background='#E8D5C0';this.style.display='none'">
+          <div style="background:rgba(45,122,79,0.9);padding:3px 6px;display:flex;align-items:center;gap:3px;">
+            <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+            <span style="font-size:8px;font-weight:600;color:white;">תאורה טובה</span>
+          </div>
+        </div>
+
+        <div style="flex:1;border-radius:10px;overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop&crop=faces&auto=format"
+            style="width:100%;height:90px;object-fit:cover;object-position:center 20%;display:block;filter:brightness(0.4);"
+            alt="Dark" onerror="this.parentElement.style.background='#444';this.style.display='none'">
+          <div style="background:rgba(180,40,40,0.9);padding:3px 6px;display:flex;align-items:center;gap:3px;">
+            <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            <span style="font-size:8px;font-weight:600;color:white;">חשוך מדי</span>
+          </div>
+        </div>
+
+        <div style="flex:1;border-radius:10px;overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1516726817505-f5ed825624d8?w=300&h=300&fit=crop&crop=faces&auto=format"
+            style="width:100%;height:90px;object-fit:cover;object-position:center 20%;display:block;"
+            alt="Makeup" onerror="this.parentElement.style.background='#D4A0A0';this.style.display='none'">
+          <div style="background:rgba(180,40,40,0.9);padding:3px 6px;display:flex;align-items:center;gap:3px;">
+            <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            <span style="font-size:8px;font-weight:600;color:white;">עם איפור</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- GDPR compact -->
+    <div id="photo-consent-wrap" style="border-radius:12px;overflow:hidden;flex-shrink:0;">
+      <div style="background:rgba(201,169,110,0.07);border:1px solid rgba(201,169,110,0.3);border-bottom:none;border-radius:12px 12px 0 0;padding:8px 12px;">
+        <div style="font-size:7.5px;letter-spacing:1.2px;font-weight:700;color:var(--gold-d);text-transform:uppercase;margin-bottom:4px;display:flex;align-items:center;gap:4px;">
+          <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="2" stroke-linecap="round"><path d="M12 2l8 4v6c0 5-4 9-8 10C8 21 4 17 4 12V6l8-4z"/></svg>
+          GDPR · הסכמה לנתונים
+        </div>
+        <p style="font-size:9px;color:var(--text2);line-height:1.55;margin:0;">
+          אני מרשה ל-Lévia להשתמש בתמונה שלי <b style="color:var(--text);">אך ורק לניתוח עור AI זה</b> ובהסכמתי, לתרום באנונימיות לשיפור מודל האבחון של Lévia. התמונה שלי <b style="color:var(--text);">לעולם לא נמכרת, משותפת, או משמשת לפרסום.</b> אוכל לבקש מחיקה בכתובת <a href="mailto:hello@leviaskincare.com" style="color:var(--gold-d);text-decoration:none;">hello@leviaskincare.com</a>. אני מאשר/ת שאני האדם בתמונה ואני בגיל <b style="color:var(--text);">18 ומעלה.</b>
+        </p>
+      </div>
+
+      <!-- Bouton compact -->
+      <button id="consent-action-btn" onclick="giveConsentAndTakePhoto()"
+        style="width:100%;padding:11px 14px;background:linear-gradient(135deg,#b87820,#e8a830,#f5c860,#e8a830,#b87820);background-size:200% 100%;border:none;border-radius:0 0 12px 12px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;animation:goldShift 3s ease-in-out infinite,btnPulse 1.8s ease-in-out infinite;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,220,0.7) 50%,transparent);transform:skewX(-22deg);animation:shine 2s ease-in-out infinite;"></div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1A0F05" stroke-width="2" stroke-linecap="round"><rect x="2" y="6" width="20" height="16" rx="2"/><circle cx="12" cy="14" r="4"/><path d="M9 6l1.5-3h3L15 6"/></svg>
+        <div>
+          <div style="font-size:13px;font-weight:700;color:#1A0F05;line-height:1.2;">✓ אני מסכימ/ה — צלמ/י אותי</div>
+          <div style="font-size:9px;color:rgba(26,15,5,0.55);line-height:1.2;">לחצ/י לפתיחת המצלמה</div>
+        </div>
+      </button>
+    </div>
+
+    <!-- Galerie -->
+    <div style="text-align:center;flex-shrink:0;">
+      <button id="gallery-btn" onclick="giveConsentAndChooseGallery()"
+        style="background:none;border:1px solid var(--border);border-radius:999px;padding:8px 20px;font-size:12px;color:var(--text2);cursor:pointer;font-family:'Heebo',sans-serif;">
+        📁 בחר/י מהגלריה במקום
+      </button>
+    </div>
+
+    <!-- Preview photo -->
+    <img id="photo-preview" class="photo-preview" alt="" style="flex-shrink:0;display:none;">
+
+    <!-- Inputs cachés -->
+    <input type="checkbox" id="photo-consent" style="display:none;">
+    <input type="file" id="file-selfie" accept="image/*" capture="user" onchange="handlePhoto(this)" style="display:none">
+    <input type="file" id="file-gallery" accept="image/*" onchange="handlePhoto(this)" style="display:none">
+
+    <!-- Bouton analyser après photo -->
+    <div id="analyse-wrap" style="flex-shrink:0;display:none;">
+      <button class="btn-gold" id="btn-analyse" onclick="nav('s5',1)"
+        style="width:100%;max-width:360px;display:block;margin:0 auto;">
+        נתח את העור שלי ❖
+      </button>
+    </div>
+
+    <!-- Skip -->
+    <div style="text-align:center;flex-shrink:0;">
+      <div class="btn-skip" onclick="skipPhoto()" style="font-size:10px;color:var(--text3);cursor:pointer;padding:4px;">
+        דלג/י — נתח לפי תשובות בלבד
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- S5 EMAIL -->
+<div class="screen" id="s5" style="background:linear-gradient(160deg,#FAF7F2,#EEE4D6);">
+  <div class="screen-inner" style="padding-top:36px;">
+    <div class="salome-circle" style="width:100px;height:100px;margin-bottom:12px;">
+      <div class="ring ring1" style="--r:50px;"></div>
+      <img id="salome-img2" alt="ציפי" style="width:100%;height:100%;object-fit:cover;object-position:center 12%;border-radius:50%;border:1.5px solid rgba(201,169,110,0.4);">
+    </div>
+    <div class="salome-name">ציפי</div>
+    <div class="salome-exp" style="margin-bottom:26px;">Skin Expert · Lévia</div>
+    <div class="q-title" style="margin-bottom:6px;">לאן לשלוח<br>את <em>השגרה האישית שלך?</em></div>
+    <div class="q-sub" style="margin-bottom:22px;">I'll send your full analysis straight to your inbox — free.</div>
+    <input class="email-input" type="text" id="name-input" placeholder="השם הפרטי שלך" autocomplete="given-name" style="margin-bottom:10px;">
+    <input class="email-input" type="email" id="email-input" placeholder="כתובת האימייל שלך" autocomplete="email">
+    <button class="btn-gold" onclick="submitEmail()" style="margin-top:12px;">✦ קבל/י את השגרה החינמית שלי</button>
+    <div class="privacy-note">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="vertical-align:middle;margin-right:3px"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+      פרטי · לא משותף · ביטול בכל עת
+    </div>
+  </div>
+</div>
+
+<!-- S6 SCAN -->
+<div class="screen" id="s6" style="background:var(--dark);overflow:hidden;">
+  <div style="width:100%;max-width:360px;margin:auto;display:flex;flex-direction:column;align-items:center;">
+    <div class="scan-status" id="scan-status">מאתחל...</div>
+    <div class="scan-wrap" id="scan-wrap">
+      <img id="scan-photo" class="scan-photo" alt="">
+      <div class="scan-vignette"></div>
+      <div class="scan-mesh" id="scan-mesh"></div>
+      <!-- SVG overlay premium — effet scanner médical sans labels -->
+      <svg class="scan-overlay" id="scan-overlay" viewBox="0 0 240 296" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;">
+        <!-- 4 coins de cadrage dorés -->
+        <path id="corner-tl" d="M24 56 L24 24 L56 24" fill="none" stroke="rgba(201,169,110,0.95)" stroke-width="3" stroke-linecap="round" opacity="0"/>
+        <path id="corner-tr" d="M184 24 L216 24 L216 56" fill="none" stroke="rgba(201,169,110,0.95)" stroke-width="3" stroke-linecap="round" opacity="0"/>
+        <path id="corner-bl" d="M24 240 L24 272 L56 272" fill="none" stroke="rgba(201,169,110,0.95)" stroke-width="3" stroke-linecap="round" opacity="0"/>
+        <path id="corner-br" d="M184 272 L216 272 L216 240" fill="none" stroke="rgba(201,169,110,0.95)" stroke-width="3" stroke-linecap="round" opacity="0"/>
+        <!-- Ligne horizontale de scan qui descend -->
+        <line id="svg-scan-line" x1="0" y1="30" x2="240" y2="30" stroke="rgba(201,169,110,0.7)" stroke-width="1.5"/>
+        <!-- Halo lumineux sous la ligne de scan -->
+        <rect id="svg-scan-glow" x="0" y="30" width="240" height="18" fill="url(#scanGlow)" opacity="0.6"/>
+        <defs>
+          <linearGradient id="scanGlow" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="rgba(201,169,110,0.25)"/>
+            <stop offset="100%" stop-color="rgba(201,169,110,0)"/>
+          </linearGradient>
+        </defs>
+        <!-- Marqueurs latéraux (petits tirets sur les bords) -->
+        <g id="side-marks" opacity="0">
+          <line x1="0" y1="80" x2="10" y2="80" stroke="rgba(201,169,110,0.5)" stroke-width="1"/>
+          <line x1="230" y1="80" x2="240" y2="80" stroke="rgba(201,169,110,0.5)" stroke-width="1"/>
+          <line x1="0" y1="148" x2="10" y2="148" stroke="rgba(201,169,110,0.5)" stroke-width="1"/>
+          <line x1="230" y1="148" x2="240" y2="148" stroke="rgba(201,169,110,0.5)" stroke-width="1"/>
+          <line x1="0" y1="216" x2="10" y2="216" stroke="rgba(201,169,110,0.5)" stroke-width="1"/>
+          <line x1="230" y1="216" x2="240" y2="216" stroke="rgba(201,169,110,0.5)" stroke-width="1"/>
+          <!-- Valeurs numériques sur les côtés -->
+          <text x="14" y="83" font-size="5.5" fill="rgba(201,169,110,0.45)" font-family="monospace">33%</text>
+          <text x="14" y="151" font-size="5.5" fill="rgba(201,169,110,0.45)" font-family="monospace">58%</text>
+          <text x="14" y="219" font-size="5.5" fill="rgba(201,169,110,0.45)" font-family="monospace">84%</text>
+        </g>
+        <!-- Points de données animés (petit cercle pulsant dans les coins) -->
+        <circle id="dot-tl" cx="24" cy="24" r="2.5" fill="rgba(201,169,110,0)" stroke="rgba(201,169,110,0)" stroke-width="1"/>
+        <circle id="dot-tr" cx="216" cy="24" r="2.5" fill="rgba(201,169,110,0)" stroke="rgba(201,169,110,0)" stroke-width="1"/>
+      </svg>
+      <canvas class="face-mesh-canvas" id="face-canvas"></canvas>
+      <div class="scan-trail" id="scan-trail"></div>
+      <div class="scan-line" id="scan-line"></div>
+      <div class="sc sc-tl"></div><div class="sc sc-tr"></div>
+      <div class="sc sc-bl"></div><div class="sc sc-br"></div>
+    </div>
+    <div class="scan-pct" id="scan-pct">0%</div>
+    <div class="scan-sub-text">ניתוח עור IN PROGRESS</div>
+    <div class="atags" id="atags"></div>
+  </div>
+</div>
+
+<!-- S7 RESULT -->
+<div class="screen" id="s7" style="background:#FAF7F2;padding:0;overflow-y:auto;">
+
+  <!-- HEADER CRÈME PREMIUM -->
+  <div style="background:linear-gradient(160deg,#FAF7F2 0%,#EEE4D6 100%);padding:22px 18px 18px;position:relative;">
+
+    <!-- Logo -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">
+      <div style="font-family:'Heebo',sans-serif;font-size:13px;letter-spacing:5px;background:linear-gradient(135deg,#8B6A20,#C9A96E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">LÉVIA</div>
+      <div style="font-size:9px;letter-spacing:2px;color:var(--text3);text-transform:uppercase;">ניתוח עור</div>
+    </div>
+
+    <!-- Ligne de séparation dorée -->
+    <div style="height:1px;background:linear-gradient(90deg,transparent,rgba(201,169,110,0.4),transparent);margin-bottom:18px;"></div>
+
+    <!-- Photo + Score côte à côte -->
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:18px;">
+
+      <!-- Photo si disponible, sinon initiales -->
+      <div id="result-photo-wrap" style="position:relative;flex-shrink:0;">
+        <div id="result-photo-initials" style="width:78px;height:78px;border-radius:50%;border:2px solid rgba(201,169,110,0.4);background:linear-gradient(135deg,#1A1208,#2A1F0E);display:flex;align-items:center;justify-content:center;">
+          <span id="result-initials-text" style="font-family:'Heebo',sans-serif;font-size:26px;color:rgba(201,169,110,0.7);">?</span>
+        </div>
+        <img id="result-photo-img" src="" alt="" style="display:none;width:78px;height:78px;border-radius:50%;border:2px solid rgba(201,169,110,0.5);object-fit:cover;object-position:center top;">
+        <!-- Badge score sur la photo -->
+        <div id="result-photo-badge" style="position:absolute;bottom:-4px;right:-4px;background:linear-gradient(135deg,#8B6A20,#C9A96E);border-radius:999px;padding:2px 7px;font-size:10px;font-weight:700;color:#1A1208;font-family:'Heebo',sans-serif;border:2px solid #FAF7F2;"></div>
+      </div>
+
+      <!-- Nom + routine + insight -->
+      <div style="flex:1;min-width:0;">
+        <div id="result-name" style="font-family:'Heebo',sans-serif;font-size:19px;color:var(--text);line-height:1.2;margin-bottom:3px;"></div>
+        <div id="result-type" style="font-size:10px;letter-spacing:1.5px;color:var(--gold-d);text-transform:uppercase;margin-bottom:6px;"></div>
+        <div id="result-insight" style="font-size:11px;color:var(--text2);line-height:1.6;"></div>
+      </div>
+    </div>
+
+    <!-- Score ring + métriques -->
+    <div style="background:var(--white);border-radius:18px;padding:18px;border:1px solid var(--border);">
+
+      <!-- Score principal -->
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;">
+        <div style="position:relative;width:80px;height:80px;flex-shrink:0;">
+          <svg viewBox="0 0 80 80" style="width:80px;height:80px;transform:rotate(-90deg);">
+            <defs>
+              <linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#8B6A20"/>
+                <stop offset="50%" stop-color="#F0D48A"/>
+                <stop offset="100%" stop-color="#C9A96E"/>
+              </linearGradient>
+            </defs>
+            <circle cx="40" cy="40" r="32" fill="none" stroke="rgba(201,169,110,0.1)" stroke-width="6"/>
+            <circle id="score-arc" cx="40" cy="40" r="32" fill="none" stroke="url(#scoreGrad)" stroke-width="6"
+              stroke-linecap="round" stroke-dasharray="201" stroke-dashoffset="201"
+              style="transition:stroke-dashoffset 1.8s cubic-bezier(0.4,0,0.2,1);"/>
+          </svg>
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+            <div id="score-n" style="font-family:'Heebo',sans-serif;font-size:26px;font-weight:700;background:linear-gradient(135deg,#8B6A20,#C9A96E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;">—</div>
+            <div style="font-size:7px;letter-spacing:1.5px;color:var(--text3);margin-top:1px;">ציון</div>
+          </div>
+        </div>
+        <div style="flex:1;">
+          <div style="font-size:11px;color:var(--text3);margin-bottom:4px;">ציון עור כולל</div>
+          <div id="score-desc" style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px;"></div>
+          <div style="font-size:9px;color:var(--text3);line-height:1.6;font-style:italic;margin-bottom:6px;">Reflects overall skin health based on your profile, lifestyle &amp; environment — not a simple average of individual metrics.</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <div id="badge-skin" style="padding:3px 9px;border-radius:999px;font-size:9px;font-weight:600;background:rgba(201,169,110,0.1);border:1px solid rgba(201,169,110,0.3);color:var(--gold-d);letter-spacing:0.5px;"></div>
+            <div id="badge-concern" style="padding:3px 9px;border-radius:999px;font-size:9px;font-weight:600;background:rgba(45,122,79,0.08);border:1px solid rgba(45,122,79,0.2);color:#2D7A4F;letter-spacing:0.5px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Séparateur -->
+      <div style="height:1px;background:var(--border);margin-bottom:14px;"></div>
+
+      <!-- 4 métriques avec barres -->
+      <div id="metrics-wrap" style="display:flex;flex-direction:column;gap:10px;">
+
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+            <span style="font-size:11px;color:var(--text2);font-weight:500;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><path d="M12 2C12 2 5 9.5 5 14a7 7 0 0014 0c0-4.5-7-12-7-12z"/></svg> Hydration</span>
+            <span id="m-hyd-val" style="font-size:11px;font-weight:700;color:var(--text);font-family:'Heebo',sans-serif;"></span>
+          </div>
+          <div style="height:6px;background:rgba(201,169,110,0.1);border-radius:999px;overflow:hidden;">
+            <div id="m-hyd-bar" style="height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,#4A90D9,#7BBDE8);transition:width 1.2s cubic-bezier(0.4,0,0.2,1) 0.3s;"></div>
+          </div>
+        </div>
+
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+            <span style="font-size:11px;color:var(--text2);font-weight:500;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Sensitivity</span>
+            <span id="m-sen-val" style="font-size:11px;font-weight:700;color:var(--text);font-family:'Heebo',sans-serif;"></span>
+          </div>
+          <div style="height:6px;background:rgba(201,169,110,0.1);border-radius:999px;overflow:hidden;">
+            <div id="m-sen-bar" style="height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,#E8748A,#F4A0B0);transition:width 1.2s cubic-bezier(0.4,0,0.2,1) 0.5s;"></div>
+          </div>
+        </div>
+
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+            <span style="font-size:11px;color:var(--text2);font-weight:500;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg> Glow potential</span>
+            <span id="m-glow-val" style="font-size:11px;font-weight:700;color:var(--text);font-family:'Heebo',sans-serif;"></span>
+          </div>
+          <div style="height:6px;background:rgba(201,169,110,0.1);border-radius:999px;overflow:hidden;">
+            <div id="m-glow-bar" style="height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,#C9A96E,#F0D48A);transition:width 1.2s cubic-bezier(0.4,0,0.2,1) 0.7s;"></div>
+          </div>
+        </div>
+
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+            <span style="font-size:11px;color:var(--text2);font-weight:500;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg> Barrier balance</span>
+            <span id="m-bar-val" style="font-size:11px;font-weight:700;color:var(--text);font-family:'Heebo',sans-serif;"></span>
+          </div>
+          <div style="height:6px;background:rgba(201,169,110,0.1);border-radius:999px;overflow:hidden;">
+            <div id="m-bar-bar" style="height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,#2D7A4F,#4CAF80);transition:width 1.2s cubic-bezier(0.4,0,0.2,1) 0.9s;"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 3 stats résumé -->
+    <div style="display:flex;gap:8px;margin-top:12px;">
+      <div style="flex:1;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:10px 8px;text-align:center;">
+        <div id="ss-score" style="font-family:'Heebo',sans-serif;font-size:20px;font-weight:700;background:linear-gradient(135deg,#8B6A20,#C9A96E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">—</div>
+        <div style="font-size:8px;letter-spacing:1px;color:var(--text3);margin-top:2px;text-transform:uppercase;">Score</div>
+      </div>
+      <div style="flex:1;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:10px 8px;text-align:center;">
+        <div id="ss-type" style="font-family:'Heebo',sans-serif;font-size:12px;font-weight:700;color:var(--text);margin-top:4px;">—</div>
+        <div style="font-size:8px;letter-spacing:1px;color:var(--text3);margin-top:2px;text-transform:uppercase;">סוג עור</div>
+      </div>
+      <div style="flex:1;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:10px 8px;text-align:center;">
+        <div id="ss-steps" style="font-family:'Heebo',sans-serif;font-size:20px;font-weight:700;background:linear-gradient(135deg,#8B6A20,#C9A96E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">—</div>
+        <div style="font-size:8px;letter-spacing:1px;color:var(--text3);margin-top:2px;text-transform:uppercase;">שלבים</div>
+      </div>
+    </div>
+
+    <!-- Boutons partage -->
+    <div style="display:flex;gap:8px;margin-top:12px;">
+      <button onclick="shareToSocial('ig')" style="flex:1;padding:11px 6px;border-radius:11px;background:linear-gradient(135deg,#833AB4,#FD1D1D,#F77737);border:none;cursor:pointer;font-size:11px;font-weight:700;color:#fff;display:flex;align-items:center;justify-content:center;gap:5px;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        Instagram
+      </button>
+      <button onclick="shareToSocial('tt')" style="flex:1;padding:11px 6px;border-radius:11px;background:#0D0900;border:none;cursor:pointer;font-size:11px;font-weight:700;color:rgba(201,169,110,0.9);display:flex;align-items:center;justify-content:center;gap:5px;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="rgba(201,169,110,0.9)"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.67a8.18 8.18 0 004.77 1.52V6.74a4.85 4.85 0 01-1-.05z"/></svg>
+        TikTok
+      </button>
+      <button onclick="shareToSocial('copy')" style="padding:11px 14px;border-radius:11px;background:var(--white);border:1px solid var(--border);cursor:pointer;font-size:11px;color:var(--text2);display:flex;align-items:center;gap:5px;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+        העתק
+      </button>
+    </div>
+  </div>
+
+  <!-- ROUTINE BODY -->
+  <div style="padding:20px 16px 40px;background:#FAF7F2;">
+
+    <div id="routine-output"></div>
+
+    <!-- Disclaimer -->
+    <div style="font-size:10px;color:var(--text3);margin-top:14px;padding:10px 12px;background:var(--white);border-radius:10px;border:1px solid var(--border);line-height:1.7;">
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="vertical-align:middle;margin-right:3px;"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
+      המלצות עצמאיות. ל-Lévia אין שותפות עם המותגים המוזכרים ואינה מקבלת עמלה.
+    </div>
+
+    <!-- Signature expert -->
+    <div class="salome-sign" style="margin-top:18px;">
+      <img id="salome-img3" class="s-thumb" alt="ציפי">
+      <div>
+        <div class="s-text">השגרה נוצרה על ידי</div>
+        <div class="s-name">ציפי</div>
+        <div class="s-text" style="font-size:10px;color:var(--text3);">20 שנות ניסיון · Lévia Skincare</div>
+      </div>
+    </div>
+
+    <!-- Instagram CTA -->
+    <div class="ig-cta-wrap" style="margin-top:20px;">
+      <button class="ig-btn" onclick="window.open('https://www.instagram.com/levia.skincare.il/','_blank')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        עקבו ‎@levia.skincare.il
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="cf-box" id="cf-box"></div>
+<form name="levia-scan" data-netlify="true" style="display:none">
+  <input type="text" name="name">
+  <input type="email" name="email">
+  <input type="text" name="gender">
+  <input type="text" name="age">
+  <input type="text" name="age_range">
+  <input type="text" name="skin_type">
+  <input type="text" name="concern">
+  <input type="text" name="lifestyle">
+  <input type="text" name="score">
+  <input type="text" name="skin_score">
+  <input type="text" name="routine_type">
+  <input type="text" name="photo_consent">
+  <input type="text" name="photo_provided">
+  <input type="text" name="photo_url">
+  <input type="text" name="country">
+  <input type="text" name="lang">
+  <input type="text" name="date">
+</form>
+
+<script>
+var S=document.getElementById.bind(document);
+// ── Détection pays/langue ──
+var COUNTRY_LANG = (function(){
+  var p = new URLSearchParams(window.location.search);
+  var country = p.get('country') || '';
+  var lang = navigator.language || navigator.userLanguage || 'en';
+  // Détecter depuis URL: /scan?country=uk ou /scan?country=il
+  if(!country){
+    var path = window.location.pathname;
+    if(path.includes('/il') || lang.startsWith('he')) country='IL';
+    else if(path.includes('/au')) country='AU';
+    else if(path.includes('/nz')) country='NZ';
+    else if(path.includes('/nordic') || ['sv','no','da','fi'].some(function(l){return lang.startsWith(l);})) country='Nordic';
+    else country='UK';
+  }
+  return {country: country.toUpperCase(), lang: lang};
+})();
+
+// ── Système de traduction ──
+var IS_HE = (COUNTRY_LANG.country === 'IL' || COUNTRY_LANG.lang.startsWith('he'));
+
+var TRANS_HE = {
+  "עם ציפי": "עם ציפי",
+  "מומחית טיפוח עור · 20 שנות ניסיון · Lévia": "מומחית טיפוח עור · 20 שנות ניסיון",
+  "Skin Expert · Lévia": "מומחית טיפוח · Lévia",
+  "You are a": "את/ה",
+  "woman or a man?": "אישה או גבר?",
+  "הביולוגיה של העור שונה — השגרה תותאם אישית.": "הביולוגיה של העור שונה — השגרה תותאם אישית.",
+  "אישה": "אישה",
+  "גבר": "גבר",
+  "Oily": "שמן",
+  "Dry": "יבש",
+  "רגיש": "רגיש",
+  "Combination": "מעורב",
+  "Mature": "בוגר",
+  "Acne & blemishes": "אקנה ופגמים",
+  "Dullness & glow": "עור עמום · זוהר",
+  "יובש & dehydration": "יובש · התייבשות",
+  "הזדקנות & wrinkles": "הזדקנות · קמטים",
+  "Sun exposure": "חשיפה לשמש",
+  "לחץ": "לחץ",
+  "Pollution": "זיהום אוויר",
+  "קור ורוח": "קור ורוח",
+  "Take a selfie": "צלם/י סלפי",
+  "Front face · Eyes open": "פנים ישירות · עיניים פתוחות",
+  "Choose from gallery": "בחר/י מהגלריה",
+  "נתח את העור שלי ❖": "נתח את העור שלי ❖",
+  "Skip — analyse from answers only": "דלג/י — נתח לפי תשובות בלבד",
+  "תאורה טובה": "תאורה טובה",
+  "face forward": "פנים ישר",
+  "No filter": "ללא פילטר",
+  "no makeup": "ללא איפור",
+  "Selfie or": "סלפי או",
+  "gallery photo": "תמונה מהגלריה",
+  "Photo stays on your device · Never uploaded": "התמונה נשארת במכשיר שלך · לא מועלית",
+  "Your Lévia Analysis": "ניתוח Lévia שלך",
+  "שמור/י ושתף/י את התוצאה האישית שלך": "שמור/י ושתף/י את התוצאה האישית שלך",
+  "SKIN ציון": "ציון עור",
+  "SKIN TYPE": "סוג עור",
+  "STEPS": "שלבים",
+  "שגרת בוקר": "שגרת בוקר",
+  "שגרת ערב": "שגרת ערב",
+  "עקבו ‎@levia.skincare.il": "עקבו ‎@levia.skincare.il",
+  "20 שנות ניסיון · Lévia Skincare": "20 שנות ניסיון · Lévia Skincare",
+  "השגרה שלך crafted by": "השגרה שלך נוצרה על ידי",
+  "מצא/י באמזון": "מצא באמזון",
+  "ציפי": "ציפי",
+  "ANALYSIS COMPLETE": "הניתוח הושלם",
+  "ניתוח עור IN PROGRESS": "ניתוח העור בתהליך",
+  "Enter your first name": "שם פרטי",
+  "Enter your email": "אימייל",
+  "Receive my free routine": "קבל/י את השגרה שלי חינם"
+}
+
+function applyTranslations(){
+  if(!IS_HE) return;
+  // Direction RTL
+  document.documentElement.dir='rtl';
+  document.documentElement.lang='he';
+  // Translate all text nodes
+  function walkAndTranslate(node){
+    if(node.nodeType===3){ // text node
+      var t=node.textContent;
+      Object.keys(TRANS_HE).forEach(function(k){
+        if(t.trim()===k) node.textContent=TRANS_HE[k];
+      });
+    } else if(node.nodeType===1 && node.childNodes){
+      // innerHTML translation for elements with HTML
+      var html=node.innerHTML;
+      var changed=false;
+      Object.keys(TRANS_HE).forEach(function(k){
+        if(html===k||(node.childNodes.length<=3&&html.includes(k))){
+          // only replace if it's a leaf-ish node
+        }
+      });
+      node.childNodes.forEach(function(c){walkAndTranslate(c);});
+    }
+  }
+  // Direct targeted translations
+  Object.keys(TRANS_HE).forEach(function(k){
+    document.querySelectorAll('*').forEach(function(el){
+      if(el.children.length===0 && el.textContent.trim()===k){
+        el.textContent=TRANS_HE[k];
+      }
+      // innerHTML for elements with bold/em
+      if(el.innerHTML.trim()===k){
+        el.innerHTML=TRANS_HE[k];
+      }
+    });
+  });
+  // Expert name
+  var nameEls=document.querySelectorAll('.salome-name,.s-name');
+  nameEls.forEach(function(el){el.textContent='ציפי';});
+  var expEls=document.querySelectorAll('.salome-exp');
+  expEls.forEach(function(el){el.textContent='מומחית טיפוח עור · 20 שנות ניסיון';});
+  // Title
+  document.title='Lévia — ניתוח עור עם ציפי';
+}
+// Apply after DOM ready
+document.addEventListener('DOMContentLoaded', applyTranslations);
+if(document.readyState!=='loading') applyTranslations();
+
+var state={q1:null,q2:null,q3:null,q4:null,q5:null,gender:null,age:null,photo:null,email:''};
+var currentScreen='s1';
+
+// SALOME IMAGE
+var SALOME_B64='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';
+['salome-img','salome-img2','salome-img3'].forEach(function(id){
+  var el=S(id);if(el)el.src='data:image/jpeg;base64,'+SALOME_B64;
+});
+
+// NAVIGATION with slide transition
+function nav(to,dir){
+  var from=S(currentScreen);
+  var toEl=S(to);
+  if(!toEl)return;
+  from.classList.add('exit-left');
+  from.classList.remove('active');
+  toEl.classList.add('active');
+  currentScreen=to;
+  setTimeout(function(){from.classList.remove('exit-left');},500);
+  if(to==='s6') startScan();
+}
+
+// PICK OPTION
+function pick(el,q,val){
+  var parent=el.closest('.options');
+  parent.querySelectorAll('.opt').forEach(function(o){o.classList.remove('selected');});
+  el.classList.add('selected');
+  state[q]=val;
+  var btn=S('btn-'+q);
+  if(btn){btn.style.opacity='1';btn.style.pointerEvents='auto';}
+}
+function pickGender(el,val){
+  document.querySelectorAll('.gender-opt').forEach(function(o){o.classList.remove('selected');});
+  el.classList.add('selected');
+  state.gender=val;
+  var btn=S('btn-gender');
+  if(btn){btn.style.opacity='1';btn.style.pointerEvents='auto';}
+}
+function pickAge(el,val){
+  document.querySelectorAll('.age-opt').forEach(function(o){o.classList.remove('selected');});
+  el.classList.add('selected');
+  state.age=val;
+  var btn=S('btn-age');
+  if(btn){btn.style.opacity='1';btn.style.pointerEvents='auto';}
+  if(val==='45-54'||val==='55-64'||val==='65+'){if(!state.q1||state.q1==='mature')state.q1='mature';}
+}
+
+// PHOTO
+function handlePhoto(input){
+  if(!input.files||!input.files[0])return;
+  var r=new FileReader();
+  r.onload=function(e){
+    // Redimensionner à max 800px et compresser à 70% pour Cloudinary
+    var img=new Image();
+    img.onload=function(){
+      var MAX=800;
+      var w=img.width,h=img.height;
+      if(w>MAX||h>MAX){
+        if(w>h){h=Math.round(h*MAX/w);w=MAX;}
+        else{w=Math.round(w*MAX/h);h=MAX;}
+      }
+      var cv=document.createElement('canvas');
+      cv.width=w;cv.height=h;
+      cv.getContext('2d').drawImage(img,0,0,w,h);
+      var resized=cv.toDataURL('image/jpeg',0.70);
+      state.photo=resized;
+      var prev=S('photo-preview'),zone=S('photo-zone');
+      if(prev){prev.src=resized;prev.style.display='block';}
+      if(zone){zone.style.display='none';}
+      // Montrer le bouton analyser
+      var aw=S('analyse-wrap');if(aw)aw.style.display='block';
+      console.log('Photo redimensionnée:',Math.round(resized.length/1024)+'KB');
+    };
+    img.src=e.target.result;
+  };
+  r.readAsDataURL(input.files[0]);
+}
+
+// EMAIL SUBMIT
+function submitEmail(){
+  if(typeof fbq!=="undefined"){fbq("track","Lead",{content_name:"scan_completed"});}
+  var em=S('email-input');
+  if(!em.value||!em.value.includes('@')){em.style.borderColor='rgba(200,60,60,0.5)';em.focus();return;}
+  state.email=em.value;
+  var nm=S('name-input');state.name=nm?nm.value.trim():'';
+
+  var r=getRoutine();
+  var clientData={
+    name:state.name, email:em.value,
+    gender:state.gender||'', age:state.age||'',
+    age_range:state.age||'',
+    skin_type:state.q1||'', concern:state.q2||'',
+    lifestyle:state.q3||'', score:r.score||'',
+    skin_score:r.score||'',
+    routine_type:r.label||'',
+    photo_consent:state.photoConsent?'yes':'no',
+    photo_provided:state.photo?'yes':'no',
+    country:COUNTRY_LANG.country,
+    lang:COUNTRY_LANG.lang,
+    date:new Date().toISOString(),
+  };
+
+  // Naviguer tout de suite vers l'animation
+  nav('s6',1);
+
+  // Upload photo + email via Function, PUIS soumettre à Netlify Forms
+  function submitToNetlifyForms(data){
+    var fd = new FormData();
+    fd.append('form-name','levia-scan');
+    Object.keys(data).forEach(function(k){
+      var v = data[k];
+      if(v !== null && v !== undefined && v !== '') fd.append(k, String(v));
+    });
+    return fetch('/', {
+      method:'POST',
+      headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body: new URLSearchParams(fd).toString()
+    }).then(function(){
+      console.log('Netlify Forms OK');
+    }).catch(function(e){
+      console.log('Netlify Forms error:',e.message);
+    });
+  }
+
+  fetch('/.netlify/functions/submit-client',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({
+      client: clientData,
+      photo: (state.photo && state.photoConsent) ? state.photo : null
+    })
+  })
+  .then(function(resp){
+    // Vérifier que la réponse est bien du JSON
+    var ct = resp.headers.get('content-type')||'';
+    if(!ct.includes('application/json')){
+      console.log('Function returned non-JSON (status '+resp.status+') — submitting without photo_url');
+      return submitToNetlifyForms(clientData);
+    }
+    return resp.json().then(function(d){
+      console.log('Function OK - photoUrl:',d.photoUrl||'none');
+      if(d.photoUrl) clientData.photo_url = d.photoUrl;
+      return submitToNetlifyForms(clientData);
+    });
+  })
+  .catch(function(e){
+    console.log('Function error:',e.message,'— submitting anyway');
+    submitToNetlifyForms(clientData);
+  });
+}
+
+// CONFETTI
+function confetti(){
+  var box=S('cf-box'),colors=['#C9A96E','#E8C98A','#8B6A20','#F5D4A0','#fff'];
+  for(var i=0;i<70;i++){
+    var c=document.createElement('div');c.className='cf';
+    var sz=Math.random()*9+4;
+    c.style.cssText='left:'+Math.random()*100+'%;width:'+sz+'px;height:'+sz+'px;background:'+colors[Math.floor(Math.random()*colors.length)]+';animation-duration:'+(Math.random()*2+2)+'s;animation-delay:'+(Math.random()*1.2)+'s;border-radius:'+(Math.random()>.5?'50%':'3px')+';';
+    box.appendChild(c);
+  }
+  setTimeout(function(){box.innerHTML='';},5000);
+}
+
+// DETECT FACE REGION via canvas skin-tone analysis
+function detectFaceRegion(imgEl,W,H,cb){
+  try{
+    // ── Analyse canvas pour trouver la zone peau ──
+    var sc=Math.min(1,320/Math.max(imgEl.naturalWidth||1,imgEl.naturalHeight||1));
+    var cw=Math.round((imgEl.naturalWidth||W)*sc);
+    var ch=Math.round((imgEl.naturalHeight||H)*sc);
+    var cv=document.createElement('canvas');cv.width=cw;cv.height=ch;
+    var ctx=cv.getContext('2d');ctx.drawImage(imgEl,0,0,cw,ch);
+    var d=ctx.getImageData(0,0,cw,ch).data;
+
+    // Trouver bounding box de la peau (teint large pour couvrir toutes ethnies)
+    var minX=cw,maxX=0,minY=ch,maxY=0,cnt=0;
+    var step=2;
+    for(var y=0;y<ch;y+=step){
+      for(var x=0;x<cw;x+=step){
+        var idx=(y*cw+x)*4;
+        var r=d[idx],g=d[idx+1],b=d[idx+2];
+        var isSkin=(r>60&&g>35&&b>15)&&(r>b)&&(r>g*0.7)&&((r-b)>10)&&(r<250)&&(g<220);
+        if(isSkin){
+          if(x<minX)minX=x;if(x>maxX)maxX=x;
+          if(y<minY)minY=y;if(y>maxY)maxY=y;
+          cnt++;
+        }
+      }
+    }
+    if(cnt<80||maxX<=minX||maxY<=minY){cb(null);return;}
+
+    // Centre et dimensions du visage détecté
+    var faceX=((minX+maxX)/2/cw)*100;
+    var faceY=((minY+maxY)/2/ch)*100;
+    var faceW=((maxX-minX)/cw)*100;
+    var faceH=((maxY-minY)/ch)*100;
+
+    // Ajuster : la box peau dépasse légèrement le visage réel
+    faceX=Math.min(72,Math.max(28,faceX));
+    faceY=Math.min(68,Math.max(18,faceY));
+    faceW=Math.min(60,Math.max(24,faceW));
+    faceH=Math.min(70,Math.max(32,faceH));
+
+    // ── Placement anatomique réel des 12 zones ──
+    // Basé sur les proportions du visage humain (règle des tiers) :
+    // Front : haut du visage → 20% depuis le haut de la box
+    // Yeux  : 38% depuis le haut (légèrement au-dessus du centre)
+    // Nez   : 58% depuis le haut
+    // Bouche: 74% depuis le haut
+    var top   = faceY - faceH*0.48;   // haut de la zone peau
+    var ew    = faceW*0.28;            // demi-largeur entre les yeux
+    var hw    = faceW*0.42;            // demi-largeur du visage aux tempes
+
+    var pts=[
+      // 0 - Front (centre)
+      {x:faceX,                  y:top + faceH*0.08},
+      // 1 - Tempe gauche
+      {x:faceX - hw,             y:top + faceH*0.26},
+      // 2 - Tempe droite
+      {x:faceX + hw,             y:top + faceH*0.26},
+      // 3 - Sourcil gauche (milieu)
+      {x:faceX - ew*0.9,         y:top + faceH*0.32},
+      // 4 - Sourcil droit (milieu)
+      {x:faceX + ew*0.9,         y:top + faceH*0.32},
+      // 5 - Coin ext. œil gauche
+      {x:faceX - ew*1.1,         y:top + faceH*0.41},
+      // 6 - Coin ext. œil droit
+      {x:faceX + ew*1.1,         y:top + faceH*0.41},
+      // 7 - Pointe du nez
+      {x:faceX,                  y:top + faceH*0.60},
+      // 8 - Joue gauche (pommette)
+      {x:faceX - hw*0.82,        y:top + faceH*0.58},
+      // 9 - Joue droite (pommette)
+      {x:faceX + hw*0.82,        y:top + faceH*0.58},
+      // 10 - Coin gauche de la bouche
+      {x:faceX - faceW*0.18,     y:top + faceH*0.76},
+      // 11 - Coin droit de la bouche
+      {x:faceX + faceW*0.18,     y:top + faceH*0.76},
+    ];
+
+    cb(pts.map(function(p){
+      return {x:Math.min(94,Math.max(6,p.x)), y:Math.min(95,Math.max(5,p.y))};
+    }));
+  }catch(e){cb(null);}
+}
+
+// SCAN ANIMATION
+var TAGS=['Hydration level','Sebum balance','Pore density','Skin texture','Pigmentation','Barrier integrity','Radiance index','Collagen density','Elasticity','UV damage','Moisture retention','Micro-circulation'];
+
+function startScan(){
+  // Reset dots and tags
+  var wrap=S('scan-wrap');
+  wrap.querySelectorAll('.face-dot').forEach(function(d){d.remove();});
+  S('atags').innerHTML='';
+
+  var sp=S('scan-photo'),scanWrap=S('scan-wrap');
+  if(state.photo){
+    sp.src=state.photo;sp.style.display='block';
+    var nm2=S('scan-no-photo-msg');if(nm2)nm2.remove();
+  } else {
+    sp.src='';sp.style.display='none';
+    if(!S('scan-no-photo-msg')){
+      var msg=document.createElement('div');
+      msg.id='scan-no-photo-msg';
+      msg.style.cssText='position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:2;padding:20px;text-align:center;';
+      msg.innerHTML='<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(201,169,110,0.6)" stroke-width="1.2" stroke-linecap="round" style="margin-bottom:14px;"><circle cx="12" cy="10" r="5"/><path d="M3 20c0-4 4-7 9-7s9 3 9 7"/></svg>'
+        +'<div style="font-family:serif;font-size:15px;color:rgba(201,169,110,0.85);line-height:1.65;font-style:italic;">'
+        +'Your score is calculated<br>from your answers —<br>no photo needed.'
+        +'</div>';
+      if(scanWrap)scanWrap.appendChild(msg);
+    }
+  }
+
+  var pct=0,si=0,pointsAdded=0;
+  var pctEl=S('scan-pct'),statusEl=S('scan-status');
+  var mesh=S('scan-mesh'),scanLine=S('scan-line'),scanTrail=S('scan-trail');
+  var statuses=['DETECTING SKIN ZONES','MAPPING TEXTURE','MEASURING HYDRATION','ANALYSING BARRIER','CALCULATING ציון'];
+
+  // Scan line bounce
+  var pos=3,dir=1,spd=0.8;
+  var animId=setInterval(function(){
+    pos+=dir*spd;
+    if(pos>=96){dir=-1;spd=0.6+Math.random()*0.5;}
+    if(pos<=3){dir=1;spd=0.6+Math.random()*0.5;}
+    scanLine.style.top=pos+'%';
+    scanTrail.style.top=Math.max(0,pos-9)+'%';
+  },16);
+
+  // Mesh appears
+  setTimeout(function(){mesh.classList.add('on');},500);
+
+  // Animation scanner premium — sans labels, effet médical propre
+  function animateScanZones(){
+    var overlay=S('scan-overlay');
+    if(overlay) overlay.classList.add('on');
+
+    // 1. Coins de cadrage apparaissent en séquence
+    setTimeout(function(){
+      ['corner-tl','corner-tr','corner-bl','corner-br'].forEach(function(id,i){
+        setTimeout(function(){
+          var el=S(id);
+          if(el){el.style.opacity='1';el.style.transition='opacity 0.4s';}
+        },i*120);
+      });
+    },200);
+
+    // 2. Marqueurs latéraux
+    setTimeout(function(){
+      var sm=S('side-marks');if(sm)sm.style.opacity='1';
+    },900);
+
+    // 3. Points coins pulsants
+    setTimeout(function(){
+      ['dot-tl','dot-tr'].forEach(function(id){
+        var el=S(id);
+        if(el){
+          el.style.fill='rgba(201,169,110,0.8)';
+          el.style.stroke='rgba(201,169,110,0.4)';
+        }
+      });
+    },600);
+
+    // 4. Ligne de scan qui descend et remonte
+    var svgLine=S('svg-scan-line');
+    var svgGlow=S('svg-scan-glow');
+    if(svgLine){
+      var y=20,svgDir=1,spd2=1.8;
+      var svgAnim=setInterval(function(){
+        y+=svgDir*spd2;
+        if(y>=275){svgDir=-1;spd2=1.4+Math.random()*0.8;}
+        if(y<=20){svgDir=1;spd2=1.4+Math.random()*0.8;}
+        svgLine.setAttribute('y1',y);svgLine.setAttribute('y2',y);
+        if(svgGlow){svgGlow.setAttribute('y',y);svgGlow.setAttribute('height',20);}
+      },16);
+      setTimeout(function(){clearInterval(svgAnim);},5500);
+    }
+    state.scanPts=[];
+  }
+
+  // Lancer l'animation zones (pas de détection de points)
+  animateScanZones();
+
+  // Progress — 5.5 seconds total
+  var progId=setInterval(function(){
+    pct+=Math.random()*3+1.2;
+    if(pct>100)pct=100;
+    pctEl.textContent=Math.floor(pct)+'%';
+    var nsi=Math.min(Math.floor(pct/22),statuses.length-1);
+    if(nsi>si){si=nsi;statusEl.textContent=statuses[si];}
+    if(pct<95&&Math.random()<0.08){
+      var tc=S('atags');
+      if(tc.children.length<8){
+        var t=document.createElement('div');t.className='atag';
+        t.textContent='✦ '+TAGS[Math.floor(Math.random()*TAGS.length)];
+        tc.appendChild(t);
+      }
+    }
+  },75);
+
+  setTimeout(function(){
+    clearInterval(animId);clearInterval(progId);
+    pctEl.textContent='100%';statusEl.textContent='ANALYSIS COMPLETE';
+    setTimeout(function(){nav('s7',1);buildResult();confetti();if(state.scanPts)buildScanReplay(state.scanPts);},700);
+  },5500);
+}
+
+// ROUTINES
+var INSIGHTS={
+  oily_acne:'העור שלך מייצר סבום עודף שסותם נקבוביות. המפתח הוא לווסת — לא להפסיק — את ייצור הסבום.',
+  oily_glow:'Pigmentation on oily skin is driven by inflammation. The right actives will both clear and protect.',
+  dry_dryness:'Your skin barrier needs rebuilding before any active treatment. Hydration first, always.',
+  dry_aging:'Dry skin ages faster without lipid support. השגרה שלך should nourish while stimulating collagen.',
+  sensitive_dryness:'Less is more for your skin. Rebuilding the microbiome and barrier is the entire strategy.',
+  mature_aging:'After 35, prevention becomes your best treatment. Vitamin C and SPF are your most powerful tools.'
+};
+
+
+// Métriques par routine (Hydration / Sensitivity / Glow / Barrier)
+var METRICS = {
+  // Score 81 — peau saine globalement, faiblesse principale = barrier + sebum
+  oily_acne:        {hydration:74, sensitivity:78, glow:75, barrier:66},
+  // Score 78 — éclat moyen, glow est le point fort à développer
+  oily_glow:        {hydration:76, sensitivity:80, glow:85, barrier:70},
+  // Score 74 — hydration clairement le point faible
+  dry_dryness:      {hydration:58, sensitivity:72, glow:68, barrier:62},
+  // Score 82 — bien globalement, hydration et barrier légèrement à renforcer
+  dry_aging:        {hydration:66, sensitivity:78, glow:76, barrier:68},
+  // Score 72 — sensitivity très élevée, c'est le diagnostic principal
+  sensitive_dryness:{hydration:65, sensitivity:88, glow:64, barrier:58},
+  // Score 85 — mature mais bien entretenue, glow est le point fort
+  mature_aging:     {hydration:72, sensitivity:74, glow:82, barrier:72},
+};
+var ROUTINES={
+  oily_acne:{label:'נקי ומאוזן',score:81,type:'Oily · Blemish-prone',
+    morning:[
+      {name:'BHA Gel Cleanser',detail:'CeraVe SA Cleanser · Lukewarm water',why:'חומצה סליצילית מפרקת עודפי סבום בנקבוביות מהבוקר.'},
+      {name:'Niacinamide 10% + Zinc',detail:'The Ordinary · 3-4 טיפות על עור לח · 60 שניות',why:'מווסת סבום, מהדק נקבוביות, מדהה סימני פגמים.'},
+      {name:'Oil-free Gel Moisturiser',detail:'Neutrogena Hydro Boost Gel · כמות אפונה',why:'עור שמן עדיין זקוק ללחות — בלעדיה, הסבום מייצר יתר.'},
+      {name:'SPF 50+ Fluid',detail:'La Roche-Posay Anthelios נוזל שקוף',why:'חובה. UV מחמיר צלקות אקנה ב-40%.'}],
+    evening:[
+      {name:'Double Cleanse',detail:'ניקוי שמן תחילה, אחר כך ניקוי ג׳ל'},
+      {name:'BHA Exfoliant 2%',detail:"Paula's Choice · מקסימום 3 פעמים בשבוע · אל תשטוף/י",why:'מנקה ראשי שחורים, מונע סתימות עמוקות.'},
+      {name:'Light Moisturiser',detail:'CeraVe PM · תיקון בלילה'}]},
+  oily_glow:{label:'בהיר ואחיד',score:78,type:'Oily · Pigmentation',
+    morning:[
+      {name:'Gentle Gel Cleanser',detail:'Cool water rinse'},
+      {name:'Vitamin C 15%',detail:'Mad Hippie or SkinCeuticals · 4 drops dry skin',why:'Blocks melanin formation + protects from UV oxidation.'},
+      {name:'Niacinamide Serum',detail:'The Ordinary · Blocks melanin transfer',why:'Synergistic with Vitamin C — double anti-pigment action.'},
+      {name:'SPF 50+',detail:'La Roche-Posay Anthelios · Every single day'}],
+    evening:[
+      {name:'Double Cleanse',detail:'Remove SPF, pollution, sebum thoroughly'},
+      {name:'Glycolic Acid 7%',detail:'The Ordinary Toning · 3x/week · אל תשטוף/י',why:'Speeds cell turnover — pigmented cells shed faster.'},
+      {name:'Niacinamide + Light Cream',detail:'Seal and repair through the night'}]},
+  dry_dryness:{label:'מוזן ומחוזק',score:74,type:'Dry · Dehydrated',
+    morning:[
+      {name:'Cream Cleanser',detail:'CeraVe Hydrating Cleanser · פושר בלבד',why:'שומר על מחסום השומנים שעור יבש מתקשה לשמור עליו.'},
+      {name:'Hyaluronic Acid',detail:'The Ordinary HA 2%+B5 · Apply to damp skin',why:'Draws water into skin. Key: apply on damp — not dry — skin.'},
+      {name:'Rich Ceramide Cream',detail:'CeraVe Moisturising Cream · Apply generously',why:'Ceramides rebuild the corneal layer that locks moisture in.'},
+      {name:'Rich SPF 50',detail:'Uriage Bariésun Rich Cream · Moisturising formula'}],
+    evening:[
+      {name:'Gentle Oil Cleanser',detail:'No SLS, no fragrance — Bioderma or similar'},
+      {name:'Bakuchiol Serum',detail:'Biossance or Herbivore · בטוח כל לילה',why:'שווה ערך טבעי לרטינול — ללא גירוי לעור יבש.'},
+      {name:'Overnight Sleeping Mask',detail:'Laneige Water Mask 3-4 לילות בשבוע'}]},
+  dry_aging:{label:'ממולא ומורם',score:82,type:'Dry · Anti-ageing',
+    morning:[
+      {name:'Cream Cleanser',detail:'Cetaphil Gentle · Lukewarm water only'},
+      {name:'Vitamin C 15%',detail:'Mad Hippie or SkinCeuticals',why:'Collagen stimulation + UV protection — the #1 anti-age morning step.'},
+      {name:'Peptide-rich Cream',detail:'Olay Regenerist or Vichy Liftactiv',why:'מדע הפפטידים 2026: מאותת לפיברובלסטים לייצר קולגן.'},
+      {name:'Rich SPF 50',detail:'La Roche-Posay Anthelios Age Correct'}],
+    evening:[
+      {name:'Gentle Oil Cleanser',detail:'Gentle double cleanse — no stripping'},
+      {name:'Bakuchiol 0.5%',detail:'Every night · No irritation risk',why:'Retinol-equivalent results without dryness — ideal for dry mature skin.'},
+      {name:'Overnight Hydration Mask',detail:'Laneige Water Sleeping Mask · 3-4 לילות בשבוע'}]},
+  sensitive_dryness:{label:'רגוע ומשוחזר',score:72,type:'רגיש · Reactive',
+    morning:[
+      {name:'Thermal Water Spray only',detail:'Avène or La Roche-Posay · No cleanser AM',why:"ניקוי פעמיים ביום מפשיט את המיקרוביום השביר של עור רגיש."},
+      {name:'Centella + Ectoin Serum',detail:'COSRX Centella · Pat with fingertips gently',why:'Ectoin creates a molecular hydration shield — 2026 validated.'},
+      {name:'Barrier Repair Cream',detail:'Avène Cicalfate+ · Fragrance-free, paraben-free',why:'Minimal formula — fewer ingredients = less to react to.'},
+      {name:'Mineral SPF 50',detail:'Zinc oxide only · Chemical filters can trigger sensitivity'}],
+    evening:[
+      {name:'Micellar Water',detail:'Bioderma Sensibio · No rinse needed'},
+      {name:'Probiotic Serum',detail:'Dr.Jart Cicapair · Rebalances skin microbiome',why:'מיקרוביום מאוזן = עור שמגן על עצמו. מאושר 2026.'},
+      {name:'Rich Barrier Cream',detail:'Avène Cicalfate+ or Mustela Cicastela'}]},
+  mature_aging:{label:'מורם וקורן',score:85,type:'Mature · Anti-ageing',
+    morning:[
+      {name:'Gentle Cream Cleanser',detail:'Cetaphil Gentle · No hot water ever'},
+      {name:'Vitamin C 15-20%',detail:'SkinCeuticals CE Ferulic or Mad Hippie',why:'The gold standard — collagen production + antioxidant UV shield.'},
+      {name:'Peptide Moisturiser',detail:'Olay Regenerist Micro-Sculpting',why:'Peptide cocktail activates dermal fibroblasts for natural firming.'},
+      {name:'SPF 50+ אנטי-אייג׳ינג',detail:'La Roche-Posay Anthelios Age Correct',why:'80% of skin ageing is photo-ageing. SPF is your best anti-age product.'}],
+    evening:[
+      {name:'Night 1 — AHA Exfoliation',detail:'The Ordinary Glycolic 7% · אל תשטוף/י',why:'Resurfaces skin, accelerates cell renewal.'},
+      {name:'Night 2 — Retinol 0.3%',detail:'Vichy Liftactiv Retinol Expert · Not same night as AHA',why:'Skin cycling: alternating = better tolerance, deeper results.'},
+      {name:'Nights 3-4 — Recovery',detail:'Ceramides + HA only · Let the barrier heal',why:'Science-backed: recovery nights prevent over-sensitisation.'},
+      {name:'Eye Contour',detail:'Olay Eyes Retinol 24 · Every night · הזדקנות shows here first'}]}
+};
+
+function getRoutine(){
+  var r1=state.q1||'oily',r2=state.q2||'acne',key=r1+'_'+r2;
+  var map={
+    'oily_acne':'oily_acne','oily_glow':'oily_glow','oily_dryness':'dry_dryness','oily_aging':'mature_aging',
+    'dry_dryness':'dry_dryness','dry_aging':'dry_aging','dry_acne':'dry_dryness','dry_glow':'oily_glow',
+    'sensitive_dryness':'sensitive_dryness','sensitive_acne':'sensitive_dryness','sensitive_aging':'mature_aging','sensitive_glow':'sensitive_dryness',
+    'mature_aging':'mature_aging','mature_dryness':'dry_aging','mature_acne':'oily_acne','mature_glow':'mature_aging'
+  };
+  return ROUTINES[map[key]||'oily_acne'];
+}
+
+function buildResult(){
+  var r=getRoutine();
+  var totalSteps=r.morning.length+r.evening.length;
+  var routineKey=Object.keys(ROUTINES).find(function(k){return ROUTINES[k]===r;})||'oily_acne';
+  var m=METRICS[routineKey]||{hydration:60,sensitivity:60,glow:65,barrier:60};
+
+  // Score arc — circumference = 2π×32 ≈ 201
+  var circ=201,offset=circ-(r.score/100*circ);
+  setTimeout(function(){
+    var arc=S('score-arc');
+    if(arc){arc.style.strokeDasharray=circ;arc.style.strokeDashoffset=offset;}
+  },300);
+
+  // Score
+  S('score-n').textContent=r.score;
+  if(S('result-photo-badge')) S('result-photo-badge').textContent=r.score;
+
+  // Nom
+  var fn=state.name?state.name.split(' ')[0]:'';
+  S('result-name').textContent=fn?fn+"'s שגרת Lévia ✦":r.label;
+
+  // Type + score description
+  S('result-type').textContent=r.type;
+  if(S('score-desc')) S('score-desc').textContent=r.label;
+
+  // Badges
+  if(S('badge-skin')) S('badge-skin').textContent=(state.q1||'').toUpperCase()||r.type.split(' ')[0].toUpperCase();
+  if(S('badge-concern')) S('badge-concern').textContent=(state.q2||'').toUpperCase();
+
+  // Insight
+  S('result-insight').textContent=INSIGHTS[routineKey]||'';
+
+  // Stats
+  S('ss-score').textContent=r.score;
+  S('ss-type').textContent=r.type.split(' · ')[0]||'—';
+  S('ss-steps').textContent=totalSteps;
+
+  // Photo client si disponible
+  setTimeout(function(){
+    var photoImg=S('result-photo-img');
+    var photoInit=S('result-photo-initials');
+    if(state.photo && photoImg){
+      photoImg.src=state.photo;
+      photoImg.style.display='block';
+      if(photoInit) photoInit.style.display='none';
+    } else if(photoInit){
+      var initText=S('result-initials-text');
+      if(initText) initText.textContent=state.name?(state.name.charAt(0).toUpperCase()):'✦';
+    }
+  },100);
+
+  // Métriques animées
+  setTimeout(function(){
+    if(S('m-hyd-val')) S('m-hyd-val').textContent=m.hydration+'%';
+    if(S('m-sen-val')) S('m-sen-val').textContent=m.sensitivity+'%';
+    if(S('m-glow-val')) S('m-glow-val').textContent=m.glow+'%';
+    if(S('m-bar-val')) S('m-bar-val').textContent=m.barrier+'%';
+    if(S('m-hyd-bar')) S('m-hyd-bar').style.width=m.hydration+'%';
+    if(S('m-sen-bar')) S('m-sen-bar').style.width=m.sensitivity+'%';
+    if(S('m-glow-bar')) S('m-glow-bar').style.width=m.glow+'%';
+    if(S('m-bar-bar')) S('m-bar-bar').style.width=m.barrier+'%';
+  },400);
+  // Routine
+  function makeStep(s,i){
+    var link=LINKS[s.name]||null;
+    var icon=getIcon(s.name);
+    return '<div class="routine-step">'
+      +'<div class="step-n">'+(i+1)+'</div>'
+      +'<div style="flex:1">'
+        +'<div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">'
+          +'<span style="color:var(--gold-d);flex-shrink:0;">'+icon+'</span>'
+          +'<div class="step-name">'+s.name+'</div>'
+        +'</div>'
+        +'<div class="step-detail">'+s.detail+'</div>'
+        +(s.why?'<div class="step-why">'+s.why+'</div>':'')
+        +(link
+          ?'<a href="'+link+'" target="_blank" rel="noopener nofollow" class="amazon-btn-gold">'
+            +'✦ מצא/י באמזון</a>'
+          :'')
+      +'</div>'
+    +'</div>';
+  }
+
+  var html='<div class="section-label" style="margin-bottom:12px;margin-top:4px;display:flex;align-items:center;gap:8px;font-size:16px;font-weight:700;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>שגרת בוקר</div>';
+  r.morning.forEach(function(s,i){ html+=makeStep(s,i); });
+  html+='<div class="section-label" style="margin-top:22px;margin-bottom:12px;display:flex;align-items:center;gap:8px;font-size:16px;font-weight:700;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>שגרת ערב</div>';
+  r.evening.forEach(function(s,i){ html+=makeStep(s,i); });
+  html+='<div style="font-size:11px;color:var(--text3);margin-top:14px;padding:10px 12px;background:var(--cream2);border-radius:10px;border:1px solid var(--border);line-height:1.6;">'
+    +'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="vertical-align:middle;margin-right:4px;"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>'
+    +'<strong>Note :</strong> אלה המלצות עצמאיות של ציפי המבוססות על פרופיל העור שלך. ל-Lévia אין שותפות עם המותגים המוזכרים ואינה מקבלת עמלה על רכישות.'
+    +'</div>';
+  S('routine-output').innerHTML=html;
+}
+
+function skipPhoto(){
+  state.photo=null;
+  nav('s5',1);
+}
+function checkPhotoConsent(inputId){
+  var cb=S('photo-consent');
+  if(!cb||!cb.checked){
+    var wrap=S('photo-consent-wrap');
+    if(wrap){wrap.style.borderColor='rgba(200,60,60,0.6)';wrap.style.background='rgba(200,60,60,0.04)';
+      setTimeout(function(){wrap.style.borderColor='rgba(201,169,110,0.35)';wrap.style.background='var(--white)';},1800);}
+    return;
+  }
+  document.getElementById(inputId).click();
+}
+function togglePhotoConsent(cb){
+  state.photoConsent = cb.checked;
+}
+
+// Nouveau flow : clic sur le grand bouton = consentement + caméra
+function giveConsentAndTakePhoto(){
+  // Cocher le consentement
+  var cb = S('photo-consent');
+  if(cb){ cb.checked = true; state.photoConsent = true; }
+  // Masquer le bloc consent, montrer retour succès
+  var btn = S('consent-action-btn');
+  if(btn){
+    btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A0F05" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg><span style="font-size:15px;font-weight:700;color:#1A0F05;">Consent given ✓</span>';
+    btn.style.background = '#2d7a4f';
+    btn.style.animation = 'none';
+  }
+  // Ouvrir caméra
+  setTimeout(function(){ S('file-selfie').click(); }, 200);
+}
+
+function giveConsentAndChooseGallery(){
+  // Cocher le consentement
+  var cb = S('photo-consent');
+  if(cb){ cb.checked = true; state.photoConsent = true; }
+  var btn = S('consent-action-btn');
+  if(btn){
+    btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A0F05" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg><span style="font-size:15px;font-weight:700;color:#1A0F05;">Consent given ✓</span>';
+    btn.style.background = '#2d7a4f';
+    btn.style.animation = 'none';
+  }
+  setTimeout(function(){ S('file-gallery').click(); }, 200);
+}
+
+// ===== IMAGES PRODUITS (proxy wsrv.nl anti-CORS) =====
+var PRODUCT_IMGS=(function(){
+  function p(asin){return 'https://wsrv.nl/?url=m.media-amazon.com/images/I/'+asin+'&w=100&h=100&fit=contain&bg=white';}
+  return {
+    'BHA Gel Cleanser':p('71QgaMfH7ZL._SL200_.jpg'),
+    'Niacinamide 10% + Zinc':p('61PUixYLOCL._SL200_.jpg'),
+    'Niacinamide Serum':p('61PUixYLOCL._SL200_.jpg'),
+    'Oil-free Gel Moisturiser':p('71a7xoERq+L._SL200_.jpg'),
+    'SPF 50+ Fluid':p('61a3LHMtQNL._SL200_.jpg'),
+    'SPF 50+':p('61a3LHMtQNL._SL200_.jpg'),
+    'Rich SPF 50':p('61a3LHMtQNL._SL200_.jpg'),
+    'SPF 50+ אנטי-אייג׳ינג':p('61a3LHMtQNL._SL200_.jpg'),
+    'Mineral SPF 50':p('618WFSQIFJL._SL200_.jpg'),
+    'BHA Exfoliant 2%':p('61BFAu5QJAL._SL200_.jpg'),
+    'Hyaluronic Acid':p('61FNHKlPJXL._SL200_.jpg'),
+    'Rich Ceramide Cream':p('71YBT7pOIeL._SL200_.jpg'),
+    'Light Moisturiser':p('71YBT7pOIeL._SL200_.jpg'),
+    'Cream Cleanser':p('71ZFS5CdL3L._SL200_.jpg'),
+    'Gentle Cream Cleanser':p('71ZFS5CdL3L._SL200_.jpg'),
+    'Gentle Gel Cleanser':p('71ZFS5CdL3L._SL200_.jpg'),
+    'Barrier Repair Cream':p('61kY+mLXdUL._SL200_.jpg'),
+    'Rich Barrier Cream':p('61kY+mLXdUL._SL200_.jpg'),
+    'Centella + Ectoin Serum':p('610J0pYHRxL._SL200_.jpg'),
+    'Probiotic Serum':p('51I9p9vl0RL._SL200_.jpg'),
+    'Bakuchiol Serum':p('61nZ6j-E+FL._SL200_.jpg'),
+    'Bakuchiol 0.5%':p('61nZ6j-E+FL._SL200_.jpg'),
+    'Vitamin C 15%':p('71L6FdnqZML._SL200_.jpg'),
+    'Vitamin C 15-20%':p('71L6FdnqZML._SL200_.jpg'),
+    'Peptide-rich Cream':p('71qjJvEdz4L._SL200_.jpg'),
+    'Peptide Moisturiser':p('71qjJvEdz4L._SL200_.jpg'),
+    'Overnight Sleeping Mask':p('71fJB0RLAJL._SL200_.jpg'),
+    'Overnight Hydration Mask':p('71fJB0RLAJL._SL200_.jpg'),
+    'Night 2 \u2014 Retinol 0.3%':p('71V++bUXiqL._SL200_.jpg'),
+    'Eye Contour':p('71pLXMXIunL._SL200_.jpg'),
+    'Thermal Water Spray only':p('61A1g3JUGzL._SL200_.jpg'),
+    'Micellar Water':p('71kGBq5BWEL._SL200_.jpg'),
+    'Double Cleanse':p('71kGBq5BWEL._SL200_.jpg'),
+    'Glycolic Acid 7%':p('61mJJGdOTLL._SL200_.jpg'),
+    'Night 1 \u2014 AHA Exfoliation':p('61mJJGdOTLL._SL200_.jpg'),
+  };
+})();
+
+// ===== LIENS AMAZON (recherche directe — sans affiliation) =====
+var LINKS={
+  'BHA Gel Cleanser':'https://www.amazon.co.uk/s?k=CeraVe+SA+Cleanser+BHA',
+  'Niacinamide 10% + Zinc':'https://www.amazon.co.uk/s?k=The+Ordinary+Niacinamide+10+Zinc',
+  'Niacinamide Serum':'https://www.amazon.co.uk/s?k=The+Ordinary+Niacinamide+10+Zinc',
+  'Oil-free Gel Moisturiser':'https://www.amazon.co.uk/s?k=Neutrogena+Hydro+Boost+Gel+moisturiser',
+  'SPF 50+ Fluid':'https://www.amazon.co.uk/s?k=La+Roche+Posay+Anthelios+Invisible+Fluid+SPF50',
+  'SPF 50+':'https://www.amazon.co.uk/s?k=La+Roche+Posay+Anthelios+SPF50',
+  'Rich SPF 50':'https://www.amazon.co.uk/s?k=Uriage+Bariesun+Rich+SPF50',
+  'SPF 50+ אנטי-אייג׳ינג':'https://www.amazon.co.uk/s?k=La+Roche+Posay+Anthelios+Age+Correct+SPF50',
+  'Mineral SPF 50':'https://www.amazon.co.uk/s?k=Avene+mineral+SPF50+zinc',
+  'BHA Exfoliant 2%':'https://www.amazon.co.uk/s?k=Paula+Choice+BHA+Exfoliant+2',
+  'Hyaluronic Acid':'https://www.amazon.co.uk/s?k=The+Ordinary+Hyaluronic+Acid+2+B5',
+  'Rich Ceramide Cream':'https://www.amazon.co.uk/s?k=CeraVe+Moisturising+Cream+ceramide',
+  'Light Moisturiser':'https://www.amazon.co.uk/s?k=CeraVe+PM+moisturiser',
+  'Cream Cleanser':'https://www.amazon.co.uk/s?k=CeraVe+Hydrating+Cleanser',
+  'Gentle Cream Cleanser':'https://www.amazon.co.uk/s?k=Cetaphil+Gentle+Skin+Cleanser',
+  'Gentle Gel Cleanser':'https://www.amazon.co.uk/s?k=CeraVe+Hydrating+Cleanser',
+  'Barrier Repair Cream':'https://www.amazon.co.uk/s?k=Avene+Cicalfate+barrier+cream',
+  'Rich Barrier Cream':'https://www.amazon.co.uk/s?k=Avene+Cicalfate+barrier+cream',
+  'Centella + Ectoin Serum':'https://www.amazon.co.uk/s?k=COSRX+Centella+Blemish+Serum',
+  'Probiotic Serum':'https://www.amazon.co.uk/s?k=Dr+Jart+Cicapair+serum',
+  'Bakuchiol Serum':'https://www.amazon.co.uk/s?k=Bakuchiol+face+serum',
+  'Bakuchiol 0.5%':'https://www.amazon.co.uk/s?k=Bakuchiol+0.5+serum',
+  'Vitamin C 15%':'https://www.amazon.co.uk/s?k=Mad+Hippie+Vitamin+C+Serum',
+  'Vitamin C 15-20%':'https://www.amazon.co.uk/s?k=SkinCeuticals+CE+Ferulic',
+  'Peptide-rich Cream':'https://www.amazon.co.uk/s?k=Olay+Regenerist+Peptide+Cream',
+  'Peptide Moisturiser':'https://www.amazon.co.uk/s?k=Olay+Regenerist+Peptide+Cream',
+  'Overnight Sleeping Mask':'https://www.amazon.co.uk/s?k=Laneige+Water+Sleeping+Mask',
+  'Overnight Hydration Mask':'https://www.amazon.co.uk/s?k=Laneige+Water+Sleeping+Mask',
+  'Night 2 — Retinol 0.3%':'https://www.amazon.co.uk/s?k=Vichy+Liftactiv+Retinol+0.3',
+  'Eye Contour':'https://www.amazon.co.uk/s?k=Olay+Eyes+Retinol+24+eye+cream',
+  'Thermal Water Spray only':'https://www.amazon.co.uk/s?k=Avene+Thermal+Water+Spray',
+  'Micellar Water':'https://www.amazon.co.uk/s?k=Bioderma+Sensibio+H2O+micellar',
+  'Double Cleanse':'https://www.amazon.co.uk/s?k=Bioderma+oil+cleanser+face',
+  'Glycolic Acid 7%':'https://www.amazon.co.uk/s?k=The+Ordinary+Glycolic+Acid+7+Toning',
+  'Night 1 — AHA Exfoliation':'https://www.amazon.co.uk/s?k=The+Ordinary+Glycolic+Acid+7+Toning',
+};
+
+// ===== ICÔNES PAR CATÉGORIE =====
+var ICONS={
+  cleanser:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8 2h8l1 8H7L8 2z"/><path d="M7 10v10a1 1 0 001 1h8a1 1 0 001-1V10"/><path d="M10 14h4"/></svg>',
+  serum:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M9 3h6v2l1 1v12a2 2 0 01-2 2H10a2 2 0 01-2-2V6l1-1V3z"/><path d="M9 9h6"/></svg>',
+  moisturiser:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M9 8h6M9 12h4"/></svg>',
+  spf:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>',
+  exfoliant:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 2C8 6 4 10 4 14a8 8 0 0016 0c0-4-4-8-8-12z"/><path d="M9 16a3 3 0 006 0"/></svg>',
+  mask:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 3C7 3 3 7 3 12v3a9 9 0 0018 0v-3c0-5-4-9-9-9z"/><path d="M9 12h6"/></svg>',
+  eye:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>',
+};
+function getIcon(name){
+  var n=name.toLowerCase();
+  if(n.includes('cleanser')||n.includes('cleanse')||n.includes('micellar')||n.includes('thermal water'))return ICONS.cleanser;
+  if(n.includes('spf')||n.includes('sun')||n.includes('mineral spf'))return ICONS.spf;
+  if(n.includes('exfoliant')||n.includes('glycolic')||n.includes('bha')||n.includes('aha')||n.includes('retinol')||n.includes('night 1')||n.includes('night 2'))return ICONS.exfoliant;
+  if(n.includes('mask')||n.includes('sleeping')||n.includes('recovery'))return ICONS.mask;
+  if(n.includes('serum')||n.includes('niacinamide')||n.includes('vitamin c')||n.includes('centella')||n.includes('probiotic')||n.includes('bakuchiol')||n.includes('hyaluronic')||n.includes('peptide'))return ICONS.serum;
+  if(n.includes('eye'))return ICONS.eye;
+  return ICONS.moisturiser;
+}
+
+
+// ===== SCAN REPLAY =====
+function buildScanReplay(pts){
+  if(!state.photo) return;
+  var wrap=S('result-scan-wrap'),photo=S('result-scan-photo');
+  if(!wrap||!photo) return;
+  photo.src=state.photo;
+  wrap.style.display='block';
+  photo.onload=function(){
+    var svgEl=S('result-scan-svg');
+    var CONN=[[3,4],[5,6],[3,5],[4,6],[0,3],[0,4],[5,7],[6,7],[7,10],[7,11],[8,10],[9,11]];
+    var svg='';
+    CONN.forEach(function(c){
+      var a=pts[c[0]],b=pts[c[1]];
+      if(!a||!b)return;
+      svg+='<line x1="'+a.x+'%" y1="'+a.y+'%" x2="'+b.x+'%" y2="'+b.y+'%" stroke="rgba(201,169,110,0.3)" stroke-width="0.8" stroke-dasharray="4 3"/>';
+    });
+    pts.forEach(function(p){
+      svg+='<circle cx="'+p.x+'%" cy="'+p.y+'%" r="4" fill="rgba(201,169,110,0.15)" stroke="rgba(201,169,110,0.85)" stroke-width="1.2"/>'
+        +'<circle cx="'+p.x+'%" cy="'+p.y+'%" r="1.8" fill="rgba(255,220,80,0.95)"/>';
+    });
+    svgEl.innerHTML=svg;
+  };
+  if(photo.complete&&photo.naturalWidth>0)photo.onload();
+}
+
+// ===== SHARE TEXT =====
+function buildShareText(platform){
+  var name=state.name?state.name.split(' ')[0]:'';
+  var score=S('ss-score')?S('ss-score').textContent:'';
+  var routineLabel=S('result-name')?S('result-name').textContent:'My L\u00e9via routine';
+  var skinType=S('result-type')?S('result-type').textContent:'';
+  var r=getRoutine();
+  var morningList=r.morning.map(function(s,i){return '  '+(i+1)+'. '+s.name;}).join('\n');
+  var eveningList=r.evening.map(function(s,i){return '  '+(i+1)+'. '+s.name;}).join('\n');
+  var scanUrl='https://leviaskincare.com/scan';
+  if(platform==='ig'){
+    return (name?'\u2728 '+name+"'s personalised skin routine by L\u00e9via\n":'\u2728 My personalised skin routine by L\u00e9via\n')
+      +'Skin score: '+score+' | '+skinType+'\n\n'
+      +'\u2600\uFE0F MORNING\n'+morningList+'\n\n'
+      +'\uD83C\uDF19 EVENING\n'+eveningList+'\n\n'
+      +'Get your free personalised routine \uD83D\uDC47\n'+scanUrl+'\n\n'
+      +'עקבו ‎@levia.skincare.il \uD83C\uDF3F\n'
+      +'#LeviaSkin #SkincareRoutine #PersonalisedSkincare #SkinAnalysis';
+  } else if(platform==='tt'){
+    return (name?name+"'s skin routine from @levia.skincare.il \u2728\n":'My skin routine from @levia.skincare.il \u2728\n')
+      +'Score: '+score+' | '+skinType+'\n\n'
+      +'\u2600\uFE0F Morning: '+r.morning.map(function(s){return s.name;}).join(' \u00b7 ')+'\n'
+      +'\uD83C\uDF19 Evening: '+r.evening.map(function(s){return s.name;}).join(' \u00b7 ')+'\n\n'
+      +'Get your FREE personalised routine \uD83D\uDC47\n'+scanUrl+'\n\n'
+      +'#LeviaSkin #SkincareRoutine #SkinAnalysis #FreeRoutine';
+  } else {
+    return (name?name+"'s ":'My ')+'L\u00e9via Skin Analysis \u2014 Score '+score+'\n'
+      +routineLabel+'\n\nGet your free routine:\n'+scanUrl+'\n\n@levia.skincare.il';
+  }
+}
+
+// ===== GÉNÉRATION STORY CARD =====
+function generateShareCard(cb){
+  var cv=document.createElement('canvas');
+  cv.width=1080;cv.height=1920;
+  var ctx=cv.getContext('2d');
+  var bg=ctx.createLinearGradient(0,0,0,1920);
+  bg.addColorStop(0,'#0D0900');bg.addColorStop(0.5,'#1A1208');bg.addColorStop(1,'#100B04');
+  ctx.fillStyle=bg;ctx.fillRect(0,0,1080,1920);
+  ctx.strokeStyle='rgba(201,169,110,0.04)';ctx.lineWidth=1;
+  for(var gx=0;gx<1080;gx+=60){ctx.beginPath();ctx.moveTo(gx,0);ctx.lineTo(gx,1920);ctx.stroke();}
+  for(var gy=0;gy<1920;gy+=60){ctx.beginPath();ctx.moveTo(0,gy);ctx.lineTo(1080,gy);ctx.stroke();}
+  var drawAll=function(startY){
+    var gold=ctx.createLinearGradient(0,0,1080,0);
+    gold.addColorStop(0,'#8B6A20');gold.addColorStop(0.5,'#F0D48A');gold.addColorStop(1,'#C9A96E');
+    var lineG=ctx.createLinearGradient(80,0,1000,0);
+    lineG.addColorStop(0,'transparent');lineG.addColorStop(0.3,'rgba(201,169,110,0.4)');
+    lineG.addColorStop(0.7,'rgba(201,169,110,0.4)');lineG.addColorStop(1,'transparent');
+    var score=S('ss-score')?S('ss-score').textContent:'';
+    var skinType=S('result-type')?S('result-type').textContent:'';
+    var name=state.name?state.name.split(' ')[0]:'';
+    var r=getRoutine();
+    var top=startY;
+    // BADGE
+    ctx.save();
+    var bx=(1080-480)/2,by=top+22,bw=480,bh=44;
+    ctx.beginPath();if(ctx.roundRect){ctx.roundRect(bx,by,bw,bh,22);}else{ctx.rect(bx,by,bw,bh);}
+    ctx.fillStyle='rgba(201,169,110,0.1)';ctx.fill();
+    ctx.strokeStyle='rgba(201,169,110,0.3)';ctx.lineWidth=1;ctx.stroke();ctx.restore();
+    ctx.fillStyle='rgba(201,169,110,0.85)';ctx.font='bold 18px sans-serif';ctx.textAlign='center';
+    ctx.fillText('AI ניתוח עור  \u00b7  TRAINED BY SALOM\u00c9',540,by+29);top+=88;
+    // LOGO
+    ctx.fillStyle=gold;ctx.font='bold 88px serif';ctx.textAlign='center';
+    ctx.fillText('L\u00c9VIA',540,top+72);
+    ctx.fillStyle='rgba(201,169,110,0.4)';ctx.font='20px sans-serif';
+    ctx.fillText('BY SALOM\u00c9',540,top+100);top+=124;
+    ctx.strokeStyle=lineG;ctx.lineWidth=1;
+    ctx.beginPath();ctx.moveTo(80,top);ctx.lineTo(1000,top);ctx.stroke();top+=32;
+    // HOOK
+    ctx.fillStyle='rgba(255,255,255,0.9)';ctx.font='italic bold 46px serif';ctx.textAlign='center';
+    ctx.fillText(name?'I tried '+name+'\u2019s AI skin scan':'I tried L\u00e9via\u2019s AI skin scan',540,top+40);
+    ctx.fillStyle='rgba(255,255,255,0.55)';ctx.font='italic 33px serif';
+    ctx.fillText('by skin expert Salom\u00e9',540,top+82);top+=110;
+    // ציון COMPACT
+    var cx=540,cy=top+106,rad=100;
+    ctx.save();
+    ctx.beginPath();ctx.arc(cx,cy,rad,0,Math.PI*2);
+    ctx.fillStyle='rgba(201,169,110,0.06)';ctx.fill();
+    ctx.strokeStyle='rgba(201,169,110,0.18)';ctx.lineWidth=1.5;ctx.stroke();
+    var pct=parseInt(score)||80;
+    var arcG=ctx.createLinearGradient(cx-rad,cy,cx+rad,cy);
+    arcG.addColorStop(0,'#8B6A20');arcG.addColorStop(0.5,'#F0D48A');arcG.addColorStop(1,'#C9A96E');
+    ctx.beginPath();ctx.arc(cx,cy,rad-7,-Math.PI/2,-Math.PI/2+(pct/100)*Math.PI*2);
+    ctx.strokeStyle=arcG;ctx.lineWidth=9;ctx.lineCap='round';ctx.stroke();
+    ctx.fillStyle=gold;ctx.font='bold 86px serif';ctx.textAlign='center';
+    ctx.fillText(score,cx,cy+30);
+    ctx.fillStyle='rgba(201,169,110,0.55)';ctx.font='bold 17px sans-serif';
+    ctx.fillText('SKIN ציון',cx,cy+54);ctx.restore();top+=226;
+    ctx.fillStyle='rgba(201,169,110,0.65)';ctx.font='20px sans-serif';ctx.textAlign='center';
+    ctx.fillText(skinType,540,top);top+=32;
+    ctx.strokeStyle=lineG;ctx.lineWidth=1;
+    ctx.beginPath();ctx.moveTo(80,top);ctx.lineTo(1000,top);ctx.stroke();top+=28;
+    ctx.fillStyle='rgba(255,255,255,0.45)';ctx.font='italic 23px serif';ctx.textAlign='center';
+    ctx.fillText('L\u00e9via\u2019s AI scanned my skin & built me a',540,top);top+=29;
+    ctx.fillStyle='rgba(201,169,110,0.85)';ctx.font='italic bold 26px serif';
+    ctx.fillText('personalised expert routine in 3 min',540,top);top+=44;
+    // MORNING
+    ctx.fillStyle='rgba(201,169,110,0.9)';ctx.font='bold 22px sans-serif';ctx.textAlign='left';
+    ctx.fillText('MORNING',108,top);top+=32;
+    r.morning.forEach(function(s,i){
+      ctx.save();ctx.beginPath();ctx.arc(100,top-6,11,0,Math.PI*2);
+      ctx.fillStyle='rgba(201,169,110,0.12)';ctx.fill();
+      ctx.strokeStyle='rgba(201,169,110,0.3)';ctx.lineWidth=1;ctx.stroke();
+      ctx.fillStyle='rgba(201,169,110,0.85)';ctx.font='bold 14px sans-serif';ctx.textAlign='center';
+      ctx.fillText(i+1,100,top-1);ctx.restore();
+      ctx.fillStyle='rgba(255,255,255,0.92)';ctx.font='bold 22px sans-serif';ctx.textAlign='left';
+      ctx.fillText(s.name,120,top);
+      ctx.fillStyle='rgba(255,255,255,0.32)';ctx.font='16px sans-serif';
+      ctx.fillText(s.detail.split('\u00b7')[0].trim().substring(0,54),120,top+22);top+=50;
+    });
+    top+=4;
+    // EVENING
+    ctx.fillStyle='rgba(201,169,110,0.9)';ctx.font='bold 22px sans-serif';ctx.textAlign='left';
+    ctx.fillText('EVENING',108,top);top+=32;
+    r.evening.forEach(function(s,i){
+      ctx.save();ctx.beginPath();ctx.arc(100,top-6,11,0,Math.PI*2);
+      ctx.fillStyle='rgba(201,169,110,0.12)';ctx.fill();
+      ctx.strokeStyle='rgba(201,169,110,0.3)';ctx.lineWidth=1;ctx.stroke();
+      ctx.fillStyle='rgba(201,169,110,0.85)';ctx.font='bold 14px sans-serif';ctx.textAlign='center';
+      ctx.fillText(i+1,100,top-1);ctx.restore();
+      ctx.fillStyle='rgba(255,255,255,0.92)';ctx.font='bold 22px sans-serif';ctx.textAlign='left';
+      ctx.fillText(s.name,120,top);
+      ctx.fillStyle='rgba(255,255,255,0.32)';ctx.font='16px sans-serif';
+      ctx.fillText(s.detail.split('\u00b7')[0].trim().substring(0,54),120,top+22);top+=50;
+    });
+    top+=16;
+    ctx.strokeStyle=lineG;ctx.lineWidth=1;
+    ctx.beginPath();ctx.moveTo(80,top);ctx.lineTo(1000,top);ctx.stroke();top+=28;
+    // CTA VIRAL pinned bottom
+    if(top<1580) top=1580;
+    ctx.fillStyle='rgba(255,255,255,0.88)';ctx.font='italic bold 32px serif';ctx.textAlign='center';
+    ctx.fillText('Try it free \u2014 get your AI skin routine',540,top);top+=46;
+    ctx.save();
+    var bw2=680,bh2=76,bx2=(1080-bw2)/2,by2=top;
+    ctx.beginPath();if(ctx.roundRect){ctx.roundRect(bx2,by2,bw2,bh2,38);}else{ctx.rect(bx2,by2,bw2,bh2);}
+    var btnG=ctx.createLinearGradient(bx2,0,bx2+bw2,0);
+    btnG.addColorStop(0,'#8B6A20');btnG.addColorStop(0.5,'#E8C98A');btnG.addColorStop(1,'#8B6A20');
+    ctx.fillStyle=btnG;ctx.fill();ctx.restore();
+    ctx.fillStyle='#1A1208';ctx.font='bold 27px sans-serif';ctx.textAlign='center';
+    ctx.fillText('leviaskincare.com/scan',540,by2+50);top+=98;
+    ctx.fillStyle='rgba(201,169,110,0.55)';ctx.font='italic 22px serif';ctx.textAlign='center';
+    ctx.fillText('@levia.skincare.il',540,top);
+    ctx.fillStyle='rgba(201,169,110,0.14)';ctx.font='16px sans-serif';
+    ctx.fillText('AI-powered \u00b7 Trained by Salom\u00e9 \u00b7 L\u00e9via Skincare',540,1884);
+    cb(cv.toDataURL('image/png'));
+  };
+  if(state.photo){
+    var img=new Image();
+    img.onload=function(){
+      var r2=150,cx2=540,cy2=200;
+      ctx.save();ctx.beginPath();ctx.arc(cx2,cy2,r2,0,Math.PI*2);ctx.clip();
+      ctx.drawImage(img,cx2-r2,cy2-r2,r2*2,r2*2);ctx.restore();
+      [r2+7,r2+18,r2+30].forEach(function(rr,i){
+        ctx.beginPath();ctx.arc(cx2,cy2,rr,0,Math.PI*2);
+        ctx.strokeStyle='rgba(201,169,110,'+(0.44-i*0.12)+')';ctx.lineWidth=1;ctx.stroke();
+      });
+      ctx.fillStyle='rgba(201,169,110,0.7)';ctx.font='bold 16px sans-serif';ctx.textAlign='center';
+      ctx.fillText('SKIN SCANNED \u2726',540,cy2+r2+22);
+      drawAll(380);
+    };
+    img.crossOrigin='anonymous';img.src=state.photo;
+  } else {
+    var cx3=540,cy3=210,r3=108;
+    ctx.save();ctx.beginPath();ctx.arc(cx3,cy3,r3,0,Math.PI*2);
+    ctx.fillStyle='rgba(201,169,110,0.06)';ctx.fill();
+    ctx.strokeStyle='rgba(201,169,110,0.22)';ctx.lineWidth=1.5;ctx.stroke();
+    ctx.strokeStyle='rgba(255,220,60,0.4)';ctx.lineWidth=2;
+    ctx.beginPath();ctx.moveTo(cx3-r3+20,cy3);ctx.lineTo(cx3+r3-20,cy3);ctx.stroke();
+    ctx.strokeStyle='rgba(201,169,110,0.32)';ctx.lineWidth=1.5;
+    ctx.beginPath();ctx.arc(cx3,cy3-10,42,0,Math.PI*2);ctx.stroke();
+    ctx.beginPath();ctx.arc(cx3-15,cy3-17,5,0,Math.PI*2);ctx.stroke();
+    ctx.beginPath();ctx.arc(cx3+15,cy3-17,5,0,Math.PI*2);ctx.stroke();
+    ctx.beginPath();ctx.arc(cx3,cy3+8,14,0,Math.PI);ctx.stroke();
+    [r3+9,r3+22].forEach(function(rr,i){
+      ctx.beginPath();ctx.arc(cx3,cy3,rr,0,Math.PI*2);
+      ctx.strokeStyle='rgba(201,169,110,'+(0.15-i*0.05)+')';ctx.lineWidth=1;ctx.stroke();
+    });
+    ctx.restore();
+    ctx.fillStyle='rgba(201,169,110,0.6)';ctx.font='bold 16px sans-serif';ctx.textAlign='center';
+    ctx.fillText('AI SKIN SCAN',cx3,cy3+r3+22);
+    drawAll(350);
+  }
+}
+
+// ===== MODAL PARTAGE =====
+function _showShareModal(platform,imgUrl,caption){
+  var existing=S('share-modal');if(existing)existing.remove();
+  var modal=document.createElement('div');
+  modal.id='share-modal';
+  modal.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;overflow-y:auto;';
+  var isIG=platform==='ig';
+  var pName=isIG?'Instagram':'TikTok';
+  var btnGrad=isIG?'background:linear-gradient(135deg,#833AB4,#FD1D1D,#F77737)':'background:linear-gradient(135deg,#010101,#69C9D0,#EE1D52)';
+  var accentColor=isIG?'#E8C98A':'#69C9D0';
+  var inner=document.createElement('div');
+  inner.style.cssText='background:#1A1208;border:1px solid rgba(201,169,110,0.3);border-radius:24px;padding:26px 22px;width:100%;max-width:380px;';
+  var title=document.createElement('div');
+  title.style.cssText='text-align:center;font-family:serif;font-size:24px;color:#E8C98A;margin-bottom:4px;';
+  title.textContent='Share on '+pName+' \u2726';
+  inner.appendChild(title);
+  var sub=document.createElement('div');
+  sub.style.cssText='text-align:center;font-size:12px;color:rgba(255,255,255,0.45);margin-bottom:18px;line-height:1.7;';
+  sub.innerHTML='Image saved \u2713 &nbsp;\u00b7&nbsp; Caption copied \u2713<br>Just open the app and paste!';
+  inner.appendChild(sub);
+  if(imgUrl){
+    var preview=document.createElement('img');
+    preview.src=imgUrl;
+    preview.style.cssText='display:block;margin:0 auto 16px;width:88px;border-radius:10px;border:1px solid rgba(201,169,110,0.3);';
+    inner.appendChild(preview);
+  }
+  var steps=document.createElement('div');
+  steps.style.cssText='background:rgba(255,255,255,0.04);border-radius:14px;padding:14px;margin-bottom:16px;font-size:13px;color:rgba(255,255,255,0.75);line-height:2;';
+  steps.innerHTML='<b style="color:'+accentColor+';">\u2460</b> Tap the button below \u2192 app opens<br>'
+    +'<b style="color:'+accentColor+';">\u2461</b> Tap <b>+</b> '+(isIG?'Story / Post':'New video')+'<br>'
+    +'<b style="color:'+accentColor+';">\u2462</b> Pick the image from your gallery<br>'
+    +'<b style="color:'+accentColor+';">\u2463</b> Paste the caption (already copied \u2713)<br>'
+    +'<b style="color:'+accentColor+';">\u2464</b> Tag <span style="color:'+accentColor+';">@levia.skincare.il</span> \u2192 share!';
+  inner.appendChild(steps);
+  var capPreview=document.createElement('div');
+  capPreview.style.cssText='background:rgba(255,255,255,0.04);border-radius:12px;padding:12px;margin-bottom:16px;font-size:11px;color:rgba(255,255,255,0.38);line-height:1.6;max-height:68px;overflow:hidden;white-space:pre-wrap;';
+  capPreview.textContent=caption.substring(0,200)+'\u2026';
+  inner.appendChild(capPreview);
+  var btnOpen=document.createElement('button');
+  btnOpen.style.cssText='width:100%;padding:16px;border-radius:999px;border:none;'+btnGrad+';color:#fff;font-size:15px;font-weight:700;cursor:pointer;margin-bottom:10px;display:flex;align-items:center;justify-content:center;gap:10px;';
+  var igSVG='<svg width="19" height="19" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>';
+  var ttSVG='<svg width="19" height="19" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.67a8.18 8.18 0 004.77 1.52V6.74a4.85 4.85 0 01-1-.05z"/></svg>';
+  btnOpen.innerHTML=(isIG?igSVG:ttSVG)+'Open '+pName+' & post my routine';
+  btnOpen.onclick=function(){
+    var ua=navigator.userAgent||'';
+    var isIOS=/iphone|ipad|ipod/i.test(ua);
+    var isAndroid=/android/i.test(ua);
+    if(isIG){
+      if(isIOS){window.location.href='instagram://camera';setTimeout(function(){window.open('https://www.instagram.com/','_blank');},1500);}
+      else if(isAndroid){window.location.href='intent://camera/#Intent;package=com.instagram.android;scheme=instagram;end';setTimeout(function(){window.open('https://www.instagram.com/','_blank');},1500);}
+      else{window.open('https://www.instagram.com/','_blank');}
+    } else {
+      if(isIOS){window.location.href='snssdk1233://';setTimeout(function(){window.open('https://www.tiktok.com/','_blank');},1500);}
+      else if(isAndroid){window.location.href='intent:///#Intent;package=com.zhiliaoapp.musically;scheme=https;end';setTimeout(function(){window.open('https://www.tiktok.com/','_blank');},1500);}
+      else{window.open('https://www.tiktok.com/','_blank');}
+    }
+  };
+  inner.appendChild(btnOpen);
+  var btnClose=document.createElement('button');
+  btnClose.style.cssText='width:100%;padding:12px;border-radius:999px;border:1px solid rgba(201,169,110,0.22);background:transparent;color:rgba(255,255,255,0.38);font-size:13px;cursor:pointer;';
+  btnClose.textContent='Done';
+  btnClose.onclick=function(){modal.remove();};
+  inner.appendChild(btnClose);
+  modal.appendChild(inner);
+  document.body.appendChild(modal);
+}
+
+// ===== PARTAGE PRINCIPAL =====
+function shareToSocial(platform){
+  var shareText=buildShareText(platform);
+  var scanUrl='https://leviaskincare.com/scan';
+  if(platform==='ig'||platform==='tt'){
+    if(navigator.share){
+      navigator.share({title:'My L\u00e9via Skin Routine',text:shareText,url:scanUrl})
+        .catch(function(){_fallbackShare(platform,shareText);});
+    } else {_fallbackShare(platform,shareText);}
+  } else if(platform==='copy'){
+    var btn=event?event.target.closest('button'):null;
+    var copyText=buildShareText('copy');
+    if(navigator.clipboard){
+      navigator.clipboard.writeText(copyText).then(function(){
+        if(btn){
+          var orig=btn.innerHTML;
+          btn.innerHTML='\u2713 Copied!';btn.style.background='var(--gold-d)';btn.style.color='#fff';
+          setTimeout(function(){btn.innerHTML=orig;btn.style.background='';btn.style.color='';},2200);
+        }
+      });
+    } else {window.prompt('העתק:',copyText);}
+  }
+}
+
+function _fallbackShare(platform,shareText){
+  generateShareCard(function(dataUrl){
+    try{
+      var a=document.createElement('a');
+      a.href=dataUrl;a.download='levia-skin-routine.png';
+      document.body.appendChild(a);a.click();document.body.removeChild(a);
+    }catch(e){}
+    if(navigator.clipboard){
+      navigator.clipboard.writeText(shareText).then(function(){_showShareModal(platform,dataUrl,shareText);})
+        .catch(function(){_showShareModal(platform,dataUrl,shareText);});
+    } else {_showShareModal(platform,dataUrl,shareText);}
+  });
+}
+
+function shareFn(){shareToSocial('copy');}
+
+</script>
+</body>
+</html>
