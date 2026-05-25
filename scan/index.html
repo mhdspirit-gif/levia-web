@@ -38,6 +38,7 @@ fbq('track', 'PageView');
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM Sans',sans-serif;overflow:hidden;color:var(--text);}
+/* Fix scroll sur petits écrans */
 
 /* ===== SCREENS — slide transition ===== */
 .screen{
@@ -46,10 +47,18 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
   padding:max(env(safe-area-inset-top),20px) 24px max(env(safe-area-inset-bottom),24px);
   background:var(--cream);
   overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
   transform:translateX(100%);
   transition:transform 0.42s cubic-bezier(0.4,0,0.2,1), opacity 0.42s ease;
   opacity:0;pointer-events:none;
   will-change:transform;
+}
+/* Petits écrans : centrage vertical uniquement si assez de place */
+@media (min-height: 700px) {
+  .screen { justify-content:center; }
+}
+@media (max-height: 699px) {
+  .screen { justify-content:flex-start; padding-top: max(env(safe-area-inset-top),12px); }
 }
 .screen.active{transform:translateX(0);opacity:1;pointer-events:all;}
 .screen.exit-left{transform:translateX(-60px);opacity:0;pointer-events:none;}
@@ -205,10 +214,13 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
   background:linear-gradient(135deg,#b87820,#e8a830,#f5c860,#e8a830,#b87820);
   background-size:200% 100%;
   box-shadow:0 4px 22px rgba(184,120,32,0.4),inset 0 1px rgba(255,255,255,0.35);
-  animation:goldShift 3s ease-in-out infinite;}
-.btn-gold::after{content:"";position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,220,0.7) 50%,transparent);transform:skewX(-22deg);animation:shine 2.5s ease-in-out infinite;}
+  animation:goldShift 3s ease-in-out infinite, btnPulse 1.8s ease-in-out infinite;}
+.btn-gold[style*="opacity:0.3"]{animation:none!important;transform:none!important;}
+.btn-gold::after{content:"";position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,220,0.7) 50%,transparent);transform:skewX(-22deg);animation:shine 2s ease-in-out infinite;}
 @keyframes goldShift{0%,100%{background-position:0% 50%;box-shadow:0 4px 20px rgba(184,120,32,0.35);}50%{background-position:100% 50%;box-shadow:0 4px 32px rgba(232,168,48,0.6);}}
 @keyframes shine{0%{left:-100%;}100%{left:140%;}}
+@keyframes btnPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
+@keyframes consentGlow{0%,100%{border-color:rgba(201,169,110,0.35);box-shadow:0 0 0px rgba(201,169,110,0);}50%{border-color:rgba(201,169,110,0.9);box-shadow:0 0 12px rgba(201,169,110,0.5);}}
 .btn-gold:active{transform:scale(0.98);}
 .btn-outline{width:100%;max-width:360px;padding:14px 24px;border-radius:999px;border:1.5px solid var(--border);background:var(--white);color:var(--text2);font-size:14px;font-family:'DM Sans',sans-serif;cursor:pointer;transition:0.2s;}
 .btn-outline:active{background:var(--cream2);}
@@ -507,81 +519,103 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
     <div style="width:32px"></div>
   </div>
 
-  <!-- Layout fixe hauteur = écran - topbar, ZERO scroll -->
-  <div style="display:flex;flex-direction:column;height:calc(100% - 52px);padding:10px 16px 12px;gap:8px;overflow:hidden;">
+  <div style="display:flex;flex-direction:column;height:calc(100% - 52px);padding:12px 18px 16px;gap:10px;overflow-y:auto;-webkit-overflow-scrolling:touch;">
 
-    <!-- Titre compact -->
+    <!-- Titre -->
     <div style="text-align:center;flex-shrink:0;">
-      <div style="font-family:Georgia,serif;font-size:18px;color:var(--text);line-height:1.2;">
-        Your photo <em style="color:var(--gold-d);font-size:16px;">for a precise analysis</em>
+      <div style="font-family:Georgia,serif;font-size:17px;color:var(--text);line-height:1.3;">One last step —</div>
+      <div style="font-size:12px;color:var(--text2);margin-top:2px;">take a photo <em style="color:var(--gold-d);">for a precise result</em></div>
+    </div>
+
+    <!-- 3 exemples photos compacts -->
+    <div style="flex-shrink:0;">
+      <div style="font-size:8px;letter-spacing:1.2px;font-weight:700;color:var(--gold-d);text-transform:uppercase;text-align:center;margin-bottom:7px;">For an accurate result</div>
+      <div style="display:flex;gap:6px;">
+
+        <div style="flex:1;border-radius:10px;overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=120&h=100&fit=crop&crop=face&auto=format"
+            style="width:100%;height:72px;object-fit:cover;object-position:center top;display:block;"
+            alt="Good" onerror="this.parentElement.style.background='#E8D5C0';this.style.display='none'">
+          <div style="background:rgba(45,122,79,0.9);padding:3px 6px;display:flex;align-items:center;gap:3px;">
+            <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+            <span style="font-size:8px;font-weight:600;color:white;">Good light</span>
+          </div>
+        </div>
+
+        <div style="flex:1;border-radius:10px;overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=120&h=100&fit=crop&crop=face&auto=format"
+            style="width:100%;height:72px;object-fit:cover;object-position:center top;display:block;filter:brightness(0.4);"
+            alt="Dark" onerror="this.parentElement.style.background='#444';this.style.display='none'">
+          <div style="background:rgba(180,40,40,0.9);padding:3px 6px;display:flex;align-items:center;gap:3px;">
+            <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            <span style="font-size:8px;font-weight:600;color:white;">Too dark</span>
+          </div>
+        </div>
+
+        <div style="flex:1;border-radius:10px;overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=120&h=100&fit=crop&crop=face&auto=format"
+            style="width:100%;height:72px;object-fit:cover;object-position:center top;display:block;"
+            alt="Makeup" onerror="this.parentElement.style.background='#D4A0A0';this.style.display='none'">
+          <div style="background:rgba(180,40,40,0.9);padding:3px 6px;display:flex;align-items:center;gap:3px;">
+            <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            <span style="font-size:8px;font-weight:600;color:white;">Makeup on</span>
+          </div>
+        </div>
+
       </div>
     </div>
 
-    <!-- Consentement RGPD complet — texte petit mais lisible, pas réduit -->
-    <div id="photo-consent-wrap" style="background:rgba(201,169,110,0.06);border:2px solid rgba(201,169,110,0.35);border-radius:12px;padding:10px 12px;flex-shrink:0;">
-      <div style="font-size:8.5px;letter-spacing:1.5px;font-weight:700;color:var(--gold-d);text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:5px;">
-        <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="2" stroke-linecap="round"><path d="M12 2l8 4v6c0 5-4 9-8 10C8 21 4 17 4 12V6l8-4z"/></svg>
-        GDPR · Data consent required
-      </div>
-      <label style="display:flex;align-items:flex-start;gap:9px;cursor:pointer;">
-        <input type="checkbox" id="photo-consent" onchange="togglePhotoConsent(this)"
-          style="width:18px;height:18px;accent-color:var(--gold-d);flex-shrink:0;cursor:pointer;margin-top:2px;">
-        <span style="font-size:9.5px;color:var(--text2);line-height:1.65;">
+    <!-- GDPR compact -->
+    <div id="photo-consent-wrap" style="border-radius:12px;overflow:hidden;flex-shrink:0;">
+      <div style="background:rgba(201,169,110,0.07);border:1px solid rgba(201,169,110,0.3);border-bottom:none;border-radius:12px 12px 0 0;padding:8px 12px;">
+        <div style="font-size:7.5px;letter-spacing:1.2px;font-weight:700;color:var(--gold-d);text-transform:uppercase;margin-bottom:4px;display:flex;align-items:center;gap:4px;">
+          <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="2" stroke-linecap="round"><path d="M12 2l8 4v6c0 5-4 9-8 10C8 21 4 17 4 12V6l8-4z"/></svg>
+          GDPR · Data consent
+        </div>
+        <p style="font-size:9px;color:var(--text2);line-height:1.55;margin:0;">
           I authorise Lévia to use my photo <b style="color:var(--text);">solely for this AI skin analysis</b> and, with my consent, to contribute anonymously to improving Lévia's diagnostic model. My photo is <b style="color:var(--text);">never sold, shared, or used for advertising.</b> I can request deletion at <a href="mailto:hello@leviaskincare.com" style="color:var(--gold-d);text-decoration:none;">hello@leviaskincare.com</a>. I confirm I am the person in the photo and I am <b style="color:var(--text);">18 years or older.</b>
-        </span>
-      </label>
+        </p>
+      </div>
+
+      <!-- Bouton compact -->
+      <button id="consent-action-btn" onclick="giveConsentAndTakePhoto()"
+        style="width:100%;padding:11px 14px;background:linear-gradient(135deg,#b87820,#e8a830,#f5c860,#e8a830,#b87820);background-size:200% 100%;border:none;border-radius:0 0 12px 12px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;animation:goldShift 3s ease-in-out infinite,btnPulse 1.8s ease-in-out infinite;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,220,0.7) 50%,transparent);transform:skewX(-22deg);animation:shine 2s ease-in-out infinite;"></div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1A0F05" stroke-width="2" stroke-linecap="round"><rect x="2" y="6" width="20" height="16" rx="2"/><circle cx="12" cy="14" r="4"/><path d="M9 6l1.5-3h3L15 6"/></svg>
+        <div>
+          <div style="font-size:13px;font-weight:700;color:#1A0F05;line-height:1.2;">✓ I agree &amp; take my photo</div>
+          <div style="font-size:9px;color:rgba(26,15,5,0.55);line-height:1.2;">Tap to open camera</div>
+        </div>
+      </button>
     </div>
 
-    <!-- 2 boutons photo — désactivés jusqu'au consentement -->
-    <div id="photo-section" style="display:flex;gap:10px;flex-shrink:0;opacity:0.3;pointer-events:none;transition:opacity 0.3s;">
-      <button onclick="checkPhotoConsent('file-selfie')"
-        style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:12px 8px;background:var(--dark);border:none;border-radius:12px;cursor:pointer;min-height:76px;">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.4" stroke-linecap="round"><rect x="2" y="6" width="20" height="16" rx="2"/><circle cx="12" cy="14" r="4"/><path d="M9 6l1.5-3h3L15 6"/></svg>
-        <div style="font-size:11px;font-weight:600;color:var(--gold-l);">Selfie</div>
-        <div style="font-size:8.5px;color:rgba(201,169,110,0.5);">front camera</div>
-      </button>
-      <button onclick="checkPhotoConsent('file-gallery')"
-        style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:12px 8px;background:var(--white);border:1.5px solid var(--border);border-radius:12px;cursor:pointer;min-height:76px;">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.4" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-        <div style="font-size:11px;font-weight:600;color:var(--text);">Gallery</div>
-        <div style="font-size:8.5px;color:var(--text3);">choose a photo</div>
+    <!-- Galerie -->
+    <div style="text-align:center;flex-shrink:0;">
+      <button id="gallery-btn" onclick="giveConsentAndChooseGallery()"
+        style="background:none;border:1px solid var(--border);border-radius:999px;padding:8px 20px;font-size:12px;color:var(--text2);cursor:pointer;font-family:'DM Sans',sans-serif;">
+        📁 Choose from gallery instead
       </button>
     </div>
 
     <!-- Preview photo -->
-    <img id="photo-preview" class="photo-preview" alt="" style="flex-shrink:0;">
+    <img id="photo-preview" class="photo-preview" alt="" style="flex-shrink:0;display:none;">
 
-    <!-- 4 conseils ultra-compacts -->
-    <div style="display:flex;gap:5px;flex-shrink:0;">
-      <div style="flex:1;background:var(--white);border:1px solid var(--border);border-radius:7px;padding:5px 3px;text-align:center;">
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2"/></svg>
-        <div style="font-size:8px;color:var(--text3);margin-top:2px;line-height:1.3;">Natural<br>light</div>
-      </div>
-      <div style="flex:1;background:var(--white);border:1px solid var(--border);border-radius:7px;padding:5px 3px;text-align:center;">
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
-        <div style="font-size:8px;color:var(--text3);margin-top:2px;line-height:1.3;">No<br>makeup</div>
-      </div>
-      <div style="flex:1;background:var(--white);border:1px solid var(--border);border-radius:7px;padding:5px 3px;text-align:center;">
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0112 0v2"/></svg>
-        <div style="font-size:8px;color:var(--text3);margin-top:2px;line-height:1.3;">Full<br>face</div>
-      </div>
-      <div style="flex:1;background:var(--white);border:1px solid var(--border);border-radius:7px;padding:5px 3px;text-align:center;">
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>
-        <div style="font-size:8px;color:var(--text3);margin-top:2px;line-height:1.3;">Plain<br>background</div>
-      </div>
-    </div>
-
-    <!-- Inputs fichiers cachés -->
+    <!-- Inputs cachés -->
+    <input type="checkbox" id="photo-consent" style="display:none;">
     <input type="file" id="file-selfie" accept="image/*" capture="user" onchange="handlePhoto(this)" style="display:none">
     <input type="file" id="file-gallery" accept="image/*" onchange="handlePhoto(this)" style="display:none">
 
-    <!-- Bouton analyser — poussé en bas avec margin-top:auto -->
-    <div style="margin-top:auto;flex-shrink:0;">
+    <!-- Bouton analyser après photo -->
+    <div id="analyse-wrap" style="flex-shrink:0;display:none;">
       <button class="btn-gold" id="btn-analyse" onclick="nav('s5',1)"
-        style="opacity:0.3;pointer-events:none;width:100%;max-width:360px;display:block;margin:0 auto;">
+        style="width:100%;max-width:360px;display:block;margin:0 auto;">
         Analyse my skin ❖
       </button>
-      <div class="btn-skip" onclick="skipPhoto()" style="margin-top:6px;text-align:center;font-size:11px;color:var(--text3);cursor:pointer;padding:4px;">
+    </div>
+
+    <!-- Skip -->
+    <div style="text-align:center;flex-shrink:0;">
+      <div class="btn-skip" onclick="skipPhoto()" style="font-size:10px;color:var(--text3);cursor:pointer;padding:4px;">
         Skip — analyse from my answers only
       </div>
     </div>
@@ -1061,6 +1095,8 @@ function handlePhoto(input){
       var prev=S('photo-preview'),zone=S('photo-zone');
       if(prev){prev.src=resized;prev.style.display='block';}
       if(zone){zone.style.display='none';}
+      // Montrer le bouton analyser
+      var aw=S('analyse-wrap');if(aw)aw.style.display='block';
       console.log('Photo redimensionnée:',Math.round(resized.length/1024)+'KB');
     };
     img.src=e.target.result;
@@ -1574,21 +1610,35 @@ function checkPhotoConsent(inputId){
 }
 function togglePhotoConsent(cb){
   state.photoConsent = cb.checked;
-  // Débloquer le bouton analyser
-  var btn=S('btn-analyse');
-  if(btn){btn.style.opacity=cb.checked?'1':'0.35';btn.style.pointerEvents=cb.checked?'auto':'none';}
-  // Débloquer toute la section photo avec animation
-  var section=S('photo-section');
-  if(section){
-    section.style.opacity=cb.checked?'1':'0.35';
-    section.style.pointerEvents=cb.checked?'auto':'none';
+}
+
+// Nouveau flow : clic sur le grand bouton = consentement + caméra
+function giveConsentAndTakePhoto(){
+  // Cocher le consentement
+  var cb = S('photo-consent');
+  if(cb){ cb.checked = true; state.photoConsent = true; }
+  // Masquer le bloc consent, montrer retour succès
+  var btn = S('consent-action-btn');
+  if(btn){
+    btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A0F05" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg><span style="font-size:15px;font-weight:700;color:#1A0F05;">Consent given ✓</span>';
+    btn.style.background = '#2d7a4f';
+    btn.style.animation = 'none';
   }
-  // Feedback visuel sur le checkbox
-  var wrap=S('photo-consent-wrap');
-  if(wrap){
-    wrap.style.borderColor=cb.checked?'rgba(45,122,79,0.5)':'rgba(201,169,110,0.4)';
-    wrap.style.background=cb.checked?'rgba(45,122,79,0.06)':'linear-gradient(135deg,rgba(201,169,110,0.08),rgba(201,169,110,0.04))';
+  // Ouvrir caméra
+  setTimeout(function(){ S('file-selfie').click(); }, 200);
+}
+
+function giveConsentAndChooseGallery(){
+  // Cocher le consentement
+  var cb = S('photo-consent');
+  if(cb){ cb.checked = true; state.photoConsent = true; }
+  var btn = S('consent-action-btn');
+  if(btn){
+    btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A0F05" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg><span style="font-size:15px;font-weight:700;color:#1A0F05;">Consent given ✓</span>';
+    btn.style.background = '#2d7a4f';
+    btn.style.animation = 'none';
   }
+  setTimeout(function(){ S('file-gallery').click(); }, 200);
 }
 
 // ===== IMAGES PRODUITS (proxy wsrv.nl anti-CORS) =====
