@@ -48,17 +48,18 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
   background:var(--cream);
   overflow-y:auto;
   -webkit-overflow-scrolling:touch;
+  overscroll-behavior:contain;
   transform:translateX(100%);
   transition:transform 0.42s cubic-bezier(0.4,0,0.2,1), opacity 0.42s ease;
   opacity:0;pointer-events:none;
   will-change:transform;
 }
-/* Petits écrans : centrage vertical uniquement si assez de place */
-@media (min-height: 700px) {
+/* Centrage vertical uniquement si assez de place */
+@media (min-height: 750px) {
   .screen { justify-content:center; }
 }
-@media (max-height: 699px) {
-  .screen { justify-content:flex-start; padding-top: max(env(safe-area-inset-top),12px); }
+@media (max-height: 749px) {
+  .screen { justify-content:flex-start; padding-top:max(env(safe-area-inset-top),10px); gap:8px !important; }
 }
 .screen.active{transform:translateX(0);opacity:1;pointer-events:all;}
 .screen.exit-left{transform:translateX(-60px);opacity:0;pointer-events:none;}
@@ -67,7 +68,7 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
 
 /* TOP BAR */
 .top-bar{width:100%;max-width:420px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding-bottom:20px;flex-shrink:0;}
-.top-logo{font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:6px;color:var(--gold-d);}
+.top-logo{font-family:'DM Sans',sans-serif;font-size:18px;letter-spacing:6px;color:var(--gold-d);}
 .prog-wrap{flex:1;margin:0 14px;}
 .prog-bar{height:2px;background:var(--sand);border-radius:1px;overflow:hidden;}
 .prog-fill{height:100%;background:linear-gradient(90deg,var(--gold-d),var(--gold-l));border-radius:1px;transition:width 0.5s ease;}
@@ -76,7 +77,7 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
 
 /* WELCOME */
 #s1{background:linear-gradient(160deg,#FAF7F2 0%,#EEE4D6 100%);}
-.s1-logo{font-family:'Cormorant Garamond',serif;font-size:42px;letter-spacing:10px;color:var(--gold-d);margin-bottom:4px;}
+.s1-logo{font-family:'DM Sans',sans-serif;font-size:42px;letter-spacing:10px;color:var(--gold-d);margin-bottom:4px;}
 .s1-tagline{font-size:11px;letter-spacing:3px;color:var(--text3);text-transform:uppercase;margin-bottom:32px;}
 .salome-circle{position:relative;width:130px;height:130px;margin:0 auto 14px;}
 .salome-circle img{width:100%;height:100%;object-fit:cover;object-position:center 12%;border-radius:50%;border:2px solid rgba(201,169,110,0.45);}
@@ -84,9 +85,9 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
 .ring1{inset:-6px;}
 .ring2{inset:-14px;border-color:rgba(201,169,110,0.15);animation-delay:1s;}
 @keyframes ringPulse{0%,100%{transform:scale(1);opacity:0.5;}50%{transform:scale(1.03);opacity:1;}}
-.salome-name{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--text2);font-style:italic;text-align:center;margin-bottom:2px;}
+.salome-name{font-family:'DM Sans',sans-serif;font-size:15px;color:var(--text2);font-style:italic;text-align:center;margin-bottom:2px;}
 .salome-exp{font-size:11px;color:var(--text3);letter-spacing:1px;text-align:center;margin-bottom:28px;}
-.s1-title{font-family:'Cormorant Garamond',serif;font-size:28px;line-height:1.25;text-align:center;color:var(--text);margin-bottom:8px;}
+.s1-title{font-family:'DM Sans',sans-serif;font-size:28px;line-height:1.25;text-align:center;color:var(--text);margin-bottom:8px;}
 .s1-title em{color:var(--gold-d);font-style:italic;}
 .s1-sub{font-size:13px;line-height:1.75;color:var(--text2);text-align:center;margin-bottom:28px;}
 .s1-steps{display:flex;gap:10px;margin-bottom:32px;width:100%;}
@@ -96,7 +97,7 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
 
 /* QUESTIONS */
 .q-icon-wrap{width:52px;height:52px;border-radius:15px;background:var(--white);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:18px;box-shadow:0 2px 12px rgba(201,169,110,0.1);}
-.q-title{font-family:'Cormorant Garamond',serif;font-size:27px;line-height:1.2;text-align:center;color:var(--text);margin-bottom:6px;}
+.q-title{font-family:'DM Sans',sans-serif;font-size:27px;line-height:1.2;text-align:center;color:var(--text);margin-bottom:6px;}
 .q-title em{color:var(--gold-d);font-style:italic;}
 .q-sub{font-size:13px;color:var(--text2);text-align:center;margin-bottom:22px;line-height:1.6;}
 .options{display:grid;grid-template-columns:1fr 1fr;gap:9px;width:100%;}
@@ -164,7 +165,7 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
 .scan-zone{opacity:0;transition:opacity 0.6s;}
 .scan-zone.on{opacity:1;}
 
-.scan-pct{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:700;color:var(--white);text-align:center;letter-spacing:3px;line-height:1;}
+.scan-pct{font-family:'DM Sans',sans-serif;font-size:52px;font-weight:700;color:var(--white);text-align:center;letter-spacing:3px;line-height:1;}
 .scan-sub-text{font-size:9px;color:rgba(255,255,255,0.35);text-align:center;letter-spacing:2.5px;margin-bottom:14px;margin-top:4px;}
 .atags{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:280px;}
 .atag{padding:3px 9px;border-radius:999px;border:1px solid rgba(201,169,110,0.2);font-size:9px;color:rgba(255,255,255,0.45);opacity:0;animation:tagIn 0.4s ease forwards;}
@@ -174,17 +175,17 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
 #s7{background:var(--cream);padding-top:0;justify-content:flex-start;overflow-y:auto;}
 .result-hero{width:100%;background:linear-gradient(160deg,#1A1208 0%,#2E1F08 100%);padding:36px 24px 28px;display:flex;flex-direction:column;align-items:center;position:relative;overflow:hidden;}
 .result-hero::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(201,169,110,0.2),transparent 70%);pointer-events:none;}
-.result-logo{font-family:'Cormorant Garamond',serif;font-size:16px;letter-spacing:6px;color:rgba(201,169,110,0.6);margin-bottom:20px;}
+.result-logo{font-family:'DM Sans',sans-serif;font-size:16px;letter-spacing:6px;color:rgba(201,169,110,0.6);margin-bottom:20px;}
 .score-ring-wrap{position:relative;width:120px;height:120px;margin:0 auto 14px;}
 .score-svg{width:120px;height:120px;transform:rotate(-90deg);}
 .score-bg{fill:none;stroke:rgba(255,255,255,0.08);stroke-width:7;}
 .score-arc{fill:none;stroke:url(#sg);stroke-width:7;stroke-linecap:round;stroke-dasharray:326;stroke-dashoffset:326;transition:stroke-dashoffset 1.8s cubic-bezier(0.4,0,0.2,1);}
 .score-num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
-.score-n{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:700;color:var(--gold-l);line-height:1;}
+.score-n{font-family:'DM Sans',sans-serif;font-size:36px;font-weight:700;color:var(--gold-l);line-height:1;}
 .score-label{font-size:9px;color:rgba(255,255,255,0.4);letter-spacing:1.5px;margin-top:2px;}
-.result-name{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--white);text-align:center;margin-bottom:4px;}
+.result-name{font-family:'DM Sans',sans-serif;font-size:28px;color:var(--white);text-align:center;margin-bottom:4px;}
 .result-type{font-size:11px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;}
-.result-insight{font-size:13px;color:rgba(255,255,255,0.6);text-align:center;line-height:1.7;max-width:300px;font-style:italic;font-family:'Cormorant Garamond',serif;}
+.result-insight{font-size:13px;color:rgba(255,255,255,0.6);text-align:center;line-height:1.7;max-width:300px;font-style:italic;font-family:'DM Sans',sans-serif;}
 
 .result-body{width:100%;max-width:420px;margin:0 auto;padding:24px 20px 40px;}
 .section-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
@@ -198,15 +199,15 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
 .salome-sign{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:16px;background:var(--white);border:1px solid var(--border);margin:16px 0;}
 .s-thumb{width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:center 10%;border:1px solid var(--border);flex-shrink:0;}
 .s-text{font-size:12px;color:var(--text2);line-height:1.5;}
-.s-name{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--gold-d);font-style:italic;}
+.s-name{font-family:'DM Sans',sans-serif;font-size:16px;color:var(--gold-d);font-style:italic;}
 
 /* Share card */
 .share-card{border-radius:18px;background:linear-gradient(135deg,#1A1208,#2E1F08);border:1px solid rgba(201,169,110,0.25);padding:20px;margin-bottom:14px;text-align:center;}
-.share-card-title{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--white);margin-bottom:4px;}
+.share-card-title{font-family:'DM Sans',sans-serif;font-size:18px;color:var(--white);margin-bottom:4px;}
 .share-card-sub{font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:14px;letter-spacing:0.5px;}
 .share-stats{display:flex;justify-content:center;gap:24px;margin-bottom:16px;}
 .stat{display:flex;flex-direction:column;align-items:center;}
-.stat-n{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--gold-l);font-weight:700;line-height:1;}
+.stat-n{font-family:'DM Sans',sans-serif;font-size:28px;color:var(--gold-l);font-weight:700;line-height:1;}
 .stat-l{font-size:9px;color:rgba(255,255,255,0.35);letter-spacing:1.5px;margin-top:2px;}
 
 /* BUTTONS */
@@ -220,6 +221,22 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
 @keyframes goldShift{0%,100%{background-position:0% 50%;box-shadow:0 4px 20px rgba(184,120,32,0.35);}50%{background-position:100% 50%;box-shadow:0 4px 32px rgba(232,168,48,0.6);}}
 @keyframes shine{0%{left:-100%;}100%{left:140%;}}
 @keyframes btnPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
+/* Pulse agressif pour le bouton principal */
+.btn-mega{animation:goldShift 3s ease-in-out infinite,btnMegaPulse 1.2s ease-in-out infinite !important;}
+@keyframes btnMegaPulse{
+  0%{transform:scale(1);box-shadow:0 4px 20px rgba(184,120,32,0.35);}
+  40%{transform:scale(1.08);box-shadow:0 8px 35px rgba(232,168,48,0.7),0 0 0 6px rgba(245,200,96,0.2);}
+  60%{transform:scale(0.97);box-shadow:0 2px 12px rgba(184,120,32,0.3);}
+  100%{transform:scale(1);box-shadow:0 4px 20px rgba(184,120,32,0.35);}
+}
+/* Main qui tape */
+@keyframes tapHint{
+  0%{transform:translateX(-50%) translateY(0) scale(1);}
+  30%{transform:translateX(-50%) translateY(-6px) scale(1.1);}
+  60%{transform:translateX(-50%) translateY(2px) scale(0.9);}
+  80%{transform:translateX(-50%) translateY(-3px) scale(1.05);}
+  100%{transform:translateX(-50%) translateY(0) scale(1);}
+}
 @keyframes consentGlow{0%,100%{border-color:rgba(201,169,110,0.35);box-shadow:0 0 0px rgba(201,169,110,0);}50%{border-color:rgba(201,169,110,0.9);box-shadow:0 0 12px rgba(201,169,110,0.5);}}
 .btn-gold:active{transform:scale(0.98);}
 .btn-outline{width:100%;max-width:360px;padding:14px 24px;border-radius:999px;border:1.5px solid var(--border);background:var(--white);color:var(--text2);font-size:14px;font-family:'DM Sans',sans-serif;cursor:pointer;transition:0.2s;}
@@ -251,7 +268,7 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
 }
 .age-opt:active{transform:scale(0.97);}
 .age-opt.selected{border-color:var(--gold-d);background:linear-gradient(135deg,#FDF6E8,#F5EADA);box-shadow:0 4px 16px rgba(139,106,32,0.15);}
-.age-range{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--text);display:block;margin-bottom:2px;}
+.age-range{font-family:'DM Sans',sans-serif;font-size:22px;font-weight:700;color:var(--text);display:block;margin-bottom:2px;}
 .age-opt.selected .age-range{color:var(--gold-d);}
 .age-desc{font-size:10px;color:var(--text3);}
 .age-opt.selected .age-desc{color:var(--gold-d);}
@@ -275,6 +292,18 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
 .cf-box{position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden;}
 .cf{position:absolute;top:-14px;opacity:0;animation:cfFall linear forwards;}
 @keyframes cfFall{0%{opacity:1;transform:translateY(0) rotate(0deg);}100%{opacity:0;transform:translateY(105vh) rotate(720deg);}}
+.amazon-btn-gold{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:7px 14px;border-radius:999px;border:none;
+  background:linear-gradient(135deg,#b87820,#e8a830,#f5c860,#e8a830,#b87820);
+  background-size:200% 100%;
+  color:#1A0F05;font-size:11px;font-weight:700;
+  text-decoration:none;cursor:pointer;
+  font-family:'DM Sans',sans-serif;
+  animation:goldShift 3s ease-in-out infinite,btnPulse 1.8s ease-in-out infinite;
+  box-shadow:0 2px 10px rgba(184,120,32,0.3);
+  margin-top:6px;
+}
 </style>
 </head>
 <body>
@@ -290,9 +319,21 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
     </div>
     <div class="salome-name">Salomé</div>
     <div class="salome-exp">Skin Expert · 20 years · Lévia</div>
-    <div class="s1-title">Your skin deserves<br>to be <em>truly understood.</em></div>
+    <div class="s1-title">Your skin deserves<br><em>to be truly understood.</em></div>
     <div class="s1-sub">Answer 5 questions · Get your free personalised<br>expert routine in 3 minutes.</div>
-    <div class="s1-steps">
+    <!-- Bouton doré EN PREMIER — visible immédiatement -->
+    <div style="position:relative;width:100%;max-width:360px;margin-bottom:16px;">
+      <button class="btn-gold btn-mega" onclick="document.getElementById('tap-hint') && (document.getElementById('tap-hint').style.display='none');nav('s-gender',1)">✦ Start my free analysis</button>
+      <!-- Main animée qui pointe sur le bouton -->
+      <div id="tap-hint" style="position:absolute;bottom:-28px;left:50%;transform:translateX(-50%);pointer-events:none;animation:tapHint 1.5s ease-in-out infinite;">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <text y="28" font-size="28">👆</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Pictos en dessous -->
+    <div class="s1-steps" style="margin-top:28px;margin-bottom:0;">
       <div class="s1-step">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M9 9h.01M15 9h.01M8 13s1.5 2 4 2 4-2 4-2"/></svg>
         <div class="s1-step-label">5 smart questions</div>
@@ -306,7 +347,6 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
         <div class="s1-step-label">Your routine</div>
       </div>
     </div>
-    <button class="btn-gold" onclick="nav('s-gender',1)">✦ Start my free analysis</button>
   </div>
 </div>
 
@@ -375,7 +415,7 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
       <div class="age-opt" onclick="pickAge(this,'35-44')">
         <div class="check-badge"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
         <span class="age-range">35–44</span>
-        <span class="age-desc">Active anti-ageing</span>
+        <span class="age-desc">אנטי-אייג׳ינג פעיל</span>
       </div>
       <div class="age-opt" onclick="pickAge(this,'45-54')">
         <div class="check-badge"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
@@ -455,7 +495,7 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
       <div class="opt" onclick="pick(this,'q2','dryness')">
         <div class="check-badge"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 2C12 2 5 10 5 15a7 7 0 0014 0c0-5-7-13-7-13z"/><path d="M9 17a3 3 0 006 0"/></svg>
-        <div class="opt-label">Dryness</div><div class="opt-sub">Tight, dehydrated</div>
+        <div class="opt-label">Dryness</div><div class="opt-sub">מתוח, מDryness</div>
       </div>
       <div class="opt" onclick="pick(this,'q2','aging')">
         <div class="check-badge"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
@@ -523,13 +563,13 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
 
     <!-- Titre -->
     <div style="text-align:center;flex-shrink:0;">
-      <div style="font-family:Georgia,serif;font-size:17px;color:var(--text);line-height:1.3;">One last step —</div>
+      <div style="font-family:'DM Sans',sans-serif;font-size:17px;color:var(--text);line-height:1.3;">One last step —</div>
       <div style="font-size:12px;color:var(--text2);margin-top:2px;">take a photo <em style="color:var(--gold-d);">for a precise result</em></div>
     </div>
 
     <!-- 3 exemples photos compacts -->
     <div style="flex-shrink:0;">
-      <div style="font-size:8px;letter-spacing:1.2px;font-weight:700;color:var(--gold-d);text-transform:uppercase;text-align:center;margin-bottom:7px;">For an accurate result</div>
+      <div style="font-size:8px;letter-spacing:1.2px;font-weight:700;color:var(--gold-d);text-transform:uppercase;text-align:center;margin-bottom:7px;">FOR AN ACCURATE RESULT</div>
       <div style="display:flex;gap:6px;">
 
         <div style="flex:1;border-radius:10px;overflow:hidden;">
@@ -706,8 +746,8 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
 
     <!-- Logo -->
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">
-      <div style="font-family:Georgia,serif;font-size:13px;letter-spacing:5px;background:linear-gradient(135deg,#8B6A20,#C9A96E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">LÉVIA</div>
-      <div style="font-size:9px;letter-spacing:2px;color:var(--text3);text-transform:uppercase;">Skin Analysis</div>
+      <div style="font-family:'DM Sans',sans-serif;font-size:13px;letter-spacing:5px;background:linear-gradient(135deg,#8B6A20,#C9A96E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">LÉVIA</div>
+      <div style="font-size:9px;letter-spacing:2px;color:var(--text3);text-transform:uppercase;">SKIN ANALYSIS</div>
     </div>
 
     <!-- Ligne de séparation dorée -->
@@ -719,16 +759,16 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
       <!-- Photo si disponible, sinon initiales -->
       <div id="result-photo-wrap" style="position:relative;flex-shrink:0;">
         <div id="result-photo-initials" style="width:78px;height:78px;border-radius:50%;border:2px solid rgba(201,169,110,0.4);background:linear-gradient(135deg,#1A1208,#2A1F0E);display:flex;align-items:center;justify-content:center;">
-          <span id="result-initials-text" style="font-family:Georgia,serif;font-size:26px;color:rgba(201,169,110,0.7);">?</span>
+          <span id="result-initials-text" style="font-family:'DM Sans',sans-serif;font-size:26px;color:rgba(201,169,110,0.7);">?</span>
         </div>
         <img id="result-photo-img" src="" alt="" style="display:none;width:78px;height:78px;border-radius:50%;border:2px solid rgba(201,169,110,0.5);object-fit:cover;object-position:center top;">
         <!-- Badge score sur la photo -->
-        <div id="result-photo-badge" style="position:absolute;bottom:-4px;right:-4px;background:linear-gradient(135deg,#8B6A20,#C9A96E);border-radius:999px;padding:2px 7px;font-size:10px;font-weight:700;color:#1A1208;font-family:Georgia,serif;border:2px solid #FAF7F2;"></div>
+        <div id="result-photo-badge" style="position:absolute;bottom:-4px;right:-4px;background:linear-gradient(135deg,#8B6A20,#C9A96E);border-radius:999px;padding:2px 7px;font-size:10px;font-weight:700;color:#1A1208;font-family:'DM Sans',sans-serif;border:2px solid #FAF7F2;"></div>
       </div>
 
       <!-- Nom + routine + insight -->
       <div style="flex:1;min-width:0;">
-        <div id="result-name" style="font-family:Georgia,serif;font-size:19px;color:var(--text);line-height:1.2;margin-bottom:3px;"></div>
+        <div id="result-name" style="font-family:'DM Sans',sans-serif;font-size:19px;color:var(--text);line-height:1.2;margin-bottom:3px;"></div>
         <div id="result-type" style="font-size:10px;letter-spacing:1.5px;color:var(--gold-d);text-transform:uppercase;margin-bottom:6px;"></div>
         <div id="result-insight" style="font-size:11px;color:var(--text2);line-height:1.6;"></div>
       </div>
@@ -754,12 +794,12 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
               style="transition:stroke-dashoffset 1.8s cubic-bezier(0.4,0,0.2,1);"/>
           </svg>
           <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-            <div id="score-n" style="font-family:Georgia,serif;font-size:26px;font-weight:700;background:linear-gradient(135deg,#8B6A20,#C9A96E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;">—</div>
+            <div id="score-n" style="font-family:'DM Sans',sans-serif;font-size:26px;font-weight:700;background:linear-gradient(135deg,#8B6A20,#C9A96E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;">—</div>
             <div style="font-size:7px;letter-spacing:1.5px;color:var(--text3);margin-top:1px;">SCORE</div>
           </div>
         </div>
         <div style="flex:1;">
-          <div style="font-size:11px;color:var(--text3);margin-bottom:4px;">Ton score cutané global</div>
+          <div style="font-size:11px;color:var(--text3);margin-bottom:4px;">Overall skin score</div>
           <div id="score-desc" style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px;"></div>
           <div style="font-size:9px;color:var(--text3);line-height:1.6;font-style:italic;margin-bottom:6px;">Reflects overall skin health based on your profile, lifestyle &amp; environment — not a simple average of individual metrics.</div>
           <div style="display:flex;gap:6px;flex-wrap:wrap;">
@@ -778,7 +818,7 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
         <div>
           <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
             <span style="font-size:11px;color:var(--text2);font-weight:500;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><path d="M12 2C12 2 5 9.5 5 14a7 7 0 0014 0c0-4.5-7-12-7-12z"/></svg> Hydration</span>
-            <span id="m-hyd-val" style="font-size:11px;font-weight:700;color:var(--text);font-family:Georgia,serif;"></span>
+            <span id="m-hyd-val" style="font-size:11px;font-weight:700;color:var(--text);font-family:'DM Sans',sans-serif;"></span>
           </div>
           <div style="height:6px;background:rgba(201,169,110,0.1);border-radius:999px;overflow:hidden;">
             <div id="m-hyd-bar" style="height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,#4A90D9,#7BBDE8);transition:width 1.2s cubic-bezier(0.4,0,0.2,1) 0.3s;"></div>
@@ -788,7 +828,7 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
         <div>
           <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
             <span style="font-size:11px;color:var(--text2);font-weight:500;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Sensitivity</span>
-            <span id="m-sen-val" style="font-size:11px;font-weight:700;color:var(--text);font-family:Georgia,serif;"></span>
+            <span id="m-sen-val" style="font-size:11px;font-weight:700;color:var(--text);font-family:'DM Sans',sans-serif;"></span>
           </div>
           <div style="height:6px;background:rgba(201,169,110,0.1);border-radius:999px;overflow:hidden;">
             <div id="m-sen-bar" style="height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,#E8748A,#F4A0B0);transition:width 1.2s cubic-bezier(0.4,0,0.2,1) 0.5s;"></div>
@@ -798,7 +838,7 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
         <div>
           <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
             <span style="font-size:11px;color:var(--text2);font-weight:500;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg> Glow potential</span>
-            <span id="m-glow-val" style="font-size:11px;font-weight:700;color:var(--text);font-family:Georgia,serif;"></span>
+            <span id="m-glow-val" style="font-size:11px;font-weight:700;color:var(--text);font-family:'DM Sans',sans-serif;"></span>
           </div>
           <div style="height:6px;background:rgba(201,169,110,0.1);border-radius:999px;overflow:hidden;">
             <div id="m-glow-bar" style="height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,#C9A96E,#F0D48A);transition:width 1.2s cubic-bezier(0.4,0,0.2,1) 0.7s;"></div>
@@ -808,7 +848,7 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
         <div>
           <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
             <span style="font-size:11px;color:var(--text2);font-weight:500;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg> Barrier balance</span>
-            <span id="m-bar-val" style="font-size:11px;font-weight:700;color:var(--text);font-family:Georgia,serif;"></span>
+            <span id="m-bar-val" style="font-size:11px;font-weight:700;color:var(--text);font-family:'DM Sans',sans-serif;"></span>
           </div>
           <div style="height:6px;background:rgba(201,169,110,0.1);border-radius:999px;overflow:hidden;">
             <div id="m-bar-bar" style="height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,#2D7A4F,#4CAF80);transition:width 1.2s cubic-bezier(0.4,0,0.2,1) 0.9s;"></div>
@@ -821,16 +861,16 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
     <!-- 3 stats résumé -->
     <div style="display:flex;gap:8px;margin-top:12px;">
       <div style="flex:1;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:10px 8px;text-align:center;">
-        <div id="ss-score" style="font-family:Georgia,serif;font-size:20px;font-weight:700;background:linear-gradient(135deg,#8B6A20,#C9A96E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">—</div>
+        <div id="ss-score" style="font-family:'DM Sans',sans-serif;font-size:20px;font-weight:700;background:linear-gradient(135deg,#8B6A20,#C9A96E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">—</div>
         <div style="font-size:8px;letter-spacing:1px;color:var(--text3);margin-top:2px;text-transform:uppercase;">Score</div>
       </div>
       <div style="flex:1;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:10px 8px;text-align:center;">
-        <div id="ss-type" style="font-family:Georgia,serif;font-size:12px;font-weight:700;color:var(--text);margin-top:4px;">—</div>
-        <div style="font-size:8px;letter-spacing:1px;color:var(--text3);margin-top:2px;text-transform:uppercase;">Type peau</div>
+        <div id="ss-type" style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;color:var(--text);margin-top:4px;">—</div>
+        <div style="font-size:8px;letter-spacing:1px;color:var(--text3);margin-top:2px;text-transform:uppercase;">SKIN TYPE</div>
       </div>
       <div style="flex:1;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:10px 8px;text-align:center;">
-        <div id="ss-steps" style="font-family:Georgia,serif;font-size:20px;font-weight:700;background:linear-gradient(135deg,#8B6A20,#C9A96E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">—</div>
-        <div style="font-size:8px;letter-spacing:1px;color:var(--text3);margin-top:2px;text-transform:uppercase;">Étapes</div>
+        <div id="ss-steps" style="font-family:'DM Sans',sans-serif;font-size:20px;font-weight:700;background:linear-gradient(135deg,#8B6A20,#C9A96E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">—</div>
+        <div style="font-size:8px;letter-spacing:1px;color:var(--text3);margin-top:2px;text-transform:uppercase;">STEPS</div>
       </div>
     </div>
 
@@ -859,7 +899,7 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
     <!-- Disclaimer -->
     <div style="font-size:10px;color:var(--text3);margin-top:14px;padding:10px 12px;background:var(--white);border-radius:10px;border:1px solid var(--border);line-height:1.7;">
       <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="vertical-align:middle;margin-right:3px;"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
-      Independent recommendations. Lévia has no affiliation with brands mentioned and receives no commission.
+      המלצות עצמאיות. ל-Lévia אין שותפות עם המותגים המוזכרים ואינה מקבלת עמלה.
     </div>
 
     <!-- Signature expert -->
@@ -926,33 +966,33 @@ var COUNTRY_LANG = (function(){
 var IS_HE = (COUNTRY_LANG.country === 'IL' || COUNTRY_LANG.lang.startsWith('he'));
 
 var TRANS_HE = {
-  "by Salomé": "עם ציפי",
+  "by Salomé": "by Salomé",
   "Skin Expert · 20 years · Lévia": "מומחית טיפוח עור · 20 שנות ניסיון",
   "Skin Expert · Lévia": "מומחית טיפוח · Lévia",
   "You are a": "את/ה",
-  "woman or a man?": "אישה או גבר?",
-  "Skin biology differs — your routine will be adapted.": "הביולוגיה של העור שונה — השגרה תותאם אישית.",
-  "Woman": "אישה",
-  "Man": "גבר",
+  "woman or a man?": "Woman או Man?",
+  "Skin biology differs — your routine will be adapted.": "Skin biology differs — your routine will be adapted.",
+  "Woman": "Woman",
+  "Man": "Man",
   "Oily": "שמן",
   "Dry": "יבש",
-  "Sensitive": "רגיש",
+  "Sensitive": "Sensitive",
   "Combination": "מעורב",
   "Mature": "בוגר",
-  "Acne & blemishes": "אקנה ופגמים",
+  "Acne & blemishes": "אקנה וBlemishes",
   "Dullness & glow": "עור עמום · זוהר",
-  "Dryness & dehydration": "יובש · התייבשות",
-  "Ageing & wrinkles": "הזדקנות · קמטים",
+  "Dryness & dehydration": "Dryness · התייבשות",
+  "Ageing & wrinkles": "Ageing · קמטים",
   "Sun exposure": "חשיפה לשמש",
-  "Stress": "לחץ",
+  "Stress": "Stress",
   "Pollution": "זיהום אוויר",
-  "Cold & wind": "קור ורוח",
+  "Cold & wind": "Cold & wind",
   "Take a selfie": "צלם/י סלפי",
   "Front face · Eyes open": "פנים ישירות · עיניים פתוחות",
   "Choose from gallery": "בחר/י מהגלריה",
-  "Analyse my skin ❖": "נתח את העור שלי ❖",
-  "Skip — analyse from answers only": "דלג/י — נתח לפי תשובות בלבד",
-  "Good light": "תאורה טובה",
+  "Analyse my skin ❖": "Analyse my skin ❖",
+  "Skip — analyse from answers only": "Skip — analyse from my answers only",
+  "Good light": "Good light",
   "face forward": "פנים ישר",
   "No filter": "ללא פילטר",
   "no makeup": "ללא איפור",
@@ -960,17 +1000,17 @@ var TRANS_HE = {
   "gallery photo": "תמונה מהגלריה",
   "Photo stays on your device · Never uploaded": "התמונה נשארת במכשיר שלך · לא מועלית",
   "Your Lévia Analysis": "ניתוח Lévia שלך",
-  "Save & share your personalised result": "שמור/י ושתף/י את התוצאה האישית שלך",
-  "SKIN SCORE": "ציון עור",
-  "SKIN TYPE": "סוג עור",
-  "STEPS": "שלבים",
-  "Morning Routine": "שגרת בוקר",
-  "Evening Routine": "שגרת ערב",
-  "Follow @levia.skincare.uk": "עקבו @levia.skincare.il",
-  "20 years expertise · Lévia Skincare": "20 שנות ניסיון · Lévia Skincare",
-  "Your routine crafted by": "השגרה שלך נוצרה על ידי",
+  "שמור/י ושתף/י את התוצאה האישית שלך": "שמור/י ושתף/י את התוצאה האישית שלך",
+  "SKIN SCORE": "SCORE עור",
+  "SKIN TYPE": "SKIN TYPE",
+  "STEPS": "STEPS",
+  "Morning Routine": "Morning Routine",
+  "Evening Routine": "Evening Routine",
+  "Follow @levia.skincare.uk": "Follow @levia.skincare.uk",
+  "20 years expertise · Lévia Skincare": "20 years expertise · Lévia Skincare",
+  "Your routine crafted by": "Your routine נוצרה על ידי",
   "Find on Amazon": "מצא באמזון",
-  "Salomé": "ציפי",
+  "Salomé": "Salomé",
   "ANALYSIS COMPLETE": "הניתוח הושלם",
   "SKIN ANALYSIS IN PROGRESS": "ניתוח העור בתהליך",
   "Enter your first name": "שם פרטי",
@@ -1016,11 +1056,11 @@ function applyTranslations(){
   });
   // Expert name
   var nameEls=document.querySelectorAll('.salome-name,.s-name');
-  nameEls.forEach(function(el){el.textContent='ציפי';});
+  nameEls.forEach(function(el){el.textContent='Salomé';});
   var expEls=document.querySelectorAll('.salome-exp');
   expEls.forEach(function(el){el.textContent='מומחית טיפוח עור · 20 שנות ניסיון';});
   // Title
-  document.title='Lévia — ניתוח עור עם ציפי';
+  document.title='Lévia — SKIN ANALYSIS by Salomé';
 }
 // Apply after DOM ready
 document.addEventListener('DOMContentLoaded', applyTranslations);
@@ -1422,12 +1462,12 @@ var ROUTINES={
   oily_acne:{label:'Clear & Balanced',score:81,type:'Oily · Blemish-prone',
     morning:[
       {name:'BHA Gel Cleanser',detail:'CeraVe SA Cleanser · Lukewarm water',why:'Salicylic acid dissolves excess sebum in pores from morning.'},
-      {name:'Niacinamide 10% + Zinc',detail:'The Ordinary · 3-4 drops on damp skin · 60 sec',why:'Regulates sebum, tightens pores, fades post-blemish marks.'},
-      {name:'Oil-free Gel Moisturiser',detail:'Neutrogena Hydro Boost Gel · Pea size',why:'Oily skin still needs hydration — without it, sebum overproduces.'},
+      {name:'Niacinamide 10% + Zinc',detail:'The Ordinary · 3-4 drops on damp skin · 60 sec',why:'מווסת סבום, מהדק נקבוביות, מדהה סימני Blemishes.'},
+      {name:'Oil-free Gel Moisturiser',detail:'Neutrogena Hydro Boost Gel · כמות אפונה',why:'Oily skin still needs hydration — without it, sebum overproduces.'},
       {name:'SPF 50+ Fluid',detail:'La Roche-Posay Anthelios Invisible Fluid',why:'Non-negotiable. UV worsens acne scars by 40%.'}],
     evening:[
-      {name:'Double Cleanse',detail:'Oil cleanser first, then gel cleanser'},
-      {name:'BHA Exfoliant 2%',detail:"Paula's Choice · 3x/week max · Do not rinse",why:'Clears blackheads, prevents congestion deep in pores.'},
+      {name:'Double Cleanse',detail:'ניקוי שמן תחילה, אחר כך ניקוי ג׳ל'},
+      {name:'BHA Exfoliant 2%',detail:"Paula's Choice · מקסימום 3 פעמים בשבוע · אל תשטוף/י",why:'Clears blackheads, prevents congestion deep in pores.'},
       {name:'Light Moisturiser',detail:'CeraVe PM · Repair overnight'}]},
   oily_glow:{label:'Bright & Even',score:78,type:'Oily · Pigmentation',
     morning:[
@@ -1437,18 +1477,18 @@ var ROUTINES={
       {name:'SPF 50+',detail:'La Roche-Posay Anthelios · Every single day'}],
     evening:[
       {name:'Double Cleanse',detail:'Remove SPF, pollution, sebum thoroughly'},
-      {name:'Glycolic Acid 7%',detail:'The Ordinary Toning · 3x/week · Do not rinse',why:'Speeds cell turnover — pigmented cells shed faster.'},
+      {name:'Glycolic Acid 7%',detail:'The Ordinary Toning · 3x/week · אל תשטוף/י',why:'Speeds cell turnover — pigmented cells shed faster.'},
       {name:'Niacinamide + Light Cream',detail:'Seal and repair through the night'}]},
   dry_dryness:{label:'Nourished & Fortified',score:74,type:'Dry · Dehydrated',
     morning:[
-      {name:'Cream Cleanser',detail:'CeraVe Hydrating Cleanser · Lukewarm only',why:'Preserves the lipid barrier dry skin struggles to maintain.'},
+      {name:'Cream Cleanser',detail:'CeraVe Hydrating Cleanser · פושר בלבד',why:'Preserves the lipid barrier dry skin struggles to maintain.'},
       {name:'Hyaluronic Acid',detail:'The Ordinary HA 2%+B5 · Apply to damp skin',why:'Draws water into skin. Key: apply on damp — not dry — skin.'},
       {name:'Rich Ceramide Cream',detail:'CeraVe Moisturising Cream · Apply generously',why:'Ceramides rebuild the corneal layer that locks moisture in.'},
       {name:'Rich SPF 50',detail:'Uriage Bariésun Rich Cream · Moisturising formula'}],
     evening:[
       {name:'Gentle Oil Cleanser',detail:'No SLS, no fragrance — Bioderma or similar'},
-      {name:'Bakuchiol Serum',detail:'Biossance or Herbivore · Every night safe',why:'Natural retinol equivalent — no irritation for dry skin.'},
-      {name:'Overnight Sleeping Mask',detail:'Laneige Water Mask 3-4 nights/week'}]},
+      {name:'Bakuchiol Serum',detail:'Biossance or Herbivore · בטוח כל לילה',why:'Natural retinol equivalent — no irritation for dry skin.'},
+      {name:'Overnight Sleeping Mask',detail:'Laneige Water Mask 3-4 לילות בשבוע'}]},
   dry_aging:{label:'Plumped & Lifted',score:82,type:'Dry · Anti-ageing',
     morning:[
       {name:'Cream Cleanser',detail:'Cetaphil Gentle · Lukewarm water only'},
@@ -1458,10 +1498,10 @@ var ROUTINES={
     evening:[
       {name:'Gentle Oil Cleanser',detail:'Gentle double cleanse — no stripping'},
       {name:'Bakuchiol 0.5%',detail:'Every night · No irritation risk',why:'Retinol-equivalent results without dryness — ideal for dry mature skin.'},
-      {name:'Overnight Hydration Mask',detail:'Laneige Water Sleeping Mask · 3-4 nights/week'}]},
+      {name:'Overnight Hydration Mask',detail:'Laneige Water Sleeping Mask · 3-4 לילות בשבוע'}]},
   sensitive_dryness:{label:'Calm & Restored',score:72,type:'Sensitive · Reactive',
     morning:[
-      {name:'Thermal Water Spray only',detail:'Avène or La Roche-Posay · No cleanser AM',why:"Cleansing twice daily strips reactive skin's fragile microbiome."},
+      {name:'Thermal Water Spray only',detail:'Avène or La Roche-Posay · No cleanser AM',why:"ניקוי פעמיים ביום מפשיט את המיקרוביום השביר של עור Sensitive."},
       {name:'Centella + Ectoin Serum',detail:'COSRX Centella · Pat with fingertips gently',why:'Ectoin creates a molecular hydration shield — 2026 validated.'},
       {name:'Barrier Repair Cream',detail:'Avène Cicalfate+ · Fragrance-free, paraben-free',why:'Minimal formula — fewer ingredients = less to react to.'},
       {name:'Mineral SPF 50',detail:'Zinc oxide only · Chemical filters can trigger sensitivity'}],
@@ -1474,9 +1514,9 @@ var ROUTINES={
       {name:'Gentle Cream Cleanser',detail:'Cetaphil Gentle · No hot water ever'},
       {name:'Vitamin C 15-20%',detail:'SkinCeuticals CE Ferulic or Mad Hippie',why:'The gold standard — collagen production + antioxidant UV shield.'},
       {name:'Peptide Moisturiser',detail:'Olay Regenerist Micro-Sculpting',why:'Peptide cocktail activates dermal fibroblasts for natural firming.'},
-      {name:'SPF 50+ Anti-age',detail:'La Roche-Posay Anthelios Age Correct',why:'80% of skin ageing is photo-ageing. SPF is your best anti-age product.'}],
+      {name:'SPF 50+ אנטי-אייג׳ינג',detail:'La Roche-Posay Anthelios Age Correct',why:'80% of skin ageing is photo-ageing. SPF is your best anti-age product.'}],
     evening:[
-      {name:'Night 1 — AHA Exfoliation',detail:'The Ordinary Glycolic 7% · Do not rinse',why:'Resurfaces skin, accelerates cell renewal.'},
+      {name:'Night 1 — AHA Exfoliation',detail:'The Ordinary Glycolic 7% · אל תשטוף/י',why:'Resurfaces skin, accelerates cell renewal.'},
       {name:'Night 2 — Retinol 0.3%',detail:'Vichy Liftactiv Retinol Expert · Not same night as AHA',why:'Skin cycling: alternating = better tolerance, deeper results.'},
       {name:'Nights 3-4 — Recovery',detail:'Ceramides + HA only · Let the barrier heal',why:'Science-backed: recovery nights prevent over-sensitisation.'},
       {name:'Eye Contour',detail:'Olay Eyes Retinol 24 · Every night · Ageing shows here first'}]}
@@ -1512,7 +1552,7 @@ function buildResult(){
 
   // Nom
   var fn=state.name?state.name.split(' ')[0]:'';
-  S('result-name').textContent=fn?fn+"'s Lévia routine ✦":r.label;
+  S('result-name').textContent=fn?fn+"'s שגרת Lévia ✦":r.label;
 
   // Type + score description
   S('result-type').textContent=r.type;
@@ -1569,27 +1609,20 @@ function buildResult(){
         +'<div class="step-detail">'+s.detail+'</div>'
         +(s.why?'<div class="step-why">'+s.why+'</div>':'')
         +(link
-          ?'<a href="'+link+'" target="_blank" rel="noopener nofollow" '
-            +'style="display:inline-flex;align-items:center;gap:4px;margin-top:6px;'
-            +'font-size:10px;color:var(--gold-d);text-decoration:none;'
-            +'border:1px solid rgba(201,169,110,0.35);border-radius:999px;'
-            +'padding:3px 9px;background:var(--cream2);">'
-            +'<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">'
-            +'<path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>'
-            +'<polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>'
-            +'Find on Amazon</a>'
+          ?'<a href="'+link+'" target="_blank" rel="noopener nofollow" class="amazon-btn-gold">'
+            +'✦ Find on Amazon</a>'
           :'')
       +'</div>'
     +'</div>';
   }
 
-  var html='<div class="section-label" style="margin-bottom:10px;display:flex;align-items:center;gap:7px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>Morning Routine</div>';
+  var html='<div class="section-label" style="margin-bottom:12px;margin-top:4px;display:flex;align-items:center;gap:8px;font-size:16px;font-weight:700;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>Morning Routine</div>';
   r.morning.forEach(function(s,i){ html+=makeStep(s,i); });
-  html+='<div class="section-label" style="margin-top:18px;margin-bottom:10px;display:flex;align-items:center;gap:7px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>Evening Routine</div>';
+  html+='<div class="section-label" style="margin-top:22px;margin-bottom:12px;display:flex;align-items:center;gap:8px;font-size:16px;font-weight:700;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>Evening Routine</div>';
   r.evening.forEach(function(s,i){ html+=makeStep(s,i); });
   html+='<div style="font-size:11px;color:var(--text3);margin-top:14px;padding:10px 12px;background:var(--cream2);border-radius:10px;border:1px solid var(--border);line-height:1.6;">'
     +'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="vertical-align:middle;margin-right:4px;"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>'
-    +'<strong>Note :</strong> These are independent recommendations by Salom\u00e9 based on your skin profile. L\u00e9via has no affiliation with the brands mentioned and receives no commission from purchases.'
+    +'<strong>Note :</strong> אלה המלצות עצמאיות של Salomé המבוססות על פרופיל העור שלך. ל-Lévia אין שותפות עם המותגים המוזכרים ואינה מקבלת עמלה על רכישות.'
     +'</div>';
   S('routine-output').innerHTML=html;
 }
@@ -1652,7 +1685,7 @@ var PRODUCT_IMGS=(function(){
     'SPF 50+ Fluid':p('61a3LHMtQNL._SL200_.jpg'),
     'SPF 50+':p('61a3LHMtQNL._SL200_.jpg'),
     'Rich SPF 50':p('61a3LHMtQNL._SL200_.jpg'),
-    'SPF 50+ Anti-age':p('61a3LHMtQNL._SL200_.jpg'),
+    'SPF 50+ אנטי-אייג׳ינג':p('61a3LHMtQNL._SL200_.jpg'),
     'Mineral SPF 50':p('618WFSQIFJL._SL200_.jpg'),
     'BHA Exfoliant 2%':p('61BFAu5QJAL._SL200_.jpg'),
     'Hyaluronic Acid':p('61FNHKlPJXL._SL200_.jpg'),
@@ -1692,7 +1725,7 @@ var LINKS={
   'SPF 50+ Fluid':'https://www.amazon.co.uk/s?k=La+Roche+Posay+Anthelios+Invisible+Fluid+SPF50',
   'SPF 50+':'https://www.amazon.co.uk/s?k=La+Roche+Posay+Anthelios+SPF50',
   'Rich SPF 50':'https://www.amazon.co.uk/s?k=Uriage+Bariesun+Rich+SPF50',
-  'SPF 50+ Anti-age':'https://www.amazon.co.uk/s?k=La+Roche+Posay+Anthelios+Age+Correct+SPF50',
+  'SPF 50+ אנטי-אייג׳ינג':'https://www.amazon.co.uk/s?k=La+Roche+Posay+Anthelios+Age+Correct+SPF50',
   'Mineral SPF 50':'https://www.amazon.co.uk/s?k=Avene+mineral+SPF50+zinc',
   'BHA Exfoliant 2%':'https://www.amazon.co.uk/s?k=Paula+Choice+BHA+Exfoliant+2',
   'Hyaluronic Acid':'https://www.amazon.co.uk/s?k=The+Ordinary+Hyaluronic+Acid+2+B5',
