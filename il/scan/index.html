@@ -48,17 +48,18 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'Heeb
   background:var(--cream);
   overflow-y:auto;
   -webkit-overflow-scrolling:touch;
+  overscroll-behavior:contain;
   transform:translateX(100%);
   transition:transform 0.42s cubic-bezier(0.4,0,0.2,1), opacity 0.42s ease;
   opacity:0;pointer-events:none;
   will-change:transform;
 }
-/* Petits écrans : centrage vertical uniquement si assez de place */
-@media (min-height: 700px) {
+/* Centrage vertical uniquement si assez de place */
+@media (min-height: 750px) {
   .screen { justify-content:center; }
 }
-@media (max-height: 699px) {
-  .screen { justify-content:flex-start; padding-top: max(env(safe-area-inset-top),12px); }
+@media (max-height: 749px) {
+  .screen { justify-content:flex-start; padding-top:max(env(safe-area-inset-top),10px); gap:8px !important; }
 }
 .screen.active{transform:translateX(0);opacity:1;pointer-events:all;}
 .screen.exit-left{transform:translateX(-60px);opacity:0;pointer-events:none;}
@@ -220,6 +221,22 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'Heeb
 @keyframes goldShift{0%,100%{background-position:0% 50%;box-shadow:0 4px 20px rgba(184,120,32,0.35);}50%{background-position:100% 50%;box-shadow:0 4px 32px rgba(232,168,48,0.6);}}
 @keyframes shine{0%{left:-100%;}100%{left:140%;}}
 @keyframes btnPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
+/* Pulse agressif pour le bouton principal */
+.btn-mega{animation:goldShift 3s ease-in-out infinite,btnMegaPulse 1.2s ease-in-out infinite !important;}
+@keyframes btnMegaPulse{
+  0%{transform:scale(1);box-shadow:0 4px 20px rgba(184,120,32,0.35);}
+  40%{transform:scale(1.08);box-shadow:0 8px 35px rgba(232,168,48,0.7),0 0 0 6px rgba(245,200,96,0.2);}
+  60%{transform:scale(0.97);box-shadow:0 2px 12px rgba(184,120,32,0.3);}
+  100%{transform:scale(1);box-shadow:0 4px 20px rgba(184,120,32,0.35);}
+}
+/* Main qui tape */
+@keyframes tapHint{
+  0%{transform:translateX(-50%) translateY(0) scale(1);}
+  30%{transform:translateX(-50%) translateY(-6px) scale(1.1);}
+  60%{transform:translateX(-50%) translateY(2px) scale(0.9);}
+  80%{transform:translateX(-50%) translateY(-3px) scale(1.05);}
+  100%{transform:translateX(-50%) translateY(0) scale(1);}
+}
 @keyframes consentGlow{0%,100%{border-color:rgba(201,169,110,0.35);box-shadow:0 0 0px rgba(201,169,110,0);}50%{border-color:rgba(201,169,110,0.9);box-shadow:0 0 12px rgba(201,169,110,0.5);}}
 .btn-gold:active{transform:scale(0.98);}
 .btn-outline{width:100%;max-width:360px;padding:14px 24px;border-radius:999px;border:1.5px solid var(--border);background:var(--white);color:var(--text2);font-size:14px;font-family:'Heebo',sans-serif;cursor:pointer;transition:0.2s;}
@@ -304,7 +321,19 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'Heeb
     <div class="salome-exp">מומחית טיפוח עור · 20 שנות ניסיון · Lévia</div>
     <div class="s1-title">העור שלך ראוי<br><em>להיות מובן לאמיתו.</em></div>
     <div class="s1-sub">ענה/י על 5 שאלות · קבל/י שגרת טיפוח<br>אישית ומקצועית בחינם תוך 3 דקות.</div>
-    <div class="s1-steps">
+    <!-- Bouton doré EN PREMIER — visible immédiatement -->
+    <div style="position:relative;width:100%;max-width:360px;margin-bottom:16px;">
+      <button class="btn-gold btn-mega" onclick="document.getElementById('tap-hint') && (document.getElementById('tap-hint').style.display='none');nav('s-gender',1)">✦ התחל/י את הניתוח החינמי שלי</button>
+      <!-- Main animée qui pointe sur le bouton -->
+      <div id="tap-hint" style="position:absolute;bottom:-28px;left:50%;transform:translateX(-50%);pointer-events:none;animation:tapHint 1.5s ease-in-out infinite;">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <text y="28" font-size="28">👆</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Pictos en dessous -->
+    <div class="s1-steps" style="margin-top:28px;margin-bottom:0;">
       <div class="s1-step">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M9 9h.01M15 9h.01M8 13s1.5 2 4 2 4-2 4-2"/></svg>
         <div class="s1-step-label">5 שאלות חכמות</div>
@@ -318,7 +347,6 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'Heeb
         <div class="s1-step-label">השגרה שלך</div>
       </div>
     </div>
-    <button class="btn-gold" onclick="nav('s-gender',1)">✦ התחל/י את הניתוח החינמי שלי</button>
   </div>
 </div>
 
