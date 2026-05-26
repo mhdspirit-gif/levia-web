@@ -336,7 +336,7 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
 
     <!-- BOUTON + MAIN — entre photo et texte -->
     <div style="position:relative;width:100%;max-width:360px;margin-bottom:6px;flex-shrink:0;">
-      <button class="btn-gold btn-mega" onclick="document.getElementById('tap-hint') && (document.getElementById('tap-hint').style.display='none');nav('s-gender',1)">✦ Start my free analysis</button>
+      <button class="btn-gold btn-mega" onclick="hideTapHint();nav('s-gender',1)">✦ Start my free analysis</button>
       <div id="tap-hint" style="position:absolute;bottom:-30px;left:50%;transform:translateX(-50%);pointer-events:none;animation:tapHint 1.5s ease-in-out infinite;font-size:26px;line-height:1;">
         👆
       </div>
@@ -361,6 +361,8 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
         <div class="s1-step-label">Your routine</div>
       </div>
     </div>
+  </div>
+</div>
 
 <!-- S-GENDER — HOMME/FEMME -->
 <div class="screen" id="s-gender">
@@ -910,7 +912,7 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'DM S
     <!-- Disclaimer -->
     <div style="font-size:10px;color:var(--text3);margin-top:14px;padding:10px 12px;background:var(--white);border-radius:10px;border:1px solid var(--border);line-height:1.7;">
       <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="vertical-align:middle;margin-right:3px;"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
-      המלצות עצמאיות. ל-Lévia אין שותפות עם המותגים המוזכרים ואינה מקבלת עמלה.
+      Independent recommendations. Lévia has no affiliation with brands mentioned and receives no commission.
     </div>
 
     <!-- Signature expert -->
@@ -1087,6 +1089,11 @@ var SALOME_B64='/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8L
 });
 
 // NAVIGATION with slide transition
+
+function hideTapHint(){
+  var h=document.getElementById('tap-hint');
+  if(h) h.style.display='none';
+}
 function nav(to,dir){
   var from=S(currentScreen);
   var toEl=S(to);
@@ -1473,12 +1480,12 @@ var ROUTINES={
   oily_acne:{label:'Clear & Balanced',score:81,type:'Oily · Blemish-prone',
     morning:[
       {name:'BHA Gel Cleanser',detail:'CeraVe SA Cleanser · Lukewarm water',why:'Salicylic acid dissolves excess sebum in pores from morning.'},
-      {name:'Niacinamide 10% + Zinc',detail:'The Ordinary · 3-4 drops on damp skin · 60 sec',why:'מווסת סבום, מהדק נקבוביות, מדהה סימני Blemishes.'},
-      {name:'Oil-free Gel Moisturiser',detail:'Neutrogena Hydro Boost Gel · כמות אפונה',why:'Oily skin still needs hydration — without it, sebum overproduces.'},
+      {name:'Niacinamide 10% + Zinc',detail:'The Ordinary · 3-4 drops on damp skin · 60 sec',why:'Regulates sebum, tightens pores, fades post-blemish marks.'},
+      {name:'Oil-free Gel Moisturiser',detail:'Neutrogena Hydro Boost Gel · Pea size',why:'Oily skin still needs hydration — without it, sebum overproduces.'},
       {name:'SPF 50+ Fluid',detail:'La Roche-Posay Anthelios Invisible Fluid',why:'Non-negotiable. UV worsens acne scars by 40%.'}],
     evening:[
-      {name:'Double Cleanse',detail:'ניקוי שמן תחילה, אחר כך ניקוי ג׳ל'},
-      {name:'BHA Exfoliant 2%',detail:"Paula's Choice · מקסימום 3 פעמים בשבוע · אל תשטוף/י",why:'Clears blackheads, prevents congestion deep in pores.'},
+      {name:'Double Cleanse',detail:'Oil cleanser first, then gel cleanser'},
+      {name:'BHA Exfoliant 2%',detail:"Paula's Choice · 3x/week max · Do not rinse",why:'Clears blackheads, prevents congestion deep in pores.'},
       {name:'Light Moisturiser',detail:'CeraVe PM · Repair overnight'}]},
   oily_glow:{label:'Bright & Even',score:78,type:'Oily · Pigmentation',
     morning:[
@@ -1488,18 +1495,18 @@ var ROUTINES={
       {name:'SPF 50+',detail:'La Roche-Posay Anthelios · Every single day'}],
     evening:[
       {name:'Double Cleanse',detail:'Remove SPF, pollution, sebum thoroughly'},
-      {name:'Glycolic Acid 7%',detail:'The Ordinary Toning · 3x/week · אל תשטוף/י',why:'Speeds cell turnover — pigmented cells shed faster.'},
+      {name:'Glycolic Acid 7%',detail:'The Ordinary Toning · 3x/week · Do not rinse',why:'Speeds cell turnover — pigmented cells shed faster.'},
       {name:'Niacinamide + Light Cream',detail:'Seal and repair through the night'}]},
   dry_dryness:{label:'Nourished & Fortified',score:74,type:'Dry · Dehydrated',
     morning:[
-      {name:'Cream Cleanser',detail:'CeraVe Hydrating Cleanser · פושר בלבד',why:'Preserves the lipid barrier dry skin struggles to maintain.'},
+      {name:'Cream Cleanser',detail:'CeraVe Hydrating Cleanser · Lukewarm only',why:'Preserves the lipid barrier dry skin struggles to maintain.'},
       {name:'Hyaluronic Acid',detail:'The Ordinary HA 2%+B5 · Apply to damp skin',why:'Draws water into skin. Key: apply on damp — not dry — skin.'},
       {name:'Rich Ceramide Cream',detail:'CeraVe Moisturising Cream · Apply generously',why:'Ceramides rebuild the corneal layer that locks moisture in.'},
       {name:'Rich SPF 50',detail:'Uriage Bariésun Rich Cream · Moisturising formula'}],
     evening:[
       {name:'Gentle Oil Cleanser',detail:'No SLS, no fragrance — Bioderma or similar'},
-      {name:'Bakuchiol Serum',detail:'Biossance or Herbivore · בטוח כל לילה',why:'Natural retinol equivalent — no irritation for dry skin.'},
-      {name:'Overnight Sleeping Mask',detail:'Laneige Water Mask 3-4 לילות בשבוע'}]},
+      {name:'Bakuchiol Serum',detail:'Biossance or Herbivore · Every night safe',why:'Natural retinol equivalent — no irritation for dry skin.'},
+      {name:'Overnight Sleeping Mask',detail:'Laneige Water Mask 3-4 nights/week'}]},
   dry_aging:{label:'Plumped & Lifted',score:82,type:'Dry · Anti-ageing',
     morning:[
       {name:'Cream Cleanser',detail:'Cetaphil Gentle · Lukewarm water only'},
@@ -1509,10 +1516,10 @@ var ROUTINES={
     evening:[
       {name:'Gentle Oil Cleanser',detail:'Gentle double cleanse — no stripping'},
       {name:'Bakuchiol 0.5%',detail:'Every night · No irritation risk',why:'Retinol-equivalent results without dryness — ideal for dry mature skin.'},
-      {name:'Overnight Hydration Mask',detail:'Laneige Water Sleeping Mask · 3-4 לילות בשבוע'}]},
+      {name:'Overnight Hydration Mask',detail:'Laneige Water Sleeping Mask · 3-4 nights/week'}]},
   sensitive_dryness:{label:'Calm & Restored',score:72,type:'Sensitive · Reactive',
     morning:[
-      {name:'Thermal Water Spray only',detail:'Avène or La Roche-Posay · No cleanser AM',why:"ניקוי פעמיים ביום מפשיט את המיקרוביום השביר של עור Sensitive."},
+      {name:'Thermal Water Spray only',detail:'Avène or La Roche-Posay · No cleanser AM',why:"Cleansing twice daily strips reactive skin's fragile microbiome."},
       {name:'Centella + Ectoin Serum',detail:'COSRX Centella · Pat with fingertips gently',why:'Ectoin creates a molecular hydration shield — 2026 validated.'},
       {name:'Barrier Repair Cream',detail:'Avène Cicalfate+ · Fragrance-free, paraben-free',why:'Minimal formula — fewer ingredients = less to react to.'},
       {name:'Mineral SPF 50',detail:'Zinc oxide only · Chemical filters can trigger sensitivity'}],
@@ -1527,7 +1534,7 @@ var ROUTINES={
       {name:'Peptide Moisturiser',detail:'Olay Regenerist Micro-Sculpting',why:'Peptide cocktail activates dermal fibroblasts for natural firming.'},
       {name:'SPF 50+ אנטי-אייג׳ינג',detail:'La Roche-Posay Anthelios Age Correct',why:'80% of skin ageing is photo-ageing. SPF is your best anti-age product.'}],
     evening:[
-      {name:'Night 1 — AHA Exfoliation',detail:'The Ordinary Glycolic 7% · אל תשטוף/י',why:'Resurfaces skin, accelerates cell renewal.'},
+      {name:'Night 1 — AHA Exfoliation',detail:'The Ordinary Glycolic 7% · Do not rinse',why:'Resurfaces skin, accelerates cell renewal.'},
       {name:'Night 2 — Retinol 0.3%',detail:'Vichy Liftactiv Retinol Expert · Not same night as AHA',why:'Skin cycling: alternating = better tolerance, deeper results.'},
       {name:'Nights 3-4 — Recovery',detail:'Ceramides + HA only · Let the barrier heal',why:'Science-backed: recovery nights prevent over-sensitisation.'},
       {name:'Eye Contour',detail:'Olay Eyes Retinol 24 · Every night · Ageing shows here first'}]}
@@ -1563,7 +1570,7 @@ function buildResult(){
 
   // Nom
   var fn=state.name?state.name.split(' ')[0]:'';
-  S('result-name').textContent=fn?fn+"'s שגרת Lévia ✦":r.label;
+  S('result-name').textContent=fn?fn+"'s Lévia Routine ✦":r.label;
 
   // Type + score description
   S('result-type').textContent=r.type;
@@ -1610,22 +1617,30 @@ function buildResult(){
   function makeStep(s,i){
     var link=LINKS[s.name]||null;
     var icon=getIcon(s.name);
-    return '<div class="routine-step">'
-      +'<div class="step-n">'+(i+1)+'</div>'
-      +'<div style="flex:1">'
-        +'<div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">'
-          +'<span style="color:var(--gold-d);flex-shrink:0;">'+icon+'</span>'
-          +'<div class="step-name">'+s.name+'</div>'
-        +'</div>'
-        +'<div class="step-detail">'+s.detail+'</div>'
-        +(s.why?'<div class="step-why">'+s.why+'</div>':'')
-        +(link
-          ?'<a href="'+link+'" target="_blank" rel="noopener nofollow" class="amazon-btn-gold">'
-            +'✦ Find on Amazon</a>'
-          :'')
-      +'</div>'
-    +'</div>';
+    var pImg=getProductImg(s.name);
+    return '<div class="routine-step">'      +'<div class="step-n">'+(i+1)+'</div>'      +(pImg?'<div style="width:42px;height:42px;flex-shrink:0;border-radius:10px;background:rgba(201,165,110,0.08);border:1px solid rgba(201,165,110,0.2);display:flex;align-items:center;justify-content:center;margin-right:6px;">'+pImg+'</div>':'')      +'<div style="flex:1">'        +'<div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">'          +'<span style="color:var(--gold-d);flex-shrink:0;">'+icon+'</span>'          +'<div class="step-name">'+s.name+'</div>'        +'</div>'        +'<div class="step-detail">'+s.detail+'</div>'        +(s.why?'<div class="step-why">'+s.why+'</div>':'')        +(link          ?'<a href="'+link+'" target="_blank" rel="noopener nofollow" class="amazon-btn-gold">'            +'✦ Find on Amazon</a>'          :'')      +'</div>'    +'</div>';
   }
+
+  function getProductImg(name){
+    var n=(name||'').toLowerCase();
+    var c='stroke="#B87820" stroke-width="1.5" stroke-linecap="round" fill="none"';
+    if(n.includes('cleanser')||n.includes('wash')||n.includes('cleanse'))
+      return '<svg width="22" height="22" viewBox="0 0 24 24" '+c+'><path d="M7 3h10v2l2 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V7l2-2V3z"/><path d="M9 3h6"/><circle cx="12" cy="13" r="2.5"/></svg>';
+    if(n.includes('serum')||n.includes('vitamin')||n.includes('hyaluronic')||n.includes('niacinamide')||n.includes('azelaic'))
+      return '<svg width="22" height="22" viewBox="0 0 24 24" '+c+'><path d="M10 2h4v3l1 1v13a2 2 0 01-2 2h-2a2 2 0 01-2-2V6l1-1V2z"/><circle cx="12" cy="12" r="2"/><path d="M12 10V8"/></svg>';
+    if(n.includes('spf')||n.includes('sunscreen')||n.includes('anthelios')||n.includes('sun'))
+      return '<svg width="22" height="22" viewBox="0 0 24 24" '+c+'><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>';
+    if(n.includes('retinol')||n.includes('bakuchiol')||n.includes('aha')||n.includes('bha')||n.includes('glycolic')||n.includes('exfoliant')||n.includes('ordinary'))
+      return '<svg width="22" height="22" viewBox="0 0 24 24" '+c+'><path d="M12 2C8 6 4 10 4 14a8 8 0 0016 0c0-4-4-8-8-12z"/><path d="M9 14c1 1.5 2 2 3 2s2-.5 3-2"/></svg>';
+    if(n.includes('moistur')||n.includes('cream')||n.includes('ceramide')||n.includes('cerave'))
+      return '<svg width="22" height="22" viewBox="0 0 24 24" '+c+'><path d="M5 8h14v10a2 2 0 01-2 2H7a2 2 0 01-2-2V8z"/><path d="M8 8V6a4 4 0 018 0v2"/><path d="M9 13h6"/></svg>';
+    if(n.includes('mask')||n.includes('laneige'))
+      return '<svg width="22" height="22" viewBox="0 0 24 24" '+c+'><path d="M12 3C8 3 4 7 4 12s3 8 8 9 8-4 8-9-4-9-8-9z"/><path d="M9 11c0 1 .5 2 1.5 2M15 11c0 1-.5 2-1.5 2"/></svg>';
+    if(n.includes('oil'))
+      return '<svg width="22" height="22" viewBox="0 0 24 24" '+c+'><path d="M12 2l3 5H9l3-5z"/><path d="M9 7v10a3 3 0 006 0V7"/></svg>';
+    return '<svg width="22" height="22" viewBox="0 0 24 24" '+c+'><path d="M9 3h6v3l2 2v11a2 2 0 01-2 2H9a2 2 0 01-2-2V8l2-2V3z"/><circle cx="12" cy="14" r="1.5"/></svg>';
+  }
+
 
   var html='<div class="section-label" style="margin-bottom:12px;margin-top:4px;display:flex;align-items:center;gap:8px;font-size:16px;font-weight:700;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>Morning Routine</div>';
   r.morning.forEach(function(s,i){ html+=makeStep(s,i); });
@@ -1633,7 +1648,7 @@ function buildResult(){
   r.evening.forEach(function(s,i){ html+=makeStep(s,i); });
   html+='<div style="font-size:11px;color:var(--text3);margin-top:14px;padding:10px 12px;background:var(--cream2);border-radius:10px;border:1px solid var(--border);line-height:1.6;">'
     +'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="vertical-align:middle;margin-right:4px;"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>'
-    +'<strong>Note :</strong> אלה המלצות עצמאיות של Salomé המבוססות על פרופיל העור שלך. ל-Lévia אין שותפות עם המותגים המוזכרים ואינה מקבלת עמלה על רכישות.'
+    +'<strong>Note :</strong> These are independent recommendations by Salomé based on your skin profile. Lévia has no affiliation with the brands mentioned and receives no commission from purchases.'
     +'</div>';
   S('routine-output').innerHTML=html;
 }
