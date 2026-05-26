@@ -1617,22 +1617,30 @@ function buildResult(){
   function makeStep(s,i){
     var link=LINKS[s.name]||null;
     var icon=getIcon(s.name);
-    return '<div class="routine-step">'
-      +'<div class="step-n">'+(i+1)+'</div>'
-      +'<div style="flex:1">'
-        +'<div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">'
-          +'<span style="color:var(--gold-d);flex-shrink:0;">'+icon+'</span>'
-          +'<div class="step-name">'+s.name+'</div>'
-        +'</div>'
-        +'<div class="step-detail">'+s.detail+'</div>'
-        +(s.why?'<div class="step-why">'+s.why+'</div>':'')
-        +(link
-          ?'<a href="'+link+'" target="_blank" rel="noopener nofollow" class="amazon-btn-gold">'
-            +'✦ מצא/י באמזון</a>'
-          :'')
-      +'</div>'
-    +'</div>';
+    var pImg=getProductImg(s.name);
+    return '<div class="routine-step">'      +'<div class="step-n">'+(i+1)+'</div>'      +(pImg?'<div style="width:42px;height:42px;flex-shrink:0;border-radius:10px;background:rgba(201,165,110,0.08);border:1px solid rgba(201,165,110,0.2);display:flex;align-items:center;justify-content:center;margin-right:6px;">'+pImg+'</div>':'')      +'<div style="flex:1">'        +'<div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">'          +'<span style="color:var(--gold-d);flex-shrink:0;">'+icon+'</span>'          +'<div class="step-name">'+s.name+'</div>'        +'</div>'        +'<div class="step-detail">'+s.detail+'</div>'        +(s.why?'<div class="step-why">'+s.why+'</div>':'')        +(link          ?'<a href="'+link+'" target="_blank" rel="noopener nofollow" class="amazon-btn-gold">'            +'✦ Find on Amazon</a>'          :'')      +'</div>'    +'</div>';
   }
+
+  function getProductImg(name){
+    var n=(name||'').toLowerCase();
+    var c='stroke="#B87820" stroke-width="1.5" stroke-linecap="round" fill="none"';
+    if(n.includes('cleanser')||n.includes('wash')||n.includes('cleanse'))
+      return '<svg width="22" height="22" viewBox="0 0 24 24" '+c+'><path d="M7 3h10v2l2 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V7l2-2V3z"/><path d="M9 3h6"/><circle cx="12" cy="13" r="2.5"/></svg>';
+    if(n.includes('serum')||n.includes('vitamin')||n.includes('hyaluronic')||n.includes('niacinamide')||n.includes('azelaic'))
+      return '<svg width="22" height="22" viewBox="0 0 24 24" '+c+'><path d="M10 2h4v3l1 1v13a2 2 0 01-2 2h-2a2 2 0 01-2-2V6l1-1V2z"/><circle cx="12" cy="12" r="2"/><path d="M12 10V8"/></svg>';
+    if(n.includes('spf')||n.includes('sunscreen')||n.includes('anthelios')||n.includes('sun'))
+      return '<svg width="22" height="22" viewBox="0 0 24 24" '+c+'><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>';
+    if(n.includes('retinol')||n.includes('bakuchiol')||n.includes('aha')||n.includes('bha')||n.includes('glycolic')||n.includes('exfoliant')||n.includes('ordinary'))
+      return '<svg width="22" height="22" viewBox="0 0 24 24" '+c+'><path d="M12 2C8 6 4 10 4 14a8 8 0 0016 0c0-4-4-8-8-12z"/><path d="M9 14c1 1.5 2 2 3 2s2-.5 3-2"/></svg>';
+    if(n.includes('moistur')||n.includes('cream')||n.includes('ceramide')||n.includes('cerave'))
+      return '<svg width="22" height="22" viewBox="0 0 24 24" '+c+'><path d="M5 8h14v10a2 2 0 01-2 2H7a2 2 0 01-2-2V8z"/><path d="M8 8V6a4 4 0 018 0v2"/><path d="M9 13h6"/></svg>';
+    if(n.includes('mask')||n.includes('laneige'))
+      return '<svg width="22" height="22" viewBox="0 0 24 24" '+c+'><path d="M12 3C8 3 4 7 4 12s3 8 8 9 8-4 8-9-4-9-8-9z"/><path d="M9 11c0 1 .5 2 1.5 2M15 11c0 1-.5 2-1.5 2"/></svg>';
+    if(n.includes('oil'))
+      return '<svg width="22" height="22" viewBox="0 0 24 24" '+c+'><path d="M12 2l3 5H9l3-5z"/><path d="M9 7v10a3 3 0 006 0V7"/></svg>';
+    return '<svg width="22" height="22" viewBox="0 0 24 24" '+c+'><path d="M9 3h6v3l2 2v11a2 2 0 01-2 2H9a2 2 0 01-2-2V8l2-2V3z"/><circle cx="12" cy="14" r="1.5"/></svg>';
+  }
+
 
   var html='<div class="section-label" style="margin-bottom:12px;margin-top:4px;display:flex;align-items:center;gap:8px;font-size:16px;font-weight:700;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-d)" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>שגרת בוקר</div>';
   r.morning.forEach(function(s,i){ html+=makeStep(s,i); });
