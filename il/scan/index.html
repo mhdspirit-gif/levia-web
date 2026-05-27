@@ -22,6 +22,9 @@ fbq.loaded=!0;fbq.version='2.0';fbq.queue=[];
 fbq('init','971155829225384');fbq('track','PageView');
 </script>
 <script>
+// STUBS disponibles immédiatement pour les onclick inline
+function hideTapHint(){var h=document.getElementById('tap-hint');if(h)h.style.display='none';}
+function nav(to,dir){if(window._nav)window._nav(to,dir);}
 function loadTrackers(){
   var s1=document.createElement('script');s1.async=true;
   s1.src='https://www.googletagmanager.com/gtag/js?id=G-W2SNN6BTV6';
@@ -1110,6 +1113,7 @@ function hideTapHint(){
   if(h) h.style.display='none';
 }
 function nav(to,dir){
+  window._nav=nav;
   var from=S(currentScreen);
   var toEl=S(to);
   if(!toEl)return;
