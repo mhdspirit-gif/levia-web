@@ -1,34 +1,42 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
-<head><script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "wwt09be2ge");
-</script><!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-W2SNN6BTV6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-W2SNN6BTV6');
-</script>
-<!-- Meta Pixel -->
-<script>
-!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '971155829225384');
-fbq('track', 'PageView');
-</script>
-<!-- End Meta Pixel -->
-<meta charset="UTF-8">
+<head>
+<meta charset="UTF-8"><!-- v1779806217-PERF-OPT -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
-<title>Lévia — ניתוח עור עם ציפי</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<title>Lévia — Skin Analysis by Salomé</title>
+<link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://connect.facebook.net">
+<link rel="dns-prefetch" href="https://www.clarity.ms">
+<link rel="preload" as="image" href="https://res.cloudinary.com/dqvsbxyb0/image/upload/q_auto,f_auto,w_400/v1779821015/hero-page1_jda6zq.jpg" fetchpriority="high">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"></noscript>
+<script>
+window.dataLayer=window.dataLayer||[];
+window.gtag=function(){dataLayer.push(arguments);};
+gtag('js',new Date());gtag('config','G-W2SNN6BTV6');
+window.fbq=window.fbq||function(){(fbq.q=fbq.q||[]).push(arguments);};
+fbq.loaded=!0;fbq.version='2.0';fbq.queue=[];
+fbq('init','971155829225384');fbq('track','PageView');
+</script>
+<script>
+function loadTrackers(){
+  var s1=document.createElement('script');s1.async=true;
+  s1.src='https://www.googletagmanager.com/gtag/js?id=G-W2SNN6BTV6';
+  document.head.appendChild(s1);
+  var s2=document.createElement('script');s2.async=true;
+  s2.src='https://connect.facebook.net/en_US/fbevents.js';
+  document.head.appendChild(s2);
+  (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window,document,"clarity","script","wwt09be2ge");
+}
+if(document.readyState==='complete'){setTimeout(loadTrackers,500);}
+else{window.addEventListener('load',function(){setTimeout(loadTrackers,500);});}
+</script>
 <style>
 :root{
   --gold:#C9A96E;--gold-l:#E8C98A;--gold-d:#8B6A20;
@@ -168,7 +176,7 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'Heeb
 .sc-tr{top:10px;right:10px;border-width:2px 2px 0 0;animation-delay:0.5s;}
 .sc-bl{bottom:10px;left:10px;border-width:0 0 2px 2px;animation-delay:1s;}
 .sc-br{bottom:10px;right:10px;border-width:0 2px 2px 0;animation-delay:1.5s;}
-@keyframes cornerGlow{0%,100%{opacity:0.5;}50%{opacity:1;filter:drop-shadow(0 0 4px rgba(201,169,110,0.8));}}
+@keyframes cornerGlow{0%,100%{opacity:0.5;}50%{opacity:1;}}
 
 /* Face analysis overlay — mesh lines on face */
 .face-mesh-canvas{position:absolute;inset:0;z-index:12;pointer-events:none;}
@@ -231,9 +239,9 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'Heeb
   box-shadow:0 4px 22px rgba(184,120,32,0.4),inset 0 1px rgba(255,255,255,0.35);
   animation:goldShift 3s ease-in-out infinite, btnPulse 1.8s ease-in-out infinite;}
 .btn-gold[style*="opacity:0.3"]{animation:none!important;transform:none!important;}
-.btn-gold::after{content:"";position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,220,0.7) 50%,transparent);transform:skewX(-22deg);animation:shine 2s ease-in-out infinite;}
-@keyframes goldShift{0%,100%{background-position:0% 50%;box-shadow:0 4px 20px rgba(184,120,32,0.35);}50%{background-position:100% 50%;box-shadow:0 4px 32px rgba(232,168,48,0.6);}}
-@keyframes shine{0%{left:-100%;}100%{left:140%;}}
+.btn-gold::after{content:"";position:absolute;top:0;left:0;width:50%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,220,0.7) 50%,transparent);transform:translateX(-200%) skewX(-22deg);animation:shine 2.5s ease-in-out infinite;will-change:transform;}
+@keyframes goldShift{0%,100%{background-position:0% 50%;}50%{background-position:100% 50%;}}
+@keyframes shine{0%{transform:translateX(-200%) skewX(-22deg);}100%{transform:translateX(300%) skewX(-22deg);}}
 @keyframes btnPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
 /* Pulse agressif pour le bouton principal */
 .btn-mega{animation:goldShift 3s ease-in-out infinite,btnMegaPulse 1.2s ease-in-out infinite !important;}
@@ -328,15 +336,15 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'Heeb
     <div class="s1-logo">LÉVIA</div>
     <div class="s1-tagline">עם ציפי</div>
     <!-- Image téléphone scan -->
-    <div style="width:200px;margin:0 auto 6px;flex-shrink:0;">
-      <img src="https://res.cloudinary.com/dqvsbxyb0/image/upload/q_auto,f_auto/v1779821015/hero-page1_jda6zq.jpg" 
+    <div style="width:200px;aspect-ratio:1/1.3;margin:0 auto 6px;flex-shrink:0;">
+      <img src="https://res.cloudinary.com/dqvsbxyb0/image/upload/q_auto,f_auto,w_400/v1779821015/hero-page1_jda6zq.jpg" width="400" height="520" fetchpriority="high" decoding="async" 
         style="width:100%;height:auto;display:block;filter:drop-shadow(0 12px 30px rgba(184,120,32,0.3));"
         alt="LÉVIA Skin Analysis">
     </div>
 
     <!-- BOUTON + MAIN — entre photo et texte -->
     <div style="position:relative;width:100%;max-width:360px;margin-bottom:6px;flex-shrink:0;">
-      <button class="btn-gold btn-mega" onclick="hideTapHint();nav('s-gender',1)">✦ התחל/י את הניתוח החינמי שלי</button>
+      <button class="btn-gold" id="btn-start-cta" onclick="hideTapHint();nav('s-gender',1)">✦ התחל/י את הניתוח החינמי שלי</button>
       <div id="tap-hint" style="position:absolute;bottom:-30px;left:50%;transform:translateX(-50%);pointer-events:none;animation:tapHint 1.5s ease-in-out infinite;font-size:26px;line-height:1;">
         👆
       </div>
@@ -586,7 +594,7 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'Heeb
       <div style="display:flex;gap:6px;">
 
         <div style="flex:1;border-radius:10px;overflow:hidden;">
-          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300&h=300&fit=crop&crop=faces&auto=format"
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300&h=300&fit=crop&crop=faces&auto=format" loading="lazy" width="300" height="90" decoding="async"
             style="width:100%;height:90px;object-fit:cover;object-position:center 20%;display:block;"
             alt="Good" onerror="this.parentElement.style.background='#E8D5C0';this.style.display='none'">
           <div style="background:rgba(45,122,79,0.9);padding:3px 6px;display:flex;align-items:center;gap:3px;">
@@ -596,7 +604,7 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'Heeb
         </div>
 
         <div style="flex:1;border-radius:10px;overflow:hidden;">
-          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop&crop=faces&auto=format"
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop&crop=faces&auto=format" loading="lazy" width="300" height="90" decoding="async"
             style="width:100%;height:90px;object-fit:cover;object-position:center 20%;display:block;filter:brightness(0.4);"
             alt="Dark" onerror="this.parentElement.style.background='#444';this.style.display='none'">
           <div style="background:rgba(180,40,40,0.9);padding:3px 6px;display:flex;align-items:center;gap:3px;">
@@ -606,7 +614,7 @@ html,body{width:100%;min-height:100dvh;background:var(--cream);font-family:'Heeb
         </div>
 
         <div style="flex:1;border-radius:10px;overflow:hidden;">
-          <img src="https://images.unsplash.com/photo-1516726817505-f5ed825624d8?w=300&h=300&fit=crop&crop=faces&auto=format"
+          <img src="https://images.unsplash.com/photo-1516726817505-f5ed825624d8?w=300&h=300&fit=crop&crop=faces&auto=format" loading="lazy" width="300" height="90" decoding="async"
             style="width:100%;height:90px;object-fit:cover;object-position:center 20%;display:block;"
             alt="Makeup" onerror="this.parentElement.style.background='#D4A0A0';this.style.display='none'">
           <div style="background:rgba(180,40,40,0.9);padding:3px 6px;display:flex;align-items:center;gap:3px;">
@@ -1087,6 +1095,12 @@ var SALOME_B64='/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8L
 ['salome-img','salome-img2','salome-img3'].forEach(function(id){
   var el=S(id);if(el)el.src='data:image/jpeg;base64,'+SALOME_B64;
 });
+
+// PERF: Activer pulse CTA apres LCP
+setTimeout(function(){
+  var cta=document.getElementById('btn-start-cta');
+  if(cta){cta.classList.add('btn-mega');}
+},1500);
 
 // NAVIGATION with slide transition
 
